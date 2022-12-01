@@ -946,7 +946,7 @@
                         <!-- section title -->
                         <div class="section-title style2">
                             <div class="title-header">
-                                <h3>Latest News</h3>
+                                <h3>Latest Blogs</h3>
                                 <h2 class="title">Our News And Insights</h2>
                             </div>
                             <div class="title-desc">
