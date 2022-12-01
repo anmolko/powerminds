@@ -94,7 +94,7 @@ class FrontController extends Controller
         $homepage_info = $this->home_page->first();
 
         $testimonials = $this->testimonial->get();
-        $latestPosts = $this->blog->inRandomOrder()->take(3)->get();
+        $latestPosts = $this->blog->inRandomOrder()->take(6)->get();
         $recruitments =$this->recruitment_process->get();
 
         return view('welcome',compact('recruitments','testimonials','clients','latestPosts','latestServices','countries','homepage_info','sliders'));

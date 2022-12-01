@@ -100,25 +100,29 @@
                     @endif
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 widget-area">
-                    <div class="widget widget-recent-post clearfix">
-                        <h3 class="widget-title">Recent Posts</h3>
-                        <ul class="widget-post ttm-recent-post-list">
-                            <li>
-                                <a href="#"><img class="img-fluid" src="{{asset('assets/frontend/images/blog/b_thumbb-01.jpg')}}" alt="post-img"></a>
-                                <div class="post-detail">
-                                    <a href="#">5 Effective Ways to Hire More Workers</a>
-                                    <span class="post-date">Nov 5, 2020</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#"><img class="img-fluid" src="{{asset('assets/frontend/images/blog/b_thumbb-02.jpg')}}" alt="post-img"></a>
-                                <div class="post-detail">
-                                    <a href="#">Does My Business Need a Director of Training?</a>
-                                    <span class="post-date">Nov 5, 2020</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    @if(count($latestPostsfooter) > 0 )
+                        <div class="widget widget-recent-post clearfix">
+                            <h3 class="widget-title">Recent Posts</h3>
+                            <ul class="widget-post ttm-recent-post-list">
+                                @foreach($latestPostsfooter as $post)
+                                <li>
+                                    <a href="{{route('blog.single',$post->slug)}}"><img class="img-fluid" src="<?php if(@$post->image){?>{{asset('/images/blog/'.@$post->image)}}<?php }?>" alt="post-img"></a>
+                                    <div class="post-detail">
+                                        <a href="#">{{ucwords($post->title)}}</a>
+                                        <span class="post-date">{{\Carbon\Carbon::parse($post->created_at)->isoFormat('MMMM Do, YYYY')}}</span>
+                                    </div>
+                                </li>
+                                @endforeach
+{{--                                <li>--}}
+{{--                                    <a href="#"><img class="img-fluid" src="{{asset('assets/frontend/images/blog/b_thumbb-02.jpg')}}" alt="post-img"></a>--}}
+{{--                                    <div class="post-detail">--}}
+{{--                                        <a href="#">Does My Business Need a Director of Training?</a>--}}
+{{--                                        <span class="post-date">Nov 5, 2020</span>--}}
+{{--                                    </div>--}}
+{{--                                </li>--}}
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 widget-area" style="padding-left: 50px;">
                     @if(@$footer_nav_data2 !== null)

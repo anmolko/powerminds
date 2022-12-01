@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="slide">
-            <div class="slide_img" style="background-image: url(images/slides/slider-mainbg-002.jpg);"></div>
+            <div class="slide_img" style="background-image: url({{asset('assets/frontend/images/slides/slider-mainbg-002.jpg')}});"></div>
             <div class="slide__content">
                 <div class="container">
                     <div class="row">
@@ -936,7 +936,7 @@
         </section>
         <!--fid-section end-->
 
-
+    @if(count($latestPosts) > 2)
         <!--blog-section-->
         <section class="ttm-row blog-section ttm-bgcolor-grey clearfix">
             <div class="container">
@@ -955,89 +955,150 @@
                         </div><!-- section title end -->
                     </div>
                 </div>
+
                 <div class="row slick_slider" data-slick='{"slidesToShow": 3, "slidesToScroll": 1, "arrows":false, "dots":false, "autoplay":true, "infinite":true, "responsive": [{"breakpoint":1024,"settings":{"slidesToShow": 3}} , {"breakpoint":900,"settings":{"slidesToShow": 2}}, {"breakpoint":575,"settings":{"slidesToShow": 1}}]}'>
+                    @foreach(@$latestPosts as $post)
                     <div class="col-lg-4">
                         <!-- featured-imagebox-post -->
-                        <div class="featured-imagebox featured-imagebox-post style1">
+                        <div class="featured-imagebox featured-imagebox-post style1" style="height: 475px;">
                             <div class="featured-thumbnail">
-                                <img class="img-fluid" src="{{asset('assets/frontend/images/blog/blog-01-1200x800.jpg')}}" alt="">
+                                <img class="img-fluid" src="<?php if(@$post->image){?>{{asset('/images/blog/'.@$post->image)}}<?php }else{?>{{asset('assets/frontend/images/blog/blog-01-1200x800.jpg')}} <?php }?>" alt="">
                             </div>
                             <div class="featured-content">
                                 <div class="post-header">
                                     <!-- ttm-box-post-date -->
                                     <div class="ttm-box-post-date">
                                             <span class="ttm-entry-date">
-                                                <time class="entry-date" datetime="2019-01-16T07:07:55+00:00">17<span class="entry-month entry-year">APR</span></time>
+                                                <time class="entry-date" datetime="2019-01-16T07:07:55+00:00">{{date('j',strtotime(@$post->created_at))}}<span class="entry-month entry-year">{{date('M',strtotime(@$post->created_at))}}</span></time>
                                             </span>
                                     </div><!-- ttm-box-post-date end -->
                                     <div class="post-meta">
-                                            <span class="ttm-meta-line comments-link"><i class="fa fa-comments"></i>Comments
+                                            <span class="ttm-meta-line comments-link">
+                                                <a href="{{url('/blog/categories/'.@$post->category->slug)}}"><i class="fa fa-list-alt"></i>{{ucwords(@$post->category->name)}}</a>
                                             </span>
-                                        <span class="ttm-meta-line byline"><i class="fa fa-user"></i>Admin</span>
+                                        <span class="ttm-meta-line byline"><i class="fa fa-user"></i>{{@\App\Models\User::find($post->created_by)->name}}</span>
                                     </div><!-- post-meta end -->
                                 </div>
                                 <div class="post-title featured-title">
-                                    <h3><a href="#">5 Effective Ways to Hire More Workers</a></h3>
+                                    <h3><a href="{{route('blog.single',$post->slug)}}">{{ucwords($post->title)}}</a></h3>
                                 </div>
                                 <a class="ttm-btn ttm-btn-size-md ttm-btn-color-darkgrey btn-inline" href="#" tabindex="-1">Read More</a>
                             </div>
                         </div><!-- featured-imagebox-post end -->
                     </div>
-                    <div class="col-lg-4">
-                        <!-- featured-imagebox-post -->
-                        <div class="featured-imagebox featured-imagebox-post style1">
-                            <div class="featured-thumbnail">
-                                <img class="img-fluid" src="{{asset('assets/frontend/images/blog/blog-02-1200x800.jpg')}}" alt="">
-                            </div>
-                            <div class="featured-content">
-                                <div class="post-header">
-                                    <!-- ttm-box-post-date -->
-                                    <div class="ttm-box-post-date">
-                                            <span class="ttm-entry-date">
-                                                <time class="entry-date" datetime="2019-01-16T07:07:55+00:00">17<span class="entry-month entry-year">APR</span></time>
-                                            </span>
-                                    </div><!-- ttm-box-post-date end -->
-                                    <div class="post-meta">
-                                            <span class="ttm-meta-line comments-link"><i class="fa fa-comments"></i>Comments
-                                            </span>
-                                        <span class="ttm-meta-line byline"><i class="fa fa-user"></i>Admin</span>
-                                    </div><!-- post-meta end -->
-                                </div>
-                                <div class="post-title featured-title">
-                                    <h3><a href="#">Does My Business Need a Director of Training?</a></h3>
-                                </div>
-                                <a class="ttm-btn ttm-btn-size-md ttm-btn-color-darkgrey btn-inline" href="#" tabindex="-1">Read More</a>
-                            </div>
-                        </div><!-- featured-imagebox-post end -->
-                    </div>
-                    <div class="col-lg-4">
-                        <!-- featured-imagebox-post -->
-                        <div class="featured-imagebox featured-imagebox-post style1">
-                            <div class="featured-thumbnail">
-                                <img class="img-fluid" src="{{asset('assets/frontend/images/blog/blog-03-1200x800.jpg')}}" alt="">
-                            </div>
-                            <div class="featured-content">
-                                <div class="post-header">
-                                    <!-- ttm-box-post-date -->
-                                    <div class="ttm-box-post-date">
-                                            <span class="ttm-entry-date">
-                                                <time class="entry-date" datetime="2019-01-16T07:07:55+00:00">17<span class="entry-month entry-year">APR</span></time>
-                                            </span>
-                                    </div><!-- ttm-box-post-date end -->
-                                    <div class="post-meta">
-                                            <span class="ttm-meta-line comments-link"><i class="fa fa-comments"></i>Comments
-                                            </span>
-                                        <span class="ttm-meta-line byline"><i class="fa fa-user"></i>Admin</span>
-                                    </div><!-- post-meta end -->
-                                </div>
-                                <div class="post-title featured-title">
-                                    <h3><a href="#">How to Manage Business’s Online Reputation</a></h3>
-                                </div>
-                                <a class="ttm-btn ttm-btn-size-md ttm-btn-color-darkgrey btn-inline" href="#" tabindex="-1">Read More</a>
-                            </div>
-                        </div><!-- featured-imagebox-post end -->
-                    </div>
+                    @endforeach
                 </div>
+
+
+{{--                <div class="row slick_slider" data-slick='{"slidesToShow": 3, "slidesToScroll": 1, "arrows":false, "dots":false, "autoplay":true, "infinite":true, "responsive": [{"breakpoint":1024,"settings":{"slidesToShow": 3}} , {"breakpoint":900,"settings":{"slidesToShow": 2}}, {"breakpoint":575,"settings":{"slidesToShow": 1}}]}'>--}}
+{{--                    <div class="col-lg-4">--}}
+{{--                        <!-- featured-imagebox-post -->--}}
+{{--                        <div class="featured-imagebox featured-imagebox-post style1">--}}
+{{--                            <div class="featured-thumbnail">--}}
+{{--                                <img class="img-fluid" src="images/blog/blog-01-1200x800.jpg" alt="">--}}
+{{--                            </div>--}}
+{{--                            <div class="featured-content">--}}
+{{--                                <div class="post-header">--}}
+{{--                                    <!-- ttm-box-post-date -->--}}
+{{--                                    <div class="ttm-box-post-date">--}}
+{{--                                            <span class="ttm-entry-date">--}}
+{{--                                                <time class="entry-date" datetime="2019-01-16T07:07:55+00:00">17<span class="entry-month entry-year">APR</span></time>--}}
+{{--                                            </span>--}}
+{{--                                    </div><!-- ttm-box-post-date end -->--}}
+{{--                                    <div class="post-meta">--}}
+{{--                                            <span class="ttm-meta-line comments-link"><i class="fa fa-comments"></i>Comments--}}
+{{--                                            </span>--}}
+{{--                                        <span class="ttm-meta-line byline"><i class="fa fa-user"></i>Admin</span>--}}
+{{--                                    </div><!-- post-meta end -->--}}
+{{--                                </div>--}}
+{{--                                <div class="post-title featured-title">--}}
+{{--                                    <h3><a href="blog-single.html">5 Effective Ways to Hire More Workers</a></h3>--}}
+{{--                                </div>--}}
+{{--                                <a class="ttm-btn ttm-btn-size-md ttm-btn-color-darkgrey btn-inline" href="blog-single.html" tabindex="-1">Read More</a>--}}
+{{--                            </div>--}}
+{{--                        </div><!-- featured-imagebox-post end -->--}}
+{{--                    </div>      <div class="col-lg-4">--}}
+{{--                        <!-- featured-imagebox-post -->--}}
+{{--                        <div class="featured-imagebox featured-imagebox-post style1">--}}
+{{--                            <div class="featured-thumbnail">--}}
+{{--                                <img class="img-fluid" src="images/blog/blog-01-1200x800.jpg" alt="">--}}
+{{--                            </div>--}}
+{{--                            <div class="featured-content">--}}
+{{--                                <div class="post-header">--}}
+{{--                                    <!-- ttm-box-post-date -->--}}
+{{--                                    <div class="ttm-box-post-date">--}}
+{{--                                            <span class="ttm-entry-date">--}}
+{{--                                                <time class="entry-date" datetime="2019-01-16T07:07:55+00:00">17<span class="entry-month entry-year">APR</span></time>--}}
+{{--                                            </span>--}}
+{{--                                    </div><!-- ttm-box-post-date end -->--}}
+{{--                                    <div class="post-meta">--}}
+{{--                                            <span class="ttm-meta-line comments-link"><i class="fa fa-comments"></i>Comments--}}
+{{--                                            </span>--}}
+{{--                                        <span class="ttm-meta-line byline"><i class="fa fa-user"></i>Admin</span>--}}
+{{--                                    </div><!-- post-meta end -->--}}
+{{--                                </div>--}}
+{{--                                <div class="post-title featured-title">--}}
+{{--                                    <h3><a href="blog-single.html">5 Effective Ways to Hire More Workers</a></h3>--}}
+{{--                                </div>--}}
+{{--                                <a class="ttm-btn ttm-btn-size-md ttm-btn-color-darkgrey btn-inline" href="blog-single.html" tabindex="-1">Read More</a>--}}
+{{--                            </div>--}}
+{{--                        </div><!-- featured-imagebox-post end -->--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-4">--}}
+{{--                        <!-- featured-imagebox-post -->--}}
+{{--                        <div class="featured-imagebox featured-imagebox-post style1">--}}
+{{--                            <div class="featured-thumbnail">--}}
+{{--                                <img class="img-fluid" src="images/blog/blog-02-1200x800.jpg" alt="">--}}
+{{--                            </div>--}}
+{{--                            <div class="featured-content">--}}
+{{--                                <div class="post-header">--}}
+{{--                                    <!-- ttm-box-post-date -->--}}
+{{--                                    <div class="ttm-box-post-date">--}}
+{{--                                            <span class="ttm-entry-date">--}}
+{{--                                                <time class="entry-date" datetime="2019-01-16T07:07:55+00:00">17<span class="entry-month entry-year">APR</span></time>--}}
+{{--                                            </span>--}}
+{{--                                    </div><!-- ttm-box-post-date end -->--}}
+{{--                                    <div class="post-meta">--}}
+{{--                                            <span class="ttm-meta-line comments-link"><i class="fa fa-comments"></i>Comments--}}
+{{--                                            </span>--}}
+{{--                                        <span class="ttm-meta-line byline"><i class="fa fa-user"></i>Admin</span>--}}
+{{--                                    </div><!-- post-meta end -->--}}
+{{--                                </div>--}}
+{{--                                <div class="post-title featured-title">--}}
+{{--                                    <h3><a href="blog-single.html">Does My Business Need a Director of Training?</a></h3>--}}
+{{--                                </div>--}}
+{{--                                <a class="ttm-btn ttm-btn-size-md ttm-btn-color-darkgrey btn-inline" href="blog-single.html" tabindex="-1">Read More</a>--}}
+{{--                            </div>--}}
+{{--                        </div><!-- featured-imagebox-post end -->--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-4">--}}
+{{--                        <!-- featured-imagebox-post -->--}}
+{{--                        <div class="featured-imagebox featured-imagebox-post style1">--}}
+{{--                            <div class="featured-thumbnail">--}}
+{{--                                <img class="img-fluid" src="images/blog/blog-03-1200x800.jpg" alt="">--}}
+{{--                            </div>--}}
+{{--                            <div class="featured-content">--}}
+{{--                                <div class="post-header">--}}
+{{--                                    <!-- ttm-box-post-date -->--}}
+{{--                                    <div class="ttm-box-post-date">--}}
+{{--                                            <span class="ttm-entry-date">--}}
+{{--                                                <time class="entry-date" datetime="2019-01-16T07:07:55+00:00">17<span class="entry-month entry-year">APR</span></time>--}}
+{{--                                            </span>--}}
+{{--                                    </div><!-- ttm-box-post-date end -->--}}
+{{--                                    <div class="post-meta">--}}
+{{--                                            <span class="ttm-meta-line comments-link"><i class="fa fa-comments"></i>Comments--}}
+{{--                                            </span>--}}
+{{--                                        <span class="ttm-meta-line byline"><i class="fa fa-user"></i>Admin</span>--}}
+{{--                                    </div><!-- post-meta end -->--}}
+{{--                                </div>--}}
+{{--                                <div class="post-title featured-title">--}}
+{{--                                    <h3><a href="blog-single.html">How to Manage Business’s Online Reputation</a></h3>--}}
+{{--                                </div>--}}
+{{--                                <a class="ttm-btn ttm-btn-size-md ttm-btn-color-darkgrey btn-inline" href="blog-single.html" tabindex="-1">Read More</a>--}}
+{{--                            </div>--}}
+{{--                        </div><!-- featured-imagebox-post end -->--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="margin_top35 res-991-margin_top30 text-center">
@@ -1050,6 +1111,7 @@
             </div>
         </section>
         <!--blog-section end-->
+    @endif
 
 
     </div><!--site-main end-->
