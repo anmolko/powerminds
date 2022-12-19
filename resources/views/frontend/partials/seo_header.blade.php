@@ -6,22 +6,10 @@
     <meta name="description" content="@if(!empty(@$setting_data->meta_description)) {{ucwords(@$setting_data->meta_description)}} @else Power Minds Pvt. Ltd. @endif "/>
     <meta name="keywords" content="@if(!empty(@$setting_data->meta_tags)) {{@$setting_data->meta_tags}} @else Power Minds Pvt. Ltd. @endif ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Axacus - Business Agency HTML Template </title>
     <link rel="canonical" href="https://powerminds.com.np/" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    @if (\Request::is('/'))
-        <title>@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Power Minds Pvt. Ltd. @endif </title>
-    @else
-        <title>@yield('title') | @if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Power Minds Pvt. Ltd. @endif </title>
-    @endif
-
-    <meta property="og:title" content="@if(!empty(@$setting_data->meta_title)) {{ucwords(@$setting_data->meta_title)}} @else  Power Minds Pvt. Ltd. @endif" />
-    <meta property="og:type" content="Consultancy" />
-    <meta property="og:url" content="https://powerminds.com.np/" />
-
-    <meta property="og:site_name" content="Power Minds Pvt. Ltd." />
-    <meta property="og:description" content="@if(!empty(@$setting_data->meta_description)) {{ucwords(@$setting_data->meta_description)}} @else Power Minds Pvt. Ltd. @endif " />
+    @yield('seo')
 
 
 

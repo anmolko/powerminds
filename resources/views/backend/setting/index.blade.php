@@ -34,11 +34,11 @@
                                             <div class="col-md">
                                                 <div>
                                                     <h4 class="fw-bold">
-                                                        {{($setting_data !== null && @$setting_data->website_name !== "") ? $setting_data->website_name :"NMS recruitment Service Pvt. Ltd." }}
+                                                        {{($setting_data !== null && @$setting_data->website_name !== "") ? $setting_data->website_name :"Power Minds Pvt. Ltd." }}
                                                         - Dashboard Settings</h4>
                                                     <div class="hstack gap-3 flex-wrap">
                                                         <div><i class="ri-smartphone-line align-bottom me-1"></i>
-                                                            {{ ($setting_data !== null && $setting_data->phone !== null) ? $setting_data->phone:"NMS recruitment Service Pvt. Ltd." }}
+                                                            {{ ($setting_data !== null && $setting_data->phone !== null) ? $setting_data->phone:"Power Minds Pvt. Ltd." }}
                                                         </div>
                                                         <div class="vr"></div>
                                                         <div>

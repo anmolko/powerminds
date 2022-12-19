@@ -100,7 +100,6 @@ class FrontController extends Controller
         return view('welcome',compact('recruitments','testimonials','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
     }
 
-
     public function privacy()
     {
         $page_detail = $this->page->with('sections')->where('slug','privacy-policy')->where('status','active')->first();
@@ -154,7 +153,6 @@ class FrontController extends Controller
         return view('frontend.pages.term',compact('header_descp_elements'));
     }
 
-
     public function album(){
         $albums =$this->album->with('gallery')->get();
         return view('frontend.pages.album',compact('albums'));
@@ -168,12 +166,10 @@ class FrontController extends Controller
         return view('frontend.pages.album_gallery',compact('singleAlbum'));
     }
 
-
     public function team(){
         $teams =$this->team->orderBy('order', 'asc')->get();
         return view('frontend.pages.team',compact('teams'));
     }
-
 
     public function faq()
     {
@@ -202,7 +198,6 @@ class FrontController extends Controller
         }
         return view('frontend.pages.faq',compact('list_2','accordian2_elements'));
     }
-
 
     public function page($page)
     {
@@ -338,26 +333,22 @@ class FrontController extends Controller
         return view('frontend.pages.sliderlist.single',compact('singleSlider','slider_lists'));
     }
 
-
     public function work(){
         $our_works = $this->our_work->get();
         return view('frontend.pages.work',compact('our_works'));
     }
 
-
-
-
     public function testimonial(){
         $testimonials = $this->testimonial->get();
         return view('frontend.pages.testimonial',compact('testimonials'));
     }
+
     public function blogs(){
         $bcategories = $this->bcategory->get();
-        $allPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->paginate(6);
+        $allPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->paginate(3);
         $latestPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->take(5)->get();
         return view('frontend.pages.blogs.index',compact('allPosts','latestPosts','bcategories'));
     }
-
 
     public function blogSingle($slug){
 
@@ -381,7 +372,6 @@ class FrontController extends Controller
         return view('frontend.pages.services.index',compact('allservices','latestPosts','latestServices'));
     }
 
-
     public function career(){
         $careers =    $this->career->orderBy('end_date', 'DESC')->get();
         return view('frontend.pages.career',compact('careers'));
@@ -394,7 +384,6 @@ class FrontController extends Controller
 
         return view('frontend.pages.demand.index',compact('alldemands','latestDemands'));
     }
-
 
     public function demandSingle($slug){
 
@@ -410,7 +399,6 @@ class FrontController extends Controller
         return view('frontend.pages.demand.single',compact('singleDemand','latestDemands'));
     }
 
-
     public function searchDemand(Request $request)
     {
         $query = $request->s;
@@ -421,7 +409,6 @@ class FrontController extends Controller
 
         return view('frontend.pages.demand.search',compact('alldemands','query','latestDemands'));
     }
-
 
     public function careerStore(Request $request)
     {
@@ -488,9 +475,6 @@ class FrontController extends Controller
 
     }
 
-
-
-
     public function contactStore(Request $request)
     {
         $theme_data = Setting::first();
@@ -517,6 +501,7 @@ class FrontController extends Controller
 
         // return redirect()->back();
     }
+
     public function careerSingle($slug){
 
         $singleCareer = $this->career->where('slug', $slug)->first();
@@ -596,8 +581,6 @@ class FrontController extends Controller
         return view('frontend.pages.blogs.category',compact('allPosts','cat_name','latestPosts','bcategories'));
     }
 
-
-
     public function searchBlog(Request $request)
     {
         $query = $request->s;
@@ -614,8 +597,6 @@ class FrontController extends Controller
 
         return view('frontend.pages.clients',compact('clients','countries'));
     }
-
-
 
     public function category(){
         $service_categories =$this->S_category->orderBy('name', 'asc')->get();

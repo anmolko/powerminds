@@ -6,7 +6,6 @@
     <meta name="description" content="@if(!empty(@$setting_data->meta_description)) {{ucwords(@$setting_data->meta_description)}} @else Power Minds Pvt. Ltd. @endif "/>
     <meta name="keywords" content="@if(!empty(@$setting_data->meta_tags)) {{@$setting_data->meta_tags}} @else Power Minds Pvt. Ltd. @endif ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Axacus - Business Agency HTML Template </title>
     <link rel="canonical" href="https://powerminds.com.np/" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 

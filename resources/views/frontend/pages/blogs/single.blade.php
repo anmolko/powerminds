@@ -38,84 +38,116 @@
 @section('content')
 
 
-        <!--Page Header Start-->
-        <section class="page-header" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
-            <div class="page-header-shape-1"></div>
-            <div class="page-header-shape-2"></div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="/">Home</a></li>
-                        <li><span>.</span></li>
-                        <li><a href="{{url('/blog')}}">Blog</a></li>
-                        <li><span>.</span></li>
-                        <li> <a href="{{route('blog.category',$singleBlog->category->slug)}}">{{ucwords($singleBlog->category->name)}}</a></li>
 
-                    </ul>
-                    <h2>{{ @$singleBlog->title }}</h2>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
-        
-        
-        <!--Blog Details Start-->
-        <section class="blog-details">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-8 col-lg-7">
-                        <div class="blog-details__left">
-                            <div class="blog-details__img">
-                                    <img src="{{ asset('/images/blog/'.@$singleBlog->image) }}" alt="">
-
-                                <div class="blog-details__date-box">
-                                    <p><span>{{date('j',strtotime(@$post->created_at))}}</span> {{date('M',strtotime(@$post->created_at))}}</p>
-                                </div>
+        <!-- page-title -->
+        <div class="ttm-page-title-row">
+            <div class="ttm-page-title-row-inner ttm-bgcolor-darkgrey">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="page-title-heading">
+                                <h2 class="title">{{ @$singleBlog->title }}</h2>
                             </div>
-                            <div class="blog-details__content">
-                                <ul class="list-unstyled blog-details__meta">
-                                    <li><a href="{{url('/blog/categories/'.@$post->category->slug)}}"><i class="fas fa-th"></i> {{ucwords($singleBlog->category->name)}}</a></li>
-                                </ul>
-                                <h3 class="blog-details__title">{{ ucwords(@$singleBlog->title) }}</h3>
-                                <div class="blog-details__text-1">{!! $singleBlog->description !!}</div>
+                            <div class="breadcrumb-wrapper">
+                                <span>
+                                    <i class="ti ti-home margin_right1"></i>
+                                    <a title="Homepage" href="/">Home</a>
+                                </span>
+                                <span class="divide">
+                                    <i class="ti ti-book margin_right1"></i>
+                                    <a title="Homepage" href="{{url('/blog')}}">Blog</a>
+                                </span>
+                                <span class="divide">
+                                    <i class="ti ti-list margin_right1"></i>
+                                    <a title="Homepage" href="{{route('blog.category',$singleBlog->category->slug)}}">{{ucwords($singleBlog->category->name)}}</a>
+                                </span>
+                                <span>{{ @$singleBlog->title }}</span>
                             </div>
-                            <div class="blog-details__bottom">
-                               
-                                <div class="blog-details__social-list">
-                                    <span>Share:</span>
-                                   
-                                    <a href="#" class="clr-fb"><i onclick='fbShare("{{route('blog.single',$singleBlog->slug)}}")' class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i  onclick='twitShare("{{route('blog.single',$singleBlog->slug)}}","{{ $singleBlog->title }}")' class="fab fa-twitter"></i></a>
-                                    <a href="#" ><i class="fab fa-whatsapp" onclick='whatsappShare("{{route('blog.single',$singleBlog->slug)}}","{{ $singleBlog->title }}")'></i></a>
-                                </div>
-                            </div>
-                            
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-5">
-                        @include('frontend.pages.blogs.sidebar')
-                      
-                    </div>
                 </div>
             </div>
-        </section>
-        <!--Blog Details End-->
+        </div>
+        <!-- page-title end -->
+
+
+
+
+        <!--site-main start-->
+        <div class="site-main">
+
+
+            <div class="ttm-row sidebar ttm-sidebar-right ttm-bgcolor-white overflow-hidden clearfix">
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-lg-8 content-area">
+                            <!-- post --><article class="post ttm-blog-single clearfix">
+                                <!-- post-featured-wrapper -->
+                                <div class="ttm-post-featured-wrapper ttm-featured-wrapper">
+                                    <div class="ttm-post-featured">
+                                        <img class="img-fluid" src="{{ asset('/images/blog/'.@$singleBlog->image) }}" alt="">
+                                    </div>
+                                </div><!-- post-featured-wrapper end -->
+                                <!-- ttm-blog-classic-content -->
+                                <div class="ttm-blog-single-content">
+                                    <div class="ttm-post-entry-header">
+                                        <div class="post-meta">
+                                            <span class="ttm-meta-line byline"><i class="fa fa-user"></i>{{  ucfirst( \App\Models\User::find($singleBlog->created_by)->name)}}</span>
+                                            <span class="ttm-meta-line comments-links"><i class="fa fa-list"></i>{{ucwords($singleBlog->category->name)}}</span>
+                                            <span class="ttm-meta-line posted-on"><i class="fa fa-calendar"></i><time class="entry-date published" datetime="2020-10-10T12:20:49+00:00">October 10, 2020</time></span>
+                                        </div>
+                                    </div>
+                                    <div class="entry-content">
+                                        <div class="ttm-box-desc-text">
+                                            {!! $singleBlog->description !!}
+
+                                            <div class="social-media-block">
+                                                <div class="d-sm-flex justify-content-between">
+                                                    <div class="ttm-social-share-wrapper margin_top15">
+                                                        <h6 class="font-weight-normal m-0 margin_right10">Share : </h6>
+                                                        <ul class="social-icons circle">
+                                                            <li><a href="#"><i class="fa fa-facebook" onclick='fbShare("{{route('blog.single',$singleBlog->slug)}}")'></i></a></li>
+                                                            <li><a href="#"><i class="fa fa-twitter" onclick='twitShare("{{route('blog.single',$singleBlog->slug)}}","{{ $singleBlog->title }}")'></i></a></li>
+                                                            <li><a href="#"><i class="fa fa-whatsapp" onclick='whatsappShare("{{route('blog.single',$singleBlog->slug)}}","{{ $singleBlog->title }}")'></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="margin_top15">
+                                                        <a class="ttm-btn ttm-btn-size-sm ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-grey font-weight-normal text-capitalize margin_right10" href="{{route('blog.category',$singleBlog->category->slug)}}">{{ucwords($singleBlog->category->name)}}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- ttm-blog-classic-content end -->
+                            </article><!-- post end -->
+                        </div>
+
+{{--                        sidebar--}}
+                        @include('frontend.pages.blogs.sidebar')
+
+                    </div><!-- row end -->
+                </div>
+            </div>
+
+
+        </div><!--site-main end-->
 
 
 
 @endsection
 
 @section('js')
-<script>
-function fbShare(url) {
-  window.open("https://www.facebook.com/sharer/sharer.php?u=" + url, "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=200, left=500, width=600, height=400");
-}
-function twitShare(url, title) {
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(title) + "+" + url + "", "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=200, left=500, width=600, height=400");
-}
-function whatsappShare(url, title) {
-    message = title + " " + url;
-    window.open("https://api.whatsapp.com/send?text=" + message);
-}
-</script>
+    <script>
+        function fbShare(url) {
+          window.open("https://www.facebook.com/sharer/sharer.php?u=" + url, "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=200, left=500, width=600, height=400");
+        }
+        function twitShare(url, title) {
+            window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(title) + "+" + url + "", "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=200, left=500, width=600, height=400");
+        }
+        function whatsappShare(url, title) {
+            message = title + " " + url;
+            window.open("https://api.whatsapp.com/send?text=" + message);
+        }
+    </script>
 @endsection

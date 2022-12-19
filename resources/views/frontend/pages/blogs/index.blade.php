@@ -4,7 +4,7 @@
 <link rel="stylesheet" id="jssDefault" href="{{asset('assets/frontend/css/pagination.css')}}">
 
 <style>
-  
+
 
 </style>
 @endsection
@@ -12,100 +12,82 @@
 @section('content')
 
 
-        <!--Page Header Start-->
-        <section class="page-header" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
-            <div class="page-header-shape-1"></div>
-            <div class="page-header-shape-2"></div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="/">Home</a></li>
-                        <li><span>.</span></li>
-                        <li>Blog </li>
-                    </ul>
-                    <h2>Latest News</h2>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
-
-        <!--Blog Sidebar Start-->
-        <section class="blog-sidebar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-8 col-lg-7">
-                        <div class="blog-sidebar__left">
-                            <div class="row">
-                           
-                            @if(count($allPosts) > 0)
-
-                                @foreach($allPosts as $post)
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <!--Blog One Single-->
-                                    <div class="blog-one__single wow fadeInUp" data-wow-delay="100ms">
-                                        <div class="blog-one__img-box">
-                                            <div class="blog-one__img">
-                                                <img src="<?php if(@$post->image){?>{{asset('/images/blog/'.@$post->image)}}<?php }?>" alt="{{@$post->slug}}">
-                                                <a href="{{route('blog.single',$post->slug)}}">
-                                                    <span class="blog-one__plus"></span>
-                                                </a>
-                                            </div>
-                                            <div class="blog-one__date-box">
-                                                <p><span>{{date('j',strtotime(@$post->created_at))}}</span> {{date('M',strtotime(@$post->created_at))}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="blog-one__content">
-                                            <ul class="list-unstyled blog-one__meta">
-                                                <li><a href="{{url('/blog/categories/'.@$post->category->slug)}}"><i class="fas fa-th"></i> {{ucwords($post->category->name)}}</a></li>
-                                                </li>
-                                            </ul>
-                                            <h3 class="blog-one__title">
-                                                <a href="{{route('blog.single',$post->slug)}}">{!! ucwords(Str::limit(@$post->title, 40,'...')) !!}</a>
-                                            </h3>
-                                            <p class="blog-one__text">{!! Str::limit(@$post->description, 65,'...') !!}
-                                            </p>
-                                            <div class="blog-one__bottom">
-                                                <div class="blog-one__read-btn">
-                                                    <a href="{{route('blog.single',$post->slug)}}">Read more</a>
-                                                </div>
-                                                <div class="blog-one__arrow">
-                                                    <a href="{{route('blog.single',$post->slug)}}"><span class="icon-right-arrow"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-
-                                <div class="blog-page__pagination">
-
-                                    {{ $allPosts->links('vendor.pagination.default') }}
-
-
-                                </div>
-                            @else
-                                    <section class="no-results not-found">
-                                            <h2 class="page-title">Nothing Found</h2>
-                                        <div class="page-content">
-                                            <p>It seems we can not find what you are looking for.</p>
-                                        
-                                        </div>
-                                    </section>
-                            @endif
-
+        <!-- page-title -->
+        <div class="ttm-page-title-row">
+            <div class="ttm-page-title-row-inner ttm-bgcolor-darkgrey">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="page-title-heading">
+                                <h2 class="title">Blog</h2>
                             </div>
-                          
+                            <div class="breadcrumb-wrapper">
+                                <span>
+                                    <i class="ti ti-home mr-1"></i>
+                                    <a title="Homepage" href="/">Home</a>
+                                </span>
+                                <span>Blog</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-5">
-                        @include('frontend.pages.blogs.sidebar')
-                   
-                    </div>
                 </div>
             </div>
-        </section>
-        <!--Blog Sidebar End-->
+        </div>
+        <!-- page-title end -->
 
-    
+        <!--site-main start-->
+        <div class="site-main">
+
+
+            <div class="ttm-row sidebar ttm-sidebar-right ttm-bgcolor-white overflow-hidden clearfix">
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        @if(count($allPosts) > 0)
+                            <div class="col-lg-8 content-area">
+                                <div class="container">
+                                    <!-- row -->
+                                    <div class="row">
+                                        @foreach($allPosts as $post)
+                                            <div class="col-lg-6">
+                                                <!-- featured-imagebox-post -->
+                                                <div class="featured-imagebox featured-imagebox-post style2">
+                                                    <div class="featured-thumbnail">
+                                                        <img class="img-fluid" src="<?php if(@$post->image){?>{{asset('/images/blog/'.@$post->image)}}<?php }?>" alt="blog_img">
+                                                    </div>
+                                                    <div class="featured-content">
+                                                        <div class="post-category">{{ucwords(@$post->category->name)}}</div>
+                                                        <div class="post-title featured-title">
+                                                            <h3><a href="{{route('blog.single',$post->slug)}}"> {{ @$post->title }}</a></h3>
+                                                        </div>
+                                                        <div class="post-meta">
+                                                <span class="ttm-meta-line comments-link"><i class="fa fa-calendar"></i>{{date('M j, Y',strtotime(@$post->created_at))}}
+                                                </span>
+                                                            <span class="ttm-meta-line byline"><i class="fa fa-user"></i>{{  ucfirst( \App\Models\User::find($post->created_by)->name)}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- featured-imagebox-post end -->
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                {{ $allPosts->links('vendor.pagination.default') }}
+
+{{--                                <div class="pagination-block">--}}
+{{--                                    <span class="page-numbers current">1</span>--}}
+{{--                                    <a class="page-numbers" href="#">2</a>--}}
+{{--                                    <a class="next page-numbers" href="#"><i class="ti ti-arrow-right"></i></a>--}}
+{{--                                </div>--}}
+                            </div>
+                            @include('frontend.pages.blogs.sidebar')
+                        @endif
+                    </div><!-- row end -->
+                </div>
+            </div>
+
+
+        </div><!--site-main end-->
+
 
 @endsection
