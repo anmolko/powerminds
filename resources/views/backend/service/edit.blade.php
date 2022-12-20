@@ -60,7 +60,7 @@
 
                             <div class="mb-3 position-relative">
                                 <label class="form-label">Service Description</label>
-                                <textarea class="form-control" id="ckeditor-classic" name="description" placeholder="Enter service description" rows="4" required>{!! @$edit->description !!}</textarea>
+                                <textarea class="form-control" id="ckeditor-classic-service" name="description" placeholder="Enter service description" rows="4" required>{!! @$edit->description !!}</textarea>
                                 <div class="invalid-tooltip">
                                     Please enter the service description.
                                 </div>
@@ -81,25 +81,30 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- end card header -->
                         <div class="card-body">
                             <div class="tab-content">
 
                                 <div class="tab-pane active" id="addblog-metadata" role="tabpanel">
                                     <div class="row">
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label class="form-label" for="meta-title-input">Meta title</label>
-                                                <input type="text" class="form-control" placeholder="Enter meta title" name="meta_title" value="{{@$edit->meta_title}}" id="meta-title-input">
+                                                <input type="text" class="form-control" placeholder="Enter meta title" value="{{@$edit->meta_title}}" name="meta_title" id="meta-title-input">
                                             </div>
                                         </div>
+                                        <!-- end col -->
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="meta-keywords-input">Meta Keywords</label>
+                                                <input type="text" class="form-control" placeholder="Enter meta keywords"  value="{{@$edit->meta_tags}}" name="meta_tags" id="meta-keywords-input" data-choices data-choices-text-unique-true>
+                                            </div>
+                                        </div>
+                                        <!-- end col -->
                                     </div>
                                     <!-- end row -->
-                                    <div class="mb-3">
-                                        <label class="form-label" for="meta-keywords-input">Meta Keywords</label>
-                                        <input type="text" class="form-control" placeholder="Enter meta keywords" name="meta_tags" value="{{@$edit->meta_tags}}" id="meta-keywords-input" data-choices data-choices-text-unique-true>
-                                    </div>
-                                    <div>
+
+                                    <div class="position-relative">
                                         <label class="form-label" for="meta-description-input">Meta Description</label>
                                         <textarea class="form-control" id="meta-description-input" placeholder="Enter meta description" name="meta_description" rows="5">{!! @$edit->meta_description !!}</textarea>
                                     </div>
@@ -108,7 +113,6 @@
                             </div>
                             <!-- end tab content -->
                         </div>
-                        <!-- end card body -->
                     </div>
 
 
@@ -118,26 +122,6 @@
                 </div>
                 <!-- end col -->
                 <div class="col-lg-4">
-{{--                    <div class="card">--}}
-{{--                        <div class="card-header">--}}
-{{--                            <h5 class="card-title mb-0">Footer Action</h5>--}}
-{{--                        </div>--}}
-{{--                        <div class="card-body">--}}
-{{--                            <div>--}}
-{{--                                <label for="choices-privacy-status-input" class="form-label">Call Action</label>--}}
-{{--                                <select class="form-select" data-choices data-choices-search-false--}}
-{{--                                        id="choices-privacy-status-input" name="call_action_id">--}}
-{{--                                    <option value disabled>Select Call Action</option>--}}
-{{--                                    @foreach(@$callaction as $ca)--}}
-{{--                                        <option value="{{$ca->id}}" {{(@$edit->call_action_id == $ca->id) ? "selected":""}}>{{@$ca->name}}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <!-- end card body -->--}}
-{{--                    </div>--}}
-                    <!-- end card -->
-
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title mb-0">Add on</h5>
@@ -149,7 +133,6 @@
 
                             </div>
                         </div>
-                        <!-- end card body -->
                     </div>
 
                     <div class="card">
@@ -163,7 +146,7 @@
                                         id="profile-foreground-img-file-input" onchange="loadbasicFile('profile-foreground-img-file-input','current-img',event)" name="banner_image"
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">Banner image for current service. (Size:  770 x 416px)</figcaption>
+                                <figcaption class="figure-caption">Banner image for current service.  (Size:  1200 x 800px)</figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
@@ -193,10 +176,11 @@
 
     <script src="{{asset('assets/backend/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
 
-    <script src="{{asset('assets/backend/js/pages/project-create.init.js')}}"></script>
+{{--    <script src="{{asset('assets/backend/js/pages/project-create.init.js')}}"></script>--}}
 
     <script src="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 
     <script src="{{asset('assets/backend/custom_js/servicecredit.js')}}"></script>
+    @include('backend.ckeditor')
 
 @endsection

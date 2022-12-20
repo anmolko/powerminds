@@ -60,7 +60,7 @@
 
                             <div class="mb-3 position-relative">
                                 <label class="form-label">Service Description</label>
-                                <textarea class="form-control" id="ckeditor-classic" name="description" placeholder="Enter service description" rows="4" required></textarea>
+                                <textarea class="form-control" id="ckeditor-classic-service" name="description" placeholder="Enter service description" rows="4" required></textarea>
                                 <div class="invalid-tooltip">
                                     Please enter the service description.
                                 </div>
@@ -169,7 +169,7 @@
                                         id="profile-foreground-img-file-input" onchange="loadbasicFile('profile-foreground-img-file-input','current-img',event)" name="banner_image" required
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">Banner image for current service. (Size:  770 x 416px)</figcaption>
+                                <figcaption class="figure-caption">Banner image for current service. (Size:  1200 x 800px)</figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
@@ -199,10 +199,11 @@
 
     <script src="{{asset('assets/backend/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
 
-    <script src="{{asset('assets/backend/js/pages/project-create.init.js')}}"></script>
+{{--    <script src="{{asset('assets/backend/js/pages/project-create.init.js')}}"></script>--}}
 
     <script src="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 
     <script src="{{asset('assets/backend/custom_js/servicecredit.js')}}"></script>
+    @include('backend.ckeditor')
 
 @endsection

@@ -13,3 +13,6 @@ function slugMaker(title, slug){
         $("#"+slug).val(Text);
     });
 }
+$(document).ready(function () {
+    createEditor('ckeditor-classic-service');
+});

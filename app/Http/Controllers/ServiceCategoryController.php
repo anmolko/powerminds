@@ -70,8 +70,8 @@ class ServiceCategoryController extends Controller
             }
             $path         = base_path().'/public/images/service_categories/';
             $thumb_path   = base_path().'/public/images/service_categories/thumb/';
-            $moved        = Image::make($image->getRealPath())->fit(770, 444)->orientate()->save($path.$name);
-            $thumb        = Image::make($image->getRealPath())->fit(370, 250)->orientate()->save($thumb_path.$thumb);
+            $moved        = Image::make($image->getRealPath())->fit(1200, 800)->orientate()->save($path.$name);
+            $thumb        = Image::make($image->getRealPath())->fit(150, 150)->orientate()->save($thumb_path.$thumb);
             if ($moved && $thumb){
                 $data['image']= $name;
             }
@@ -133,8 +133,8 @@ class ServiceCategoryController extends Controller
             $thumb                = 'thumb_'.$name;
             $path                 = base_path().'/public/images/service_categories/';
             $thumb_path           = base_path().'/public/images/service_categories/thumb/';
-            $moved                = Image::make($image->getRealPath())->fit(770, 444)->orientate()->save($path.$name);
-            $thumb                = Image::make($image->getRealPath())->fit(370, 250)->orientate()->save($thumb_path.$thumb);
+            $moved                = Image::make($image->getRealPath())->fit(1200, 800)->orientate()->save($path.$name);
+            $thumb                = Image::make($image->getRealPath())->fit(150, 150)->orientate()->save($thumb_path.$thumb);
 
             if ($moved && $thumb){
                 $cat->image = $name;
