@@ -2844,6 +2844,7 @@ article.ttm-blog-classic .ttm-blog-classic-content {
     min-height: 100px;
     border-radius: 10px;
     font-style: italic;
+    background-color: #ebf5f5;
     border: none;
 }
 .ttm-blog-single blockquote:before {
@@ -3129,3 +3130,34 @@ ul.pagination .page-item .page-link{
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
+
+.ck-texts .image-style-side{
+    float: right;
+    max-width: 50%;
+
+}
+.ck-texts p > a{
+    color: #e12454;
+}
+.ck-texts .image{
+    text-align: center;
+    margin: 0.9em auto;
+    min-width: 50px;
+}
+.ck-texts figcaption{
+    font-size: 15px;
+    padding: 0 10px 0 10px;
+    font-weight: 100;
+}
+.ck-texts .image-style-side img{
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0 10px 0 10px;
+    min-width: 100%;
+}
+.ck-texts p{
+   margin-bottom: 0 !important;
+    text-align: justify;
+}
+

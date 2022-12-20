@@ -16,14 +16,15 @@ function slugMaker(title, slug){
 $(document).ready(function () {
     createEditor('ckeditor-classic-blog');
 });
-function createEditor(id){
-    ClassicEditor.create(document.querySelector("#"+id))
-        .then( editor => {
-            window.editor = editor;
-            editor.ui.view.editable.element.style.height="200px";
-            editor.model.document.on( 'change:data', () => {
-                $( '#' + id).text(editor.getData());
-            } );
-        } )
-        .catch(function(e){console.error(e)});
-}
+
+// function createEditor(id){
+//     ClassicEditor.create(document.querySelector("#"+id))
+//         .then( editor => {
+//             window.editor = editor;
+//             editor.ui.view.editable.element.style.height="200px";
+//             editor.model.document.on( 'change:data', () => {
+//                 $( '#' + id).text(editor.getData());
+//             } );
+//         } )
+//         .catch(function(e){console.error(e)});
+// }

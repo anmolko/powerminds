@@ -220,6 +220,6 @@
     <!-- Sweet Alerts js -->
 <script src="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 <script src="{{asset('assets/backend/custom_js/blog_credit.js')}}"></script>
-
+@include('backend.ckeditor')
 
 @endsection

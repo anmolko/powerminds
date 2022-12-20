@@ -5,6 +5,7 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@ckeditor/ckeditor5-alignment": "^35.4.0",
         "@popperjs/core": "^2.10.2",
         "@vitejs/plugin-vue": "^3.0.1",
         "axios": "^1.1.2",
@@ -15,5 +16,8 @@
         "sass": "^1.32.11",
         "vite": "^3.0.0",
         "vue": "^3.2.37"
+    },
+    "dependencies": {
+        "@ckeditor/ckeditor5-upload": "^35.4.0"
     }
 }

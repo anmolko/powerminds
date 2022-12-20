@@ -99,7 +99,7 @@
                                         </div>
                                     </div>
                                     <div class="entry-content">
-                                        <div class="ttm-box-desc-text">
+                                        <div class="ttm-box-desc-text ck-texts">
                                             {!! $singleBlog->description !!}
 
                                             <div class="social-media-block">

@@ -1,8 +1,4 @@
-
-<script src="{{asset('assets/backend/custom_js/ckeditor5/build/ckeditor.js')}}"></script>
-<script src="{{asset('ckfinder/ckfinder.js')}}"></script>
 <script>
-
 
     class MyUploadAdapter {
 
@@ -11,7 +7,6 @@
             // worry — the loader will be passed into the adapter later on in this guide.
             this.loader = loader;
         }
-
         // Starts the upload process.
         upload() {
             return this.loader.file
@@ -37,8 +32,8 @@
             // integration to choose the right communication channel. This example uses
             // a POST request with JSON as a data structure but your configuration
             // could be different.
-            xhr.open( 'POST', '', true );
-            xhr.setRequestHeader('x-csrf-token', '{{ csrf_token() }}');
+            xhr.open( 'POST', '{{route('ckimage.upload')}}', true );
+            xhr.setRequestHeader( 'x-csrf-token', '{{ csrf_token() }}');
             xhr.responseType = 'json';
         }
 
@@ -100,9 +95,8 @@
             // Send the request.
             this.xhr.send( data );
         }
-
-        // ...
     }
+
 
     function SimpleUploadAdapterPlugin( editor ) {
         editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
@@ -111,113 +105,42 @@
         };
     }
 
+    function createEditor(id) {
 
+        ClassicEditor.create(document.querySelector('#'+id), {
+            extraPlugins: [SimpleUploadAdapterPlugin],
+            mediaEmbed: {
+                // Previews are always enabled if there’s a provider for a URL (below regex catches all URLs)
+                // By default `previewsInData` are disabled, but let’s set it to `false` explicitely to be sure
+                previewsInData: true,
+            },
+            link: {
+                // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
+                addTargetToExternalLinks: true,
 
-
-    ClassicEditor
-        .create( document.querySelector( '#ckeditor-classic' ), {
-
-            extraPlugins: [ SimpleUploadAdapterPlugin ],
-            ckfinder: {
-                openerMethod: 'popup',
-                uploadUrl: '/ckfinder/connector.php?command=QuickUpload&type=Images&responseType=json',
-                options: {
-                    resourceType: 'Images',
-                  },
-
-
-		    },
-            toolbar: {
-					items: [
-						'heading',
-						'|',
-						'bold',
-						'italic',
-						'link',
-						'bulletedList',
-						'numberedList',
-						'|',
-						'outdent',
-						'indent',
-						'|',
-                        'ckfinder',
-                        // 'imageInsert',
-                        'imageResize',
-						'blockQuote',
-						'insertTable',
-						'mediaEmbed',
-						'undo',
-						'redo',
-						'alignment',
-						'codeBlock',
-						'findAndReplace',
-						'fontBackgroundColor',
-						'fontColor',
-						'fontFamily',
-						'fontSize',
-						'highlight',
-						'horizontalLine',
-						'htmlEmbed',
-						'pageBreak',
-						'removeFormat',
-						'specialCharacters',
-						'sourceEditing',
-						'underline'
-					]
-				},
-                mediaEmbed: {
-                    // Previews are always enabled if there’s a provider for a URL (below regex catches all URLs)
-                    // By default `previewsInData` are disabled, but let’s set it to `false` explicitely to be sure
-                    previewsInData: true,
-                },
-                link: {
-                    // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
-                    addTargetToExternalLinks: true,
-
-                    // Let the users control the "download" attribute of each link.
-                    decorators: [
-                        {
-                            mode: 'manual',
-                            label: 'Downloadable',
-                            attributes: {
-                                download: 'download'
-                            }
+                // Let the users control the "download" attribute of each link.
+                decorators: [
+                    {
+                        mode: 'manual',
+                        label: 'Downloadable',
+                        attributes: {
+                            download: 'download'
                         }
-                    ]
-                },
-				language: 'en',
-				image: {
-					toolbar: [
-						'imageTextAlternative',
-						'imageStyle:inline',
-						'imageStyle:block',
-						'imageStyle:side',
-						'imageStyle:alignLeft',
-						'imageStyle:alignRight',
-						'imageStyle:alignBlockLeft',
-						'imageStyle:alignBlockRight',
-						'imageStyle:alignCenter',
-						'linkImage'
-					]
-				},
-				table: {
-                    contentToolbar: [
-						'tableColumn',
-						'tableRow',
-						'mergeTableCells',
-						'tableCellProperties',
-						'tableProperties'
-					]
-				},
+                    }
+                ]
+            },
+        })
+            .then(editor => {
+                window.editor = editor;
+                editor.ui.view.editable.element.style.height = "200px";
+                editor.model.document.on( 'change:data', () => {
+                    $( '#' + id).text(editor.getData());
+                } );
+            })
+            .catch(function (e) {
+                console.error(e)
+            });
+    }
 
-        } )
-        .then( editor => {
-            // Simulate label behavior if textarea had a label
-            if (editor.sourceElement.labels.length > 0) {
-                editor.sourceElement.labels[0].addEventListener('click', e => editor.editing.view.focus());
-            }
-        } )
-        .catch( error => {
-            console.error( error );
-        } );
+
 </script>
