@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="slide">
-            <div class="slide_img" style="background-image: url({{asset('assets/frontend/images/slides/slider-mainbg-002.jpg')}});"></div>
+            <div class="slide_img" style="background-image: url({{asset('assets/frontend/images/slides/slider-mainbg-005.jpg')}});"></div>
             <div class="slide__content">
                 <div class="container">
                     <div class="row">
@@ -73,7 +73,82 @@
     <!--site-main start-->
     <div class="site-main">
 
+        <section class="ttm-row broken-section ttm-bgcolor-skincolor clearfix">
+            <div class="container-fluid">
+                <div class="row row-equal-height">
+                    <div class="col-xl-12 col-md-12">
+                        <div class="ttm-bg ttm-col-bgcolor-yes ttm-left-span ttm-bgcolor-skincolor w-100 padding_left40 res-991-padding_left0 text-left">
+                            <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
+                            <div class="layer-content featuredbox-number">
+                                <div class="row ttm-vertical_sep">
+                                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                                        <!-- featured-icon-box -->
+                                        <div class="featured-icon-box icon-align-before-content style4">
+                                            <div class="featured-icon">
+                                                <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-white ttm-icon_element-size-lg">
+                                                    <i class="flaticon-management"></i>
+                                                    <i class="ttm-num ti-info"></i>
+                                                </div>
+                                            </div>
+                                            <div class="featured-content">
+                                                <div class="featured-title">
+                                                    <h3>Franchise Development</h3>
+                                                </div>
+                                                <div class="featured-desc">
+                                                    <p>Experts to build &amp; customize franchise.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- featured-icon-box end -->
+                                    </div>
+                                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                                        <!-- featured-icon-box -->
+                                        <div class="featured-icon-box icon-align-before-content style4">
+                                            <div class="featured-icon">
+                                                <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-white ttm-icon_element-size-lg">
+                                                    <i class="flaticon-idea"></i>
+                                                    <i class="ttm-num ti-info"></i>
+                                                </div>
+                                            </div>
+                                            <div class="featured-content">
+                                                <div class="featured-title">
+                                                    <h3>Cost Transformation</h3>
+                                                </div>
+                                                <div class="featured-desc">
+                                                    <p>Align costs with strategy focus for growth.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- featured-icon-box end -->
+                                    </div>
+                                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                                        <!-- featured-icon-box -->
+                                        <div class="featured-icon-box icon-align-before-content style4">
+                                            <div class="featured-icon">
+                                                <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-white ttm-icon_element-size-lg">
+                                                    <i class="flaticon-presentation"></i>
+                                                    <i class="ttm-num ti-info"></i>
+                                                </div>
+                                            </div>
+                                            <div class="featured-content">
+                                                <div class="featured-title">
+                                                    <h3>Sales &amp; Marketing</h3>
+                                                </div>
+                                                <div class="featured-desc">
+                                                    <p>Customer focused &amp; growth oriented.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- featured-icon-box end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+        </section>
         <!--services-section-->
         <section class="ttm-row services-section clearfix">
             <div class="container">

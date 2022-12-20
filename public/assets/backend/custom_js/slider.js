@@ -31,11 +31,8 @@ $(document).on('click','.action-edit', function (e) {
             $('#heading').attr('value',dataResult.heading);
             $('#subheading').attr('value',dataResult.subheading);
             $('#button').attr('value',dataResult.button);
-            $('#button2').attr('value',dataResult.button2);
             $('#link').attr('value',dataResult.link);
-            $('#link2').attr('value',dataResult.link2);
-            $('#caption1').attr('value',dataResult.caption1);
-            $('#caption2').attr('value',dataResult.caption2);
+            $('#slider_link').attr('value',dataResult.slider_link);
             $('#sliderstatus option[value="'+dataResult.status+'"]').prop('selected', true);
             $('#current-edit-img').attr("src",'/images/sliders/'+dataResult.image);
             $('.updateslider').attr('action',action);

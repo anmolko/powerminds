@@ -59,23 +59,23 @@
                         <div class="card-body">
                             <div class="form-group mb-3">
                                 <label>Heading <span class="text-muted text-danger">*</span></label>
-                                <input type="text" maxlength="25" class="form-control" name="heading" required>
+                                <input type="text" maxlength="35" class="form-control" name="heading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider heading.
                                 </div>
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Sub Heading <span class="text-muted text-danger">*</span></label>
-                                <input type="text" maxlength="30" class="form-control" name="subheading" required>
+                                <label>Sub Heading </label>
+                                <input type="text" maxlength="48" class="form-control" name="subheading">
                                 <div class="invalid-feedback">
                                     Please enter the slider subheading.
                                 </div>
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Button text <span class="text-muted text-danger">*</span></label>
-                                <input type="text" maxlength="20" class="form-control" name="button" required>
+                                <label>Button text </label>
+                                <input type="text" maxlength="20" class="form-control" name="button">
                                 <div class="invalid-feedback">
                                     Please enter the button text.
                                 </div>
@@ -83,6 +83,13 @@
                             <div class="form-group mb-3">
                                 <label>Button link <span class="text-muted text-danger">*</span></label>
                                 <input type="text" class="form-control" name="link" required>
+                                <div class="invalid-feedback">
+                                    Please enter the button link.
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Video link </label>
+                                <input type="text" class="form-control" name="slider_link">
                                 <div class="invalid-feedback">
                                     Please enter the button link.
                                 </div>
@@ -105,7 +112,7 @@
                                         id="profile-foreground-img-file-input" onchange="loadbasicFile('profile-foreground-img-file-input','current-img',event)" name="image" required
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">*use image minimum of 1895px x 972px </figcaption>
+                                <figcaption class="figure-caption">*use image minimum of 1920px x 680px </figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
@@ -242,18 +249,26 @@
 
                             <div class="form-group mb-3">
                                 <label>Heading </label>
-                                <input type="text" maxlength="25" class="form-control" name="heading" id="heading" required>
+                                <input type="text" maxlength="35" class="form-control" name="heading" id="heading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider heading.
                                 </div>
                             </div>
                             <div class="form-group mb-3">
                                 <label>Sub Heading </label>
-                                <input type="text" maxlength="30" class="form-control" name="subheading" id="subheading" required>
+                                <input type="text" maxlength="48" class="form-control" name="subheading" id="subheading" >
                                 <div class="invalid-feedback">
                                     Please enter the slider subheading.
                                 </div>
                             </div>
+                            <div class="form-group mb-3">
+                                <label>Video link </label>
+                                <input type="text" class="form-control" name="slider_link" id="slider_link">
+                                <div class="invalid-feedback">
+                                    Please enter the button link.
+                                </div>
+                            </div>
+
                         </div>
                         <div class="col-md-6">
                             <div style="margin: auto;width: 60%;">
@@ -262,7 +277,7 @@
                                         id="profile-foreground-img-file" onchange="loadbasicFile('profile-foreground-img-file','current-edit-img',event)" name="image"
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">*use image minimum of 1895px x 972px </figcaption>
+                                <figcaption class="figure-caption">*use image minimum of 1920px x 680px </figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
@@ -275,7 +290,7 @@
                         <div class="col-md-12">
                             <div class="form-group mb-3">
                                 <label>Button text</label>
-                                <input type="text" class="form-control" name="button" id="button" required>
+                                <input type="text" class="form-control" name="button" id="button" >
                                 <div class="invalid-feedback">
                                     Please enter the category button.
                                 </div>

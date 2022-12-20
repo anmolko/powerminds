@@ -53,6 +53,7 @@ class SliderController extends Controller
             'subheading'        => $request->input('subheading'),
             'button'            => $request->input('button'),
             'link'              => $request->input('link'),
+            'slider_link'       => $request->input('slider_link'),
             'status'            => $request->input('status'),
             'created_by'        => Auth::user()->id,
         ];
@@ -61,7 +62,7 @@ class SliderController extends Controller
             $image        = $request->file('image');
             $name         = uniqid().'_'.$image->getClientOriginalName();
             $path         = base_path().'/public/images/sliders/';
-            $moved        = Image::make($image->getRealPath())->fit(1895, 972)->orientate()->save($path.$name);
+            $moved        = Image::make($image->getRealPath())->fit(1920, 680)->orientate()->save($path.$name);
             if ($moved){
                 $data['image']= $name;
             }
@@ -114,6 +115,7 @@ class SliderController extends Controller
         $slider->subheading       =  $request->input('subheading');
         $slider->button           =  $request->input('button');
         $slider->link             =  $request->input('link');
+        $slider->slider_link      =  $request->input('slider_link');
         $slider->status           =  $request->input('status');
         $oldimage                 =  $slider->image;
 
@@ -121,7 +123,7 @@ class SliderController extends Controller
             $image               =  $request->file('image');
             $name1               = uniqid().'_'.$image->getClientOriginalName();
             $path                = base_path().'/public/images/sliders/';
-            $moved               = Image::make($image->getRealPath())->fit(1895, 972)->orientate()->save($path.$name1);
+            $moved               = Image::make($image->getRealPath())->fit(1920, 680)->orientate()->save($path.$name1);
             if ($moved){
                 $slider->image = $name1;
                 if (!empty($oldimage) && file_exists(public_path().'/images/sliders/'.$oldimage)){
@@ -137,6 +139,7 @@ class SliderController extends Controller
             Session::flash('error','Something Went Wrong. Slider could not be Updated');
         }
         return redirect()->back();
+
 
     }
 
