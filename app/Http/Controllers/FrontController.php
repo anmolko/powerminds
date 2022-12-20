@@ -345,8 +345,8 @@ class FrontController extends Controller
 
     public function blogs(){
         $bcategories = $this->bcategory->get();
-        $allPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->paginate(3);
-        $latestPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->take(5)->get();
+        $allPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->paginate(6);
+        $latestPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->take(3)->get();
         return view('frontend.pages.blogs.index',compact('allPosts','latestPosts','bcategories'));
     }
 
@@ -572,10 +572,10 @@ class FrontController extends Controller
     }
 
     public function blogCategories($slug){
-        $bcategory = $this->bcategory->where('slug', $slug)->first();
-        $catid = $bcategory->id;
-        $cat_name = $bcategory->name;
-        $allPosts = $this->blog->where('blog_category_id', $catid)->where('status','publish')->orderBy('created_at', 'DESC')->paginate(6);
+        $bcategory    = $this->bcategory->where('slug', $slug)->first();
+        $catid        = $bcategory->id;
+        $cat_name     = $bcategory->name;
+        $allPosts     = $this->blog->where('blog_category_id', $catid)->where('status','publish')->orderBy('created_at', 'DESC')->paginate(6);
         $bcategories = $this->bcategory->get();
         $latestPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->take(3)->get();
         return view('frontend.pages.blogs.category',compact('allPosts','cat_name','latestPosts','bcategories'));

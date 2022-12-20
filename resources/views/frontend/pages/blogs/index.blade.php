@@ -1,7 +1,6 @@
 @extends('frontend.layouts.master')
 @section('title') Blog @endsection
 @section('css')
-<link rel="stylesheet" id="jssDefault" href="{{asset('assets/frontend/css/pagination.css')}}">
 
 <style>
 
@@ -56,7 +55,7 @@
                                                         <img class="img-fluid" src="<?php if(@$post->image){?>{{asset('/images/blog/'.@$post->image)}}<?php }?>" alt="blog_img">
                                                     </div>
                                                     <div class="featured-content">
-                                                        <div class="post-category">{{ucwords(@$post->category->name)}}</div>
+                                                        <div class="post-category"><a href="{{url('/blog/categories/'.@$post->category->slug)}}">{{ucwords(@$post->category->name)}}</a></div>
                                                         <div class="post-title featured-title">
                                                             <h3><a href="{{route('blog.single',$post->slug)}}"> {{ @$post->title }}</a></h3>
                                                         </div>

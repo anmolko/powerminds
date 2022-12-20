@@ -1681,8 +1681,11 @@ div:hover > .ttm-box-view-overlay:before, div:hover > .ttm-box-view-content-inne
     font-size: 14px;
     line-height: 1;
     padding: 6px 10px;
-    color: #fff;
     margin-bottom: 15px;
+}
+
+.post-category a, .post-category a:hover{
+    color: #fff;
 }
 .post-bottom.ttm-post-link { display: flex; }
 .ttm-post-format-video{
