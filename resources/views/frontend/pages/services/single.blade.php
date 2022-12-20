@@ -6,17 +6,6 @@
         display: block;
     }
 
-    .custom-editor{
-        font-size: 1.1875rem;
-    }
-    .canosoft-listing ul,.canosoft-listing ol {
-        padding: 0;
-        margin-left: 15px;
-    }
-		.home-one a.active {
-		color: #fc653c !important;
-	}
-
     @media only screen and (min-width: 1000px) {
 
     .sticky-sidebar{
@@ -31,15 +20,15 @@
         top: 80px;
         z-index: 10;
         /* border-radius: 0 0 0.5em 0.5em; */
-        right: 75px;
+        left: 75px;
         }
     }
-    
+
     #sticky-anchor{
         display:none;
     }
- 
-    
+
+
     </style>
 @endsection
 @section('seo')
@@ -62,80 +51,81 @@
 
 @section('content')
 
-        <!--Page Header Start-->
-        <section class="page-header" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
-            <div class="page-header-shape-1"></div>
-            <div class="page-header-shape-2"></div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="/">Home</a></li>
-                        <li><span>.</span></li>
-                        <li><a href="{route('service.frontend')}}">Services</a></li>
-                    </ul>
-                    <h2>{{ @$singleService->title }}</h2>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
-        
-
-
-        <!--Service Details Start-->
-        <section class="service-details">
-            <div class="container">
-                <div class="row">
-                   
-                    <div class="col-xl-8 col-lg-7 content">
-                        <div class="service-details__left">
-                           
-                            <div class="service-details__img">
-                                <img src="<?php if(@$singleService->banner_image){?>{{asset('/images/service/'.@$singleService->banner_image)}}<?php }?>" alt="{{@$singleService->slug}}">
+        <!-- page-title -->
+        <div class="ttm-page-title-row">
+            <div class="ttm-page-title-row-inner ttm-bgcolor-darkgrey">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="page-title-heading">
+                                <h2 class="title">{{ @$singleService->title }}</h2>
                             </div>
-                            <h3 class="service-details__title">{{ucwords(@$singleService->title)}}</h3>
-
-                            <div class="service-details__text-1 justified">{!! @$singleService->description !!} </div>
+                            <div class="breadcrumb-wrapper">
+                                <span>
+                                    <i class="ti ti-home margin_right1"></i>
+                                    <a title="Homepage" href="">Home</a>
+                                </span>
+                                <span class="divide">
+                                    <i class="ti ti-home margin_right1"></i>
+                                    <a title="Homepage" href="{{route('service.frontend')}}">Services</a>
+                                </span>
+                                <span>{{ @$singleService->title }}</span>
+                            </div>
                         </div>
                     </div>
-                    <div id="sticky-anchor"></div>
-
-                    <div class="col-xl-4 col-lg-5 sticky-sidebar" >
-						@include('frontend.pages.services.sidebar')
-
-                    </div>
                 </div>
             </div>
-        </section>
-        <!--Service Details End-->
+        </div>
+        <!-- page-title end -->
 
- 
+
+        <!--site-main start-->
+        <div class="site-main">
+
+
+            <div class="ttm-row sidebar ttm-sidebar-left ttm-bgcolor-white overflow-hidden clearfix">
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+
+                        {{--sidebar--}}
+                        @include('frontend.pages.services.sidebar')
+                        {{-- end sidebar--}}
+                        <div id="sticky-anchor"></div>
+
+                        <div class="col-lg-8 content-area">
+                            <div class="ttm-service-single-content-area">
+                                <div class="ttm-featured-wrapper margin_bottom40">
+                                    <img class="img-fluid" src="<?php if(@$singleService->banner_image){?>{{asset('/images/service/'.@$singleService->banner_image)}}<?php }?>" alt="{{@$singleService->slug}}">
+                                </div>
+                                <div class="ttm-service-description ck-texts">
+                                    {!! @$singleService->description !!}
+                                </div>
+                                <div class="social-media-block">
+                                    <div class="d-sm-flex justify-content-between">
+                                        <div class="ttm-social-share-wrapper margin_top15">
+                                            <h6 class="font-weight-normal m-0 margin_right10">Share : </h6>
+                                            <ul class="social-icons circle">
+                                                <li><a href="#"><i class="fa fa-facebook" onclick='fbShare("{{route('service.single',$singleService->slug)}}")'></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter" onclick='twitShare("{{route('service.single',$singleService->slug)}}","{{ $singleService->title }}")'></i></a></li>
+                                                <li><a href="#"><i class="fa fa-whatsapp" onclick='whatsappShare("{{route('service.single',$singleService->slug)}}","{{ $singleService->title }}")'></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- row end -->
+                </div>
+            </div>
+
+
+        </div><!--site-main end-->
+
+
 @endsection
 @section('js')
 <script>
-   
-   
-   function sticky_relocate() {
-            var window_top = $(window).scrollTop();
-            var footer_top = $(".sticky-stop").offset().top;
-            var div_top = $('#sticky-anchor').offset().top;
-            var div_height = $(".sticky-sidebar").height();
-
-            var padding = 80;  // tweak here or get from margins etc
-
-            if (window_top + div_height > footer_top - padding)
-                $('.sticky-sidebar').css({top: (window_top + div_height - footer_top + padding) * -1})
-            else if (window_top > div_top && window_top > 300) {
-                $('.sticky-sidebar').addClass('stick');
-                $('.sticky-sidebar').css({top: 120})
-            } else {
-                $('.sticky-sidebar').removeClass('stick');
-                $('.sticky-sidebar').css({top: 0})
-            }
-        }
-        $(function () {
-            $(window).scroll(sticky_relocate);
-            sticky_relocate();
-        });
 
 function fbShare(url) {
   window.open("https://www.facebook.com/sharer/sharer.php?u=" + url, "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=200, left=500, width=600, height=400");

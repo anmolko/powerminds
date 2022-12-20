@@ -1,5 +1,5 @@
 <!--footer start-->
-<footer class="footer widget-footer ttm-bgcolor-darkgrey ttm-textcolor-white clearfix">
+<footer class="footer widget-footer ttm-bgcolor-darkgrey ttm-textcolor-white clearfix sticky-stop" >
     <div class="first-footer">
         <div class="container">
             <div class="row">

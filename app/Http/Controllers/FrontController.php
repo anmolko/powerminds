@@ -365,9 +365,9 @@ class FrontController extends Controller
     public function service(){
         $allservices = $this->service->paginate(6);
 
-        $latestServices = $this->service->orderBy('created_at', 'DESC')->take(3)->get();
+        $latestServices = $this->service->orderBy('created_at', 'DESC')->take(6)->get();
 
-        $latestPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->take(3)->get();
+        $latestPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->take(6)->get();
 
         return view('frontend.pages.services.index',compact('allservices','latestPosts','latestServices'));
     }

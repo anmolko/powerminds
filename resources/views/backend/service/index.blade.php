@@ -84,6 +84,7 @@
                                                                     <i class="ri-more-fill fs-17"></i>
                                                                 </a>
                                                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink2">
+                                                                    <a class="dropdown-item" href="{{route('service.single',$service->slug)}}" target="_blank"><i class=" ri-eye-line align-middle"></i> Frontend View </a>
                                                                     <li><a class="dropdown-item" href="{{route('services.edit',$service->id)}}"><i class="ri-pencil-fill me-2 align-middle"></i>Edit</a></li>
                                                                     <li><a class="dropdown-item cs-service-remove" cs-delete-route="{{route('services.destroy',$service->id)}}"><i class="ri-delete-bin-6-line me-2 align-middle"></i>Delete</a></li>
                                                                 </ul>
