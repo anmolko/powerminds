@@ -54,6 +54,7 @@ class SliderController extends Controller
             'button'            => $request->input('button'),
             'link'              => $request->input('link'),
             'slider_link'       => $request->input('slider_link'),
+            'slider_link_descp' => $request->input('slider_link_descp'),
             'status'            => $request->input('status'),
             'created_by'        => Auth::user()->id,
         ];
@@ -110,14 +111,15 @@ class SliderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $slider                   =  Slider::find($id);
-        $slider->heading          =  $request->input('heading');
-        $slider->subheading       =  $request->input('subheading');
-        $slider->button           =  $request->input('button');
-        $slider->link             =  $request->input('link');
-        $slider->slider_link      =  $request->input('slider_link');
-        $slider->status           =  $request->input('status');
-        $oldimage                 =  $slider->image;
+        $slider                     =  Slider::find($id);
+        $slider->heading            =  $request->input('heading');
+        $slider->subheading         =  $request->input('subheading');
+        $slider->button             =  $request->input('button');
+        $slider->link               =  $request->input('link');
+        $slider->slider_link_descp  =  $request->input('slider_link_descp');
+        $slider->slider_link        =  $request->input('slider_link');
+        $slider->status             =  $request->input('status');
+        $oldimage                   =  $slider->image;
 
         if (!empty($request->file('image'))){
             $image               =  $request->file('image');

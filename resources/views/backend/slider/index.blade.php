@@ -94,6 +94,14 @@
                                     Please enter the button link.
                                 </div>
                             </div>
+                            <div class="form-group mb-3">
+                                <label>Video link (small) desp </label>
+                                <input type="text" class="form-control" maxlength="30" name="slider_link_descp" >
+                                <div class="invalid-feedback">
+                                    Please enter the small descp for video.
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -265,7 +273,14 @@
                                 <label>Video link </label>
                                 <input type="text" class="form-control" name="slider_link" id="slider_link">
                                 <div class="invalid-feedback">
-                                    Please enter the button link.
+                                    Please enter the video link.
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Video link (small) desp </label>
+                                <input type="text" class="form-control" maxlength="30" name="slider_link_descp" id="slider_link_descp" >
+                                <div class="invalid-feedback">
+                                    Please enter the small descp for video.
                                 </div>
                             </div>
 
@@ -292,14 +307,14 @@
                                 <label>Button text</label>
                                 <input type="text" class="form-control" name="button" id="button" >
                                 <div class="invalid-feedback">
-                                    Please enter the category button.
+                                    Please enter the button.
                                 </div>
                             </div>
                             <div class="form-group mb-3">
                                 <label>Button link </label>
                                 <input type="text" class="form-control" name="link" id="link" required>
                                 <div class="invalid-feedback">
-                                    Please enter the category name.
+                                    Please enter the button link.
                                 </div>
                             </div>
                             <div class="form-group mb-3 mt-3">

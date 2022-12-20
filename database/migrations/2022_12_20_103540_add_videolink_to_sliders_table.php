@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('sliders', function (Blueprint $table) {
             $table->text('slider_link')->nullable();
+            $table->text('slider_link_descp')->nullable();
 
         });
     }
@@ -28,6 +29,7 @@ return new class extends Migration
     {
         Schema::table('sliders', function (Blueprint $table) {
             $table->dropColumn('slider_link');
+            $table->dropColumn('slider_link_descp');
 
         });
     }
