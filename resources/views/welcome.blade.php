@@ -16,6 +16,27 @@
     .slide .justify-content-end .slide__content--headings h2.s2{
         font-size: 60px;
     }
+
+    .welcome-section ul, .welcome-section ol{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 15px;
+    }
+    .welcome-section ul li, .welcome-section ol li{
+        position: relative;
+        padding-bottom: 8px;
+    }
+    .welcome-section ul li:before, .welcome-section ol li:before{
+        content: "\f0a9";
+        padding-right: 5px;
+        color: #e12454;
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
 </style>
 
 @endsection
@@ -298,7 +319,7 @@
                                     <div class="ttm-col-wrapper-bg-layer ttm-bg-layer">
                                         <div class="ttm-col-wrapper-bg-layer-inner"></div>
                                     </div>
-                                    <div class="layer-content justified">
+                                    <div class="layer-content justified welcome-section">
                                         {!! ucfirst(@$homepage_info->welcome_description) !!}
                                         <div class="padding_top20 padding_bottom30 res-991-padding_right0">
                                             <div class="d-sm-flex align-items-center">
