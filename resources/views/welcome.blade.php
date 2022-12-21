@@ -13,6 +13,9 @@
     .ttm-icon.ttm-icon_element-size-lg i {
         font-size: 75px;
     }
+    .slide .justify-content-end .slide__content--headings h2.s2{
+        font-size: 60px;
+    }
 </style>
 
 @endsection
@@ -22,7 +25,7 @@
         <div class="banner_slider_wrapper">
             <div class="banner_slider">
                 @foreach(@$sliders as $slider)
-                <div class="slide" style="background-image: url({{ asset('/images/sliders/'.$slider->image) }});    box-shadow: rgb(0 0 0) 0px 0px 540px 50px inset;" >
+                <div class="slide" style="background-image: linear-gradient(to bottom, rgb(253 253 253 / 0%), rgb(0 0 1 / 80%)), url({{ asset('/images/sliders/'.$slider->image) }});" >
 
                     <div class="slide__content justify-content-end ttm-textcolor-white">
                         <div class="container">
@@ -59,14 +62,15 @@
                                             </div>
                                             <div data-animation="fadeInUp" data-delay="1.4">
                                                 <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-skincolor" href="{{@$slider->link}}"> {{ (@$slider->button !== null) ? $slider->button :"Explore"}}</a>
-                                            </div>
-                                            @if(@$slider->slider_link !== null)
-                                                <a href="{{$slider->slider_link}}" target="_self" class="ttm_prettyphoto ttm-btn btn-inline ttm-btn-size-md margin_left30">
+                                                @if(@$slider->slider_link !== null)
+                                                    <a href="{{$slider->slider_link}}" target="_self" class="ttm_prettyphoto ttm-btn btn-inline ttm-btn-size-md margin_left30">
                                                         <span class="ttm-icon ttm-icon_element-fill ttm-icon_element-color-skincolor ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_right15 margin_bottom0">
                                                             <i class="fa fa-play margin_left0 padding_left0"></i>
                                                         </span>
-                                                </a>
-                                            @endif
+                                                    </a>
+                                                @endif
+                                            </div>
+
                                         </div>
                                     </div>
                                 @endif

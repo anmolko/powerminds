@@ -33,7 +33,7 @@ $(document).on('click','.action-edit', function (e) {
             $('#button').attr('value',dataResult.button);
             $('#link').attr('value',dataResult.link);
             $('#slider_link').attr('value',dataResult.slider_link);
-            $('#slider_link_descp').attr('value',dataResult.slider_link_descp);
+            // $('#slider_link_descp').attr('value',dataResult.slider_link_descp);
             $('#sliderstatus option[value="'+dataResult.status+'"]').prop('selected', true);
             $('#current-edit-img').attr("src",'/images/sliders/'+dataResult.image);
             $('.updateslider').attr('action',action);
