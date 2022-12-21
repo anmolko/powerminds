@@ -37,10 +37,16 @@
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
     }
+
+    .section-title.title-style-center_text .title-desc p{
+        width: 90%;
+    }
 </style>
 
 @endsection
 @section('content')
+    <!--homepage banner-->
+
     @if(count($sliders) > 0)
 
         <div class="banner_slider_wrapper">
@@ -103,11 +109,13 @@
             </div>
         </div>
     @endif
+    <!--end of homepage banner-->
 
 
     <!--site-main start-->
     <div class="site-main">
 
+        <!--Top Feature-->
         @if(!empty($homepage_info->tf_heading1))
         <section class="ttm-row broken-section ttm-bgcolor-skincolor clearfix">
             <div class="container-fluid">
@@ -186,116 +194,10 @@
             </div>
         </section>
         @endif
-        <!--services-section-->
-        <section class="ttm-row services-section clearfix">
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- section title -->
-                        <div class="section-title without-seperator title-style-center_text">
-                            <div class="title-header">
-                                <h3>what we offer</h3>
-                                <h2 class="title">Business Shaped Solutions</h2>
-                            </div>
-                            <div class="title-desc">
-                                <p>We are specialists in both economics and information technologies and we apply our full range of talent to creating the perfect solution for each client’s needs.</p>
-                            </div>
-                        </div><!-- section title end -->
-                    </div>
-                </div><!-- row end -->
-                <!-- row -->
-                <div class="row row-equal-height">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <!--featured-icon-box-->
-                        <div class="featured-icon-box icon-align-top-content style1">
-                            <div class="featured-icon">
-                                <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-style-rounded ttm-icon_element-color-skincolor ttm-icon_element-size-md">
-                                    <i class="flaticon flaticon-management"></i>
-                                </div>
-                            </div>
-                            <div class="featured-content">
-                                <div class="featured-title">
-                                    <h3>Strategic Planning</h3>
-                                </div>
-                                <div class="featured-desc">
-                                    <p>Finalize the best form of the legal entity structure considering various factors.</p>
-                                </div>
-                                <a class="ttm-btn btn-inline ttm-btn-size-md ttm-btn-color-dark" href="strategy-planning.html">Read More</a>
-                            </div>
-                        </div><!-- featured-icon-box end-->
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <!--featured-icon-box-->
-                        <div class="featured-icon-box icon-align-top-content style1">
-                            <div class="featured-icon">
-                                <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-style-rounded ttm-icon_element-color-skincolor ttm-icon_element-size-md">
-                                    <i class="flaticon flaticon-idea-2"></i>
-                                </div>
-                            </div>
-                            <div class="featured-content">
-                                <div class="featured-title">
-                                    <h3>Financial Advice</h3>
-                                </div>
-                                <div class="featured-desc">
-                                    <p>We are formulating financial processes and controls in conjunction with the client.</p>
-                                </div>
-                                <a class="ttm-btn btn-inline ttm-btn-size-md ttm-btn-color-dark" href="finance-restructuring.html">Read More</a>
-                            </div>
-                        </div><!-- featured-icon-box end-->
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <!--featured-icon-box-->
-                        <div class="featured-icon-box icon-align-top-content style1">
-                            <div class="featured-icon">
-                                <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-style-rounded ttm-icon_element-color-skincolor ttm-icon_element-size-md">
-                                    <i class="flaticon flaticon-document"></i>
-                                </div>
-                            </div>
-                            <div class="featured-content">
-                                <div class="featured-title">
-                                    <h3>The Compliance</h3>
-                                </div>
-                                <div class="featured-desc">
-                                    <p>All the policies, rules and controls to which an organization must conform.</p>
-                                </div>
-                                <a class="ttm-btn btn-inline ttm-btn-size-md ttm-btn-color-dark" href="audit-assurance.html">Read More</a>
-                            </div>
-                        </div><!-- featured-icon-box end-->
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <!--featured-icon-box-->
-                        <div class="featured-icon-box icon-align-top-content style1">
-                            <div class="featured-icon">
-                                <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-style-rounded ttm-icon_element-color-skincolor ttm-icon_element-size-md">
-                                    <i class="flaticon flaticon-corporate-1"></i>
-                                </div>
-                            </div>
-                            <div class="featured-content">
-                                <div class="featured-title">
-                                    <h3>Exit Strategy</h3>
-                                </div>
-                                <div class="featured-desc">
-                                    <p>In cases where the client is contemplating exiting the business his/her stake.</p>
-                                </div>
-                                <a class="ttm-btn btn-inline ttm-btn-size-md ttm-btn-color-dark" href="smart-self-services.html">Read More</a>
-                            </div>
-                        </div><!-- featured-icon-box end-->
-                    </div>
-                </div><!-- row end -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="margin_top35 res-991-margin_top15 res-991-mb_50 text-center">
-                            <a href="strategy-planning.html" class="end_button">
-                                <span>+</span>
-                            </a><span class="end_button_txt ttm-textcolor-darkgrey">Explore More Services</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--services-section-->
+        <!--End of top feature-->
 
+
+        <!--welcome section-->
         @if(!empty($homepage_info->welcome_description))
 
             <section class="ttm-row padding_zero-section clearfix">
@@ -364,8 +266,9 @@
                     </div>
                 </section>
         @endif
+        <!--end of welcome section-->
 
-    <!--broken-section-->
+        <!--statistics broken-section-->
         <section class="ttm-row broken-section clearfix">
             <div class="container-fluid">
                 <!-- row -->
@@ -482,7 +385,106 @@
                 </div>
             </div>
         </section>
-        <!--broken-section end-->
+        <!--end of statistics broken-section end-->
+
+        @if(!empty($homepage_info->ww_main_heading))
+        <!--What we do best-->
+        <section class="ttm-row services-section clearfix">
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- section title -->
+                        <div class="section-title without-seperator title-style-center_text">
+                            <div class="title-header">
+                                <h3>{{@$homepage_info->ww_main_subheading}}</h3>
+                                <h2 class="title">{{@$homepage_info->ww_main_heading}}</h2>
+                            </div>
+                            <div class="title-desc">
+                                <p>{{@$homepage_info->ww_main_description}}</p>
+                            </div>
+                        </div><!-- section title end -->
+                    </div>
+                </div><!-- row end -->
+                <!-- row -->
+                <div class="row row-equal-height">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <!--featured-icon-box-->
+                        <div class="featured-icon-box icon-align-top-content style1">
+                            <div class="featured-icon">
+                                <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-style-rounded ttm-icon_element-color-skincolor ttm-icon_element-size-md">
+                                    <i class="flaticon flaticon-document"></i>
+                                </div>
+                            </div>
+                            <div class="featured-content">
+                                <div class="featured-title">
+                                    <h3>{{@$homepage_info->ww_heading1}}</h3>
+                                </div>
+                                <div class="featured-desc justified">
+                                    <p>{{@$homepage_info->ww_description1}}</p>
+                                </div>
+                            </div>
+                        </div><!-- featured-icon-box end-->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <!--featured-icon-box-->
+                        <div class="featured-icon-box icon-align-top-content style1">
+                            <div class="featured-icon">
+                                <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-style-rounded ttm-icon_element-color-skincolor ttm-icon_element-size-md">
+                                    <i class="flaticon flaticon-chat"></i>
+                                </div>
+                            </div>
+                            <div class="featured-content">
+                                <div class="featured-title">
+                                    <h3>{{@$homepage_info->ww_heading2}}</h3>
+                                </div>
+                                <div class="featured-desc justified">
+                                    <p>{{@$homepage_info->ww_description2}}</p>
+                                </div>
+                            </div>
+                        </div><!-- featured-icon-box end-->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <!--featured-icon-box-->
+                        <div class="featured-icon-box icon-align-top-content style1">
+                            <div class="featured-icon">
+                                <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-style-rounded ttm-icon_element-color-skincolor ttm-icon_element-size-md">
+                                    <i class="flaticon flaticon-marketing"></i>
+                                </div>
+                            </div>
+                            <div class="featured-content">
+                                <div class="featured-title">
+                                    <h3>{{@$homepage_info->ww_heading3}}</h3>
+                                </div>
+                                <div class="featured-desc justified">
+                                    <p>{{@$homepage_info->ww_description3}}</p>
+                                </div>
+                            </div>
+                        </div><!-- featured-icon-box end-->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <!--featured-icon-box-->
+                        <div class="featured-icon-box icon-align-top-content style1">
+                            <div class="featured-icon">
+                                <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-style-rounded ttm-icon_element-color-skincolor ttm-icon_element-size-md">
+                                    <i class="flaticon flaticon-website"></i>
+                                </div>
+                            </div>
+                            <div class="featured-content">
+                                <div class="featured-title">
+                                    <h3>{{@$homepage_info->ww_heading4}}</h3>
+                                </div>
+                                <div class="featured-desc justified">
+                                    <p>{{@$homepage_info->ww_description4}}</p>
+                                </div>
+                            </div>
+                        </div><!-- featured-icon-box end-->
+                    </div>
+                </div><!-- row end -->
+            </div>
+        </section>
+        <!--What we do best-->
+        @endif
 
         <!--tab-section-->
         <section class="ttm-row tab-section clearfix">

@@ -31,7 +31,12 @@ return new class extends Migration
     public function down()
     {
         Schema::table('homepages', function (Blueprint $table) {
-            //
+            $table->dropColumn('tf_heading1');
+            $table->dropColumn('tf_heading2');
+            $table->dropColumn('tf_heading3');
+            $table->dropColumn('tf_description1');
+            $table->dropColumn('tf_description2');
+            $table->dropColumn('tf_description3');
         });
     }
 };

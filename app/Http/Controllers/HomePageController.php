@@ -212,6 +212,31 @@ class HomePageController extends Controller
         return redirect()->back();
     }
 
+    public function whatwedo(Request $request, $id)
+    {
+        $update_theme                        =  HomePage::find($id);
+        $update_theme->ww_main_heading       =  $request->input('ww_main_heading');
+        $update_theme->ww_main_subheading    =  $request->input('ww_main_subheading');
+        $update_theme->ww_main_description   =  $request->input('ww_main_description');
+        $update_theme->ww_heading1           =  $request->input('ww_heading1');
+        $update_theme->ww_heading2           =  $request->input('ww_heading2');
+        $update_theme->ww_heading3           =  $request->input('ww_heading3');
+        $update_theme->ww_heading4           =  $request->input('ww_heading4');
+        $update_theme->ww_description1       =  $request->input('ww_description1');
+        $update_theme->ww_description2       =  $request->input('ww_description2');
+        $update_theme->ww_description3       =  $request->input('ww_description3');
+        $update_theme->ww_description4       =  $request->input('ww_description4');
+        $update_theme->updated_by            =  Auth::user()->id;
+
+        $status=$update_theme->update();
+        if($status){
+            Session::flash('success','What we do Section Updated Successfully');
+        } else{
+            Session::flash('error','Something Went Wrong. What we do could not be Updated');
+        }
+        return redirect()->back();
+    }
+
     public function corevalues(Request $request, $id)
     {
         $update_theme                           =  HomePage::find($id);

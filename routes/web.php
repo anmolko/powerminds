@@ -104,6 +104,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::put('/homepage-setting/makes-us-different/{settings}', 'App\Http\Controllers\HomePageController@makesdifferent')->name('homepage.different');
     Route::put('/homepage-setting/why-us/{settings}', 'App\Http\Controllers\HomePageController@whyus')->name('homepage.whyus');
     Route::put('/homepage-setting/top-features/{settings}', 'App\Http\Controllers\HomePageController@topfeatures')->name('homepage.topfeatures');
+    Route::put('/homepage-setting/what-we-do/{settings}', 'App\Http\Controllers\HomePageController@whatwedo')->name('homepage.whatwedo');
 
 
 
