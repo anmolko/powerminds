@@ -652,37 +652,39 @@
                                                 <div class="card-body">
 
                                                     <div class="position-relative mb-3">
-                                                        <label class="form-label">Customer Served <span class="text-muted text-danger">*</span></label>
+                                                        <label class="form-label">Industries Served <span class="text-muted text-danger">*</span></label>
                                                         <input type="number" class="form-control" name="project_completed" value="{{@$homesettings->project_completed}}"
                                                                placeholder="Enter project completed number">
                                                         <div class="invalid-feedback">
-                                                            Please enter the project completed number.
+                                                            Please enter the Industries served number.
                                                         </div>
                                                     </div>
                                                     <div class="position-relative mb-3">
-                                                        <label class="form-label">Visa Approved <span class="text-muted text-danger">*</span></label>
-                                                        <input type="number" class="form-control" name="visa_approved" value="{{@$homesettings->visa_approved}}"
-                                                               placeholder="Enter visa approved number">
-                                                        <div class="invalid-feedback">
-                                                            Please enter the visa approved number.
-                                                        </div>
-                                                    </div>
-                                                    <div class="position-relative mb-3">
-                                                        <label class="form-label">Success Stories <span class="text-muted text-danger">*</span></label>
-                                                        <input type="number" class="form-control" name="success_stories" value="{{@$homesettings->success_stories}}"
-                                                               placeholder="Enter success stories number">
-                                                        <div class="invalid-feedback">
-                                                            Please enter the success stories number.
-                                                        </div>
-                                                    </div>
-                                                    <div class="position-relative mb-3">
-                                                        <label class="form-label">Happy Clients <span class="text-muted text-danger">*</span></label>
+                                                        <label class="form-label"> Clients Served <span class="text-muted text-danger">*</span></label>
                                                         <input type="number" class="form-control" name="happy_clients" value="{{@$homesettings->happy_clients}}"
                                                                placeholder="Enter happy clients number">
                                                         <div class="invalid-feedback">
-                                                            Please enter the happy clients number.
+                                                            Please enter the Clients Served number.
                                                         </div>
                                                     </div>
+                                                    <div class="position-relative mb-3">
+                                                        <label class="form-label">Jobs Created <span class="text-muted text-danger">*</span></label>
+                                                        <input type="number" class="form-control" name="success_stories" value="{{@$homesettings->success_stories}}"
+                                                               placeholder="Enter success stories number">
+                                                        <div class="invalid-feedback">
+                                                            Please enter the Jobs Created number.
+                                                        </div>
+                                                    </div>
+                                                    <div class="position-relative mb-3">
+                                                        <label class="form-label">PSMB Rated Training Provider <span class="text-muted text-danger">*</span></label>
+                                                        <input type="number" class="form-control" name="visa_approved" value="{{@$homesettings->visa_approved}}"
+                                                               placeholder="Enter visa approved number">
+                                                        <div class="invalid-feedback">
+                                                            Please enter PSMB Rated Training Provider.
+                                                        </div>
+                                                    </div>
+
+
 
 
                                                 </div>

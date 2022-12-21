@@ -323,6 +323,7 @@
                 </section>
         @endif
 
+    <!--broken-section-->
         <section class="ttm-row broken-section clearfix">
             <div class="container-fluid">
                 <!-- row -->
@@ -339,44 +340,23 @@
                                             <!-- ttm-fid -->
                                             <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style2">
                                                 <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
-                                                    <i class="flaticon flaticon-bussiness-man-1"></i>
-                                                </div>
-                                                <div class="ttm-fid-contents">
-                                                    <h4 class="ttm-fid-inner">
-                                                        <span data-appear-animation="animateDigits" data-from="0" data-to="8965" data-interval="15" data-before="" data-before-style="sup" data-after="" data-after-style="sub" class="numinate completed">8965</span>
-                                                        <span>K</span>
-                                                    </h4>
-                                                    <h3 class="ttm-fid-title">Delivered Packages</h3>
-                                                </div>
-                                            </div><!-- ttm-fid end -->
-                                        </div>
-                                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                                            <!-- ttm-fid -->
-                                            <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style2">
-                                                <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
                                                     <i class="flaticon flaticon-maintenance"></i>
                                                 </div>
                                                 <div class="ttm-fid-contents">
                                                     <h4 class="ttm-fid-inner">
-                                                        <span data-appear-animation="animateDigits" data-from="0" data-to="1805" data-interval="15" data-before="" data-before-style="sup" data-after="" data-after-style="sub" class="numinate completed">1805</span>
+                                                            <span   data-appear-animation="animateDigits"
+                                                                    data-from="0"
+                                                                    data-to="{{ (@$homepage_info->project_completed) ? @$homepage_info->project_completed : '180'}}"
+                                                                    data-interval="15"
+                                                                    data-before=""
+                                                                    data-before-style="sup"
+                                                                    data-after=""
+                                                                    data-after-style="sub"
+                                                                    class="numinate">{{ (@$homepage_info->project_completed) ? @$homepage_info->project_completed : '180'}}
+                                                            </span>
                                                         <span>K</span>
                                                     </h4>
-                                                    <h3 class="ttm-fid-title">Countries Covered</h3>
-                                                </div>
-                                            </div><!-- ttm-fid end -->
-                                        </div>
-                                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                                            <!-- ttm-fid -->
-                                            <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style2">
-                                                <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
-                                                    <i class="flaticon flaticon-idea"></i>
-                                                </div>
-                                                <div class="ttm-fid-contents">
-                                                    <h4 class="ttm-fid-inner">
-                                                        <span data-appear-animation="animateDigits" data-from="0" data-to="1200" data-interval="15" data-before="" data-before-style="sup" data-after="" data-after-style="sub" class="numinate completed">1200</span>
-                                                        <span>K</span>
-                                                    </h4>
-                                                    <h3 class="ttm-fid-title">Satisfied Clients</h3>
+                                                    <h3 class="ttm-fid-title">Industries Served</h3>
                                                 </div>
                                             </div><!-- ttm-fid end -->
                                         </div>
@@ -388,10 +368,67 @@
                                                 </div>
                                                 <div class="ttm-fid-contents">
                                                     <h4 class="ttm-fid-inner">
-                                                        <span data-appear-animation="animateDigits" data-from="0" data-to="4965" data-interval="15" data-before="" data-before-style="sup" data-after="K" data-after-style="sub" class="numinate completed">4965</span>
+                                                            <span   data-appear-animation="animateDigits"
+                                                                    data-from="0"
+                                                                    data-to="{{ (@$homepage_info->success_stories) ? @$homepage_info->success_stories : '360'}}"
+                                                                    data-interval="15"
+                                                                    data-before=""
+                                                                    data-before-style="sup"
+                                                                    data-after=""
+                                                                    data-after-style="sub"
+                                                                    class="numinate">{{ (@$homepage_info->success_stories) ? @$homepage_info->success_stories : '360'}}
+                                                            </span>
                                                         <span>K</span>
                                                     </h4>
-                                                    <h3 class="ttm-fid-title">Tons of Goods</h3>
+                                                    <h3 class="ttm-fid-title">Jobs Created </h3>
+                                                </div>
+                                            </div><!-- ttm-fid end -->
+                                        </div>
+                                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                                            <!-- ttm-fid -->
+                                            <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style2">
+                                                <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
+                                                    <i class="flaticon flaticon-business-man"></i>
+                                                </div>
+                                                <div class="ttm-fid-contents">
+                                                    <h4 class="ttm-fid-inner">
+                                                            <span   data-appear-animation="animateDigits"
+                                                                    data-from="0"
+                                                                    data-to="{{ (@$homepage_info->happy_clients) ? @$homepage_info->happy_clients : '495'}}"
+                                                                    data-interval="15"
+                                                                    data-before=""
+                                                                    data-before-style="sup"
+                                                                    data-after="K"
+                                                                    data-after-style="sub"
+                                                                    class="numinate">{{ (@$homepage_info->happy_clients) ? @$homepage_info->happy_clients : '495'}}
+                                                            </span>
+                                                        <span>K</span>
+                                                    </h4>
+                                                    <h3 class="ttm-fid-title">Clients Served</h3>
+                                                </div>
+                                            </div><!-- ttm-fid end -->
+                                        </div>
+                                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                                            <!-- ttm-fid -->
+                                            <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style2">
+                                                <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
+                                                    <i class="fa fa-star-o"></i>
+                                                </div>
+                                                <div class="ttm-fid-contents">
+                                                    <h4 class="ttm-fid-inner">
+                                                            <span   data-appear-animation="animateDigits"
+                                                                    data-from="0"
+                                                                    data-to="{{ (@$homepage_info->visa_approved) ? @$homepage_info->visa_approved : '5'}}"
+                                                                    data-interval="5"
+                                                                    data-before=""
+                                                                    data-before-style="sup"
+                                                                    data-after=""
+                                                                    data-after-style="sub"
+                                                                    class="numinate">{{ (@$homepage_info->visa_approved) ? @$homepage_info->visa_approved : '5'}}
+                                                            </span>
+                                                        <span style="padding-left: 5px"> star</span>
+                                                    </h4>
+                                                    <h3 class="ttm-fid-title">Rated Training Provider</h3>
                                                 </div>
                                             </div><!-- ttm-fid end -->
                                         </div>
@@ -403,6 +440,7 @@
                 </div>
             </div>
         </section>
+        <!--broken-section end-->
 
         <!--tab-section-->
         <section class="ttm-row tab-section clearfix">
@@ -941,91 +979,91 @@
         <!-- tab-section end -->
 
         <!--fid-section-->
-        <section class="ttm-row fid-section ttm-bgimage-yes bg-img3 ttm-bg ttm-bgcolor-darkgrey clearfix">
-            <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <!-- ttm-fid -->
-                        <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style1">
-                            <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
-                                <i class="flaticon flaticon-presentation"></i>
-                            </div>
-                            <div class="ttm-fid-contents">
-                                <span>Projects</span>
-                                <h4 class="ttm-fid-inner">
-                                        <span   data-appear-animation="animateDigits"
-                                                data-from="0"
-                                                data-to="26"
-                                                data-interval="15"
-                                                data-before=""
-                                                data-before-style="sup"
-                                                data-after="K"
-                                                data-after-style="sub"
-                                                class="numinate">26</span>
-                                    <span>K</span>
-                                </h4>
-                                <h3 class="ttm-fid-title">Successful Projects</h3>
-                                <a class="ttm-btn ttm-btn-size-md btn-inline ttm-btn-color-skincolor" href="#">Get A Project</a>
-                            </div>
-                        </div><!-- ttm-fid end -->
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <!-- ttm-fid -->
-                        <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style1">
-                            <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
-                                <i class="flaticon flaticon-idea-4"></i>
-                            </div>
-                            <div class="ttm-fid-contents">
-                                <span>Our Team</span>
-                                <h4 class="ttm-fid-inner">
-                                        <span   data-appear-animation="animateDigits"
-                                                data-from="0"
-                                                data-to="143"
-                                                data-interval="15"
-                                                data-before=""
-                                                data-before-style="sup"
-                                                data-after="+"
-                                                data-after-style="span"
-                                                class="numinate">143
-                                        </span>
-                                    <span>+</span>
-                                </h4>
-                                <h3 class="ttm-fid-title">Experienced Staff</h3>
-                                <a class="ttm-btn ttm-btn-size-md btn-inline ttm-btn-color-skincolor" href="#">Team Members</a>
-                            </div>
-                        </div><!-- ttm-fid end -->
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <!-- ttm-fid -->
-                        <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style1">
-                            <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
-                                <i class="flaticon flaticon-teamwork-1"></i>
-                            </div>
-                            <div class="ttm-fid-contents">
-                                <span>Happy Clients</span>
-                                <h4 class="ttm-fid-inner">
-                                        <span   data-appear-animation="animateDigits"
-                                                data-from="0"
-                                                data-to="99"
-                                                data-interval="15"
-                                                data-before=""
-                                                data-before-style="sup"
-                                                data-after="%"
-                                                data-after-style="span"
-                                                class="numinate">99
-                                        </span>
-                                    <span>%</span>
-                                </h4>
-                                <h3 class="ttm-fid-title">Client Satisfaction</h3>
-                                <a class="ttm-btn ttm-btn-size-md btn-inline ttm-btn-color-skincolor" href="#">Testmonials</a>
-                            </div>
-                        </div><!-- ttm-fid end -->
-                    </div>
-                </div><!-- row end -->
-            </div>
-        </section>
+{{--        <section class="ttm-row fid-section ttm-bgimage-yes bg-img3 ttm-bg ttm-bgcolor-darkgrey clearfix">--}}
+{{--            <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>--}}
+{{--            <div class="container">--}}
+{{--                <!-- row -->--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-lg-4 col-md-6">--}}
+{{--                        <!-- ttm-fid -->--}}
+{{--                        <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style1">--}}
+{{--                            <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">--}}
+{{--                                <i class="flaticon flaticon-presentation"></i>--}}
+{{--                            </div>--}}
+{{--                            <div class="ttm-fid-contents">--}}
+{{--                                <span>Projects</span>--}}
+{{--                                <h4 class="ttm-fid-inner">--}}
+{{--                                        <span   data-appear-animation="animateDigits"--}}
+{{--                                                data-from="0"--}}
+{{--                                                data-to="26"--}}
+{{--                                                data-interval="15"--}}
+{{--                                                data-before=""--}}
+{{--                                                data-before-style="sup"--}}
+{{--                                                data-after="K"--}}
+{{--                                                data-after-style="sub"--}}
+{{--                                                class="numinate">26</span>--}}
+{{--                                    <span>K</span>--}}
+{{--                                </h4>--}}
+{{--                                <h3 class="ttm-fid-title">Successful Projects</h3>--}}
+{{--                                <a class="ttm-btn ttm-btn-size-md btn-inline ttm-btn-color-skincolor" href="#">Get A Project</a>--}}
+{{--                            </div>--}}
+{{--                        </div><!-- ttm-fid end -->--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-4 col-md-6">--}}
+{{--                        <!-- ttm-fid -->--}}
+{{--                        <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style1">--}}
+{{--                            <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">--}}
+{{--                                <i class="flaticon flaticon-idea-4"></i>--}}
+{{--                            </div>--}}
+{{--                            <div class="ttm-fid-contents">--}}
+{{--                                <span>Our Team</span>--}}
+{{--                                <h4 class="ttm-fid-inner">--}}
+{{--                                        <span   data-appear-animation="animateDigits"--}}
+{{--                                                data-from="0"--}}
+{{--                                                data-to="143"--}}
+{{--                                                data-interval="15"--}}
+{{--                                                data-before=""--}}
+{{--                                                data-before-style="sup"--}}
+{{--                                                data-after="+"--}}
+{{--                                                data-after-style="span"--}}
+{{--                                                class="numinate">143--}}
+{{--                                        </span>--}}
+{{--                                    <span>+</span>--}}
+{{--                                </h4>--}}
+{{--                                <h3 class="ttm-fid-title">Experienced Staff</h3>--}}
+{{--                                <a class="ttm-btn ttm-btn-size-md btn-inline ttm-btn-color-skincolor" href="#">Team Members</a>--}}
+{{--                            </div>--}}
+{{--                        </div><!-- ttm-fid end -->--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-4 col-md-6">--}}
+{{--                        <!-- ttm-fid -->--}}
+{{--                        <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style1">--}}
+{{--                            <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">--}}
+{{--                                <i class="flaticon flaticon-teamwork-1"></i>--}}
+{{--                            </div>--}}
+{{--                            <div class="ttm-fid-contents">--}}
+{{--                                <span>Happy Clients</span>--}}
+{{--                                <h4 class="ttm-fid-inner">--}}
+{{--                                        <span   data-appear-animation="animateDigits"--}}
+{{--                                                data-from="0"--}}
+{{--                                                data-to="99"--}}
+{{--                                                data-interval="15"--}}
+{{--                                                data-before=""--}}
+{{--                                                data-before-style="sup"--}}
+{{--                                                data-after="%"--}}
+{{--                                                data-after-style="span"--}}
+{{--                                                class="numinate">99--}}
+{{--                                        </span>--}}
+{{--                                    <span>%</span>--}}
+{{--                                </h4>--}}
+{{--                                <h3 class="ttm-fid-title">Client Satisfaction</h3>--}}
+{{--                                <a class="ttm-btn ttm-btn-size-md btn-inline ttm-btn-color-skincolor" href="#">Testmonials</a>--}}
+{{--                            </div>--}}
+{{--                        </div><!-- ttm-fid end -->--}}
+{{--                    </div>--}}
+{{--                </div><!-- row end -->--}}
+{{--            </div>--}}
+{{--        </section>--}}
         <!--fid-section end-->
 
         @if(count($latestPosts) > 2)
