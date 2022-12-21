@@ -181,6 +181,7 @@ class HomePageController extends Controller
         $update_theme->action_heading2       =  $request->input('action_heading2');
         $update_theme->action_button         =  $request->input('action_button');
         $update_theme->action_link           =  $request->input('action_link');
+        $update_theme->action_link2          =  $request->input('action_link2');
         $update_theme->updated_by            =  Auth::user()->id;
 
         $status=$update_theme->update();

@@ -41,6 +41,9 @@
     .section-title.title-style-center_text .title-desc p{
         width: 90%;
     }
+    .ttm-alt-btn{
+        background-color: #223645 !important;
+    }
 </style>
 
 @endsection
@@ -199,7 +202,6 @@
 
         <!--welcome section-->
         @if(!empty($homepage_info->welcome_description))
-
             <section class="ttm-row padding_zero-section clearfix">
                     <div class="container">
                         <!-- row -->
@@ -792,6 +794,7 @@
         </section>
         <!--testimonial-section end-->
 
+        @if(!empty($homepage_info->action_heading))
         <!--cta-section-->
         <section class="ttm-row cta-section ttm-textcolor-white bg-img2 clearfix">
             <div class="container">
@@ -801,22 +804,31 @@
                         <!-- section-title -->
                         <div class="section-title">
                             <div class="title-header">
-                                <h3 class="font-weight-normal">More Than 50,000 Happy Client</h3>
-                                <h2 class="title">We Provide Best Digital Marketing Solutions Enjoy Full-Service Digital Expertise</h2>
+                                <h3 class="font-weight-normal">{{@$homepage_info->action_heading2}}</h3>
+                                <h2 class="title">{!! wordwrap(@$homepage_info->action_heading,30,"<br>\n",TRUE) !!}</h2>
                             </div>
                         </div><!-- section-title end -->
                         <div class="d-inline-block">
-                            <a href="https://youtu.be/dk9uNWPP7EA" target="_self" class="ttm_prettyphoto ttm-btn-color-white  ttm-btn btn-inline ttm-btn-size-md">
-                                    <span class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-textcolor-white ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_right10 margin_bottom0">
-                                        <i class="ti ti-control-play margin_left0 padding_left1"></i>
-                                    </span>
-                            </a><span class="font-weight-bold"> WATCH VIDEO</span>
+                            @if(@$homepage_info->action_button)
+                                <a class="ttm-alt-btn ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-skincolor" href="{{@$homepage_info->action_link}}" tabindex="0">
+                                    {{@$homepage_info->action_button}}
+                                </a>
+                            @endif
+                                @if(@$homepage_info->action_link2)
+
+                                    <a href="{{@$homepage_info->action_link2}}" target="_self" class="ttm_prettyphoto ttm-btn-color-white  ttm-btn btn-inline ttm-btn-size-md">
+                                        <span class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-textcolor-white ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_right10 margin_bottom0">
+                                            <i class="ti ti-control-play margin_left0 padding_left1"></i>
+                                        </span>
+                                    </a><span class="font-weight-bold"> WATCH VIDEO </span>
+                                @endif
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!--cta-section end-->
+        @endif
 
         <!-- tab-section -->
         <section class="ttm-row tab-section clearfix">

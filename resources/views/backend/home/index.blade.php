@@ -347,7 +347,7 @@
                                                     </figure>
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label" for="direction-heading-input">Heading <span class="text-muted text-danger">*</span></label>
-                                                        <input type="text" class="form-control" maxlength="60" id="direction-heading-input" name="action_heading" value="{{@$homesettings->action_heading}}"
+                                                        <input type="text" class="form-control" maxlength="80" id="direction-heading-input" name="action_heading" value="{{@$homesettings->action_heading}}"
                                                                placeholder="Enter heading" required>
                                                         <div class="invalid-feedback">
                                                             Please enter the heading.
@@ -375,6 +375,14 @@
                                                                placeholder="Enter button link" required>
                                                         <div class="invalid-feedback">
                                                             Please enter the button link.
+                                                        </div>
+                                                    </div>
+                                                    <div class="position-relative mb-3">
+                                                        <label class="form-label" for="direction-heading-inputs" >Video Link<span class="text-muted text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="direction-heading-inputs" name="action_link2" value="{{@$homesettings->action_link2}}"
+                                                               placeholder="Enter Video link" required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter the video link.
                                                         </div>
                                                     </div>
                                                     <div class="text-end mb-3 mt-3">
@@ -568,6 +576,74 @@
                                 <div class="text-end mb-3 mt-3">
                                     <button type="submit" class="btn btn-success w-sm">Update Section</button>
                                 </div>
+                                {!! Form::close() !!}
+
+
+                            </div>
+
+                            <div class="tab-pane fade" id="simple-why-us-action" role="tabpanel">
+
+                                {!! Form::open(['url'=>route('homepage.whyus', @$homesettings->id),'id'=>'homesettings-mv-header-form','class'=>'needs-validation','novalidate'=>'','method'=>'PUT','enctype'=>'multipart/form-data']) !!}
+
+                                <div class="row mb-2">
+                                    <div class="col-lg-12">
+                                        <figure class="figure">
+                                            <img src="{{asset('images/stats.png')}}" class="figure-img img-fluid rounded" alt="...">
+                                            <figcaption class="figure-caption">Output Sample.</figcaption>
+                                        </figure>
+                                        <div class="sticky-side-div">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5 class="card-title mb-0">Site Statistics</h5>
+                                                </div>
+                                                <div class="card-body">
+
+                                                    <div class="position-relative mb-3">
+                                                        <label class="form-label">Industries Served <span class="text-muted text-danger">*</span></label>
+                                                        <input type="number" class="form-control" name="project_completed" value="{{@$homesettings->project_completed}}"
+                                                               placeholder="Enter Industries Served number">
+                                                        <div class="invalid-feedback">
+                                                            Please enter the Industries served number.
+                                                        </div>
+                                                    </div>
+                                                    <div class="position-relative mb-3">
+                                                        <label class="form-label"> Clients Served <span class="text-muted text-danger">*</span></label>
+                                                        <input type="number" class="form-control" name="happy_clients" value="{{@$homesettings->happy_clients}}"
+                                                               placeholder="Enter Clients Served number">
+                                                        <div class="invalid-feedback">
+                                                            Please enter the Clients Served number.
+                                                        </div>
+                                                    </div>
+                                                    <div class="position-relative mb-3">
+                                                        <label class="form-label">Jobs Created <span class="text-muted text-danger">*</span></label>
+                                                        <input type="number" class="form-control" name="success_stories" value="{{@$homesettings->success_stories}}"
+                                                               placeholder="Enter Jobs Created number">
+                                                        <div class="invalid-feedback">
+                                                            Please enter the Jobs Created number.
+                                                        </div>
+                                                    </div>
+                                                    <div class="position-relative mb-3">
+                                                        <label class="form-label">PSMB Rated Training Provider <span class="text-muted text-danger">*</span></label>
+                                                        <input type="number" class="form-control" name="visa_approved" value="{{@$homesettings->visa_approved}}"
+                                                               placeholder="Enter PSMB Rated Training Provider number">
+                                                        <div class="invalid-feedback">
+                                                            Please enter PSMB Rated Training Provider.
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center mb-3 mt-2">
+                                        <button type="submit" class="btn btn-success w-sm">Update Section</button>
+                                    </div>
+                                </div>
+
                                 {!! Form::close() !!}
 
 
@@ -968,73 +1044,6 @@
 
 {{--                            </div>--}}
 
-                            <div class="tab-pane fade" id="simple-why-us-action" role="tabpanel">
-
-                                {!! Form::open(['url'=>route('homepage.whyus', @$homesettings->id),'id'=>'homesettings-mv-header-form','class'=>'needs-validation','novalidate'=>'','method'=>'PUT','enctype'=>'multipart/form-data']) !!}
-
-                                <div class="row mb-2">
-                                    <div class="col-lg-12">
-                                        <figure class="figure">
-                                            <img src="{{asset('images/stats.png')}}" class="figure-img img-fluid rounded" alt="...">
-                                            <figcaption class="figure-caption">Output Sample.</figcaption>
-                                        </figure>
-                                        <div class="sticky-side-div">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h5 class="card-title mb-0">Site Statistics</h5>
-                                                </div>
-                                                <div class="card-body">
-
-                                                    <div class="position-relative mb-3">
-                                                        <label class="form-label">Industries Served <span class="text-muted text-danger">*</span></label>
-                                                        <input type="number" class="form-control" name="project_completed" value="{{@$homesettings->project_completed}}"
-                                                               placeholder="Enter Industries Served number">
-                                                        <div class="invalid-feedback">
-                                                            Please enter the Industries served number.
-                                                        </div>
-                                                    </div>
-                                                    <div class="position-relative mb-3">
-                                                        <label class="form-label"> Clients Served <span class="text-muted text-danger">*</span></label>
-                                                        <input type="number" class="form-control" name="happy_clients" value="{{@$homesettings->happy_clients}}"
-                                                               placeholder="Enter Clients Served number">
-                                                        <div class="invalid-feedback">
-                                                            Please enter the Clients Served number.
-                                                        </div>
-                                                    </div>
-                                                    <div class="position-relative mb-3">
-                                                        <label class="form-label">Jobs Created <span class="text-muted text-danger">*</span></label>
-                                                        <input type="number" class="form-control" name="success_stories" value="{{@$homesettings->success_stories}}"
-                                                               placeholder="Enter Jobs Created number">
-                                                        <div class="invalid-feedback">
-                                                            Please enter the Jobs Created number.
-                                                        </div>
-                                                    </div>
-                                                    <div class="position-relative mb-3">
-                                                        <label class="form-label">PSMB Rated Training Provider <span class="text-muted text-danger">*</span></label>
-                                                        <input type="number" class="form-control" name="visa_approved" value="{{@$homesettings->visa_approved}}"
-                                                               placeholder="Enter PSMB Rated Training Provider number">
-                                                        <div class="invalid-feedback">
-                                                            Please enter PSMB Rated Training Provider.
-                                                        </div>
-                                                    </div>
-
-
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="text-center mb-3 mt-2">
-                                        <button type="submit" class="btn btn-success w-sm">Update Section</button>
-                                    </div>
-                                </div>
-
-                                {!! Form::close() !!}
-
-
-                            </div>
 
 {{--                            <div class="tab-pane fade" id="simple-recruitment-action" role="tabpanel">--}}
 {{--                                @if(sizeof($recruitment) !== 0)--}}
