@@ -80,7 +80,8 @@
                                     <li class="nav-item">
                                         <a class="nav-link active fw-semibold" data-bs-toggle="tab" href="#welcome-tab"
                                            role="tab">
-                                            Welcome Section                                        </a>
+                                            Welcome Section
+                                        </a>
                                     </li>
                                     @if($homesettings !== null)
                                         <li class="nav-item">
@@ -162,17 +163,17 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                        <label>Button Text </label>
+                                                        <label>Fact 1 heading </label>
                                                         <input type="text" maxlength="20" class="form-control" value="{{@$homesettings->welcome_button}}" name="welcome_button">
                                                         <div class="invalid-feedback">
-                                                            Please enter the button text.
+                                                            Please enter the fact 1 heading.
                                                         </div>
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                        <label>Button Link </label>
-                                                        <input type="text" class="form-control" value="{{@$homesettings->welcome_link}}" name="welcome_link">
+                                                        <label>Fact 1 small text </label>
+                                                        <input type="text" maxlength="20" class="form-control" value="{{@$homesettings->welcome_link}}" name="welcome_link">
                                                         <div class="invalid-feedback">
-                                                            Please enter the button link.
+                                                            Please enter Fact 1 small text.
                                                         </div>
                                                     </div>
                                                 </div>
@@ -204,7 +205,7 @@
                                                             id="profile-foreground-img-file-input" onchange="loadFile(event)" name="welcome_image" {{ (@$homesettings->welcome_image !== null) ? '' :  'required' }}
                                                         class="profile-foreground-img-file-input" >
 
-                                                        <figcaption class="figure-caption">*use image minimum of 530 x 530px </figcaption>
+                                                        <figcaption class="figure-caption">*use image minimum of 478 x 660px </figcaption>
                                                         <div class="invalid-feedback" >
                                                                 Please select a image.
                                                             </div>
@@ -212,14 +213,22 @@
                                                             <i class="ri-image-edit-line align-bottom me-1"></i> Add  Image
                                                         </label>
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <label for="choices-publish-status-input" class="form-label">Image Alignment</label>
 
-                                                        <select class="form-select" id="choices-publish-status-input" name="welcome_side_image" data-choices data-choices-search-false>
-                                                            <option value="left" @if(@$homesettings->welcome_side_image == "left") selected @endif>Left</option>
-                                                            <option value="right" @if(@$homesettings->welcome_side_image == "right") selected @endif>Right</option>
-                                                        </select>
+                                                    <div class="form-group mb-3">
+                                                        <label>Fact 2 heading </label>
+                                                        <input type="text" maxlength="20" class="form-control" value="{{@$homesettings->welcome_button2}}" name="welcome_button2">
+                                                        <div class="invalid-feedback">
+                                                            Please enter the fact 2 heading.
+                                                        </div>
                                                     </div>
+                                                    <div class="form-group mb-3">
+                                                        <label>Fact 2 small text </label>
+                                                        <input type="text" maxlength="20" class="form-control" value="{{@$homesettings->welcome_link2}}" name="welcome_link2">
+                                                        <div class="invalid-feedback">
+                                                            Please enter the Fact 2 small text.
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                                 <!-- end card body -->
                                             </div>

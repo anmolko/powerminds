@@ -59,14 +59,17 @@ class HomePageController extends Controller
      */
     public function store(Request $request)
     {
+
         $data=[
             'welcome_heading'          => $request->input('welcome_heading'),
             'welcome_subheading'       => $request->input('welcome_subheading'),
             'welcome_description'      => $request->input('welcome_description'),
             'welcome_side_image'       => $request->input('welcome_side_image'),
             'welcome_button'           => $request->input('welcome_button'),
+            'welcome_button2'          => $request->input('welcome_button2'),
             'welcome_link'             => $request->input('welcome_link'),
-            'created_by'                => Auth::user()->id,
+            'welcome_link2'            => $request->input('welcome_link2'),
+            'created_by'               => Auth::user()->id,
         ];
 
         if (!empty($request->file('welcome_image'))){
@@ -81,7 +84,7 @@ class HomePageController extends Controller
             $path    = base_path().'/public/images/home/welcome/';
             $image   = $request->file('welcome_image');
             $name1   = uniqid().'_welcome_'.$image->getClientOriginalName();
-            $moved          = Image::make($image->getRealPath())->fit(530, 530)->orientate()->save($path.$name1);
+            $moved          = Image::make($image->getRealPath())->fit(478, 660)->orientate()->save($path.$name1);
             if ($moved){
                 $data['welcome_image']= $name1;
             }
@@ -137,6 +140,8 @@ class HomePageController extends Controller
         $update_theme->welcome_side_image       =  $request->input('welcome_side_image');
         $update_theme->welcome_button           =  $request->input('welcome_button');
         $update_theme->welcome_link             =  $request->input('welcome_link');
+        $update_theme->welcome_button2          =  $request->input('welcome_button2');
+        $update_theme->welcome_link2            =  $request->input('welcome_link2');
         $update_theme->updated_by               =  Auth::user()->id;
 
         $oldimage                       = $update_theme->welcome_image;
@@ -145,7 +150,7 @@ class HomePageController extends Controller
             $path    = base_path().'/public/images/home/welcome/';
             $image = $request->file('welcome_image');
             $name1 = uniqid().'_welcome_'.$image->getClientOriginalName();
-            $moved          = Image::make($image->getRealPath())->fit(385, 497)->orientate()->save($path.$name1);
+            $moved          = Image::make($image->getRealPath())->fit(478, 660)->orientate()->save($path.$name1);
 
             if ($moved){
                 $update_theme->welcome_image= $name1;

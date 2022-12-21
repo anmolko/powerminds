@@ -2,7 +2,12 @@
 @section('title') Home @endsection
 @section('css')
 
+<style>
+    .spacing-5 {
+        padding: 250px 15px 80px;
+    }
 
+</style>
 
 @endsection
 @section('content')
@@ -249,129 +254,155 @@
         </section>
         <!--services-section-->
 
+        @if(!empty($homepage_info->welcome_description))
 
-        <!--padding_bottom_zero-section-->
-        <section class="ttm-row padding_bottom_zero-section bg-layer bg-layer-equal-height mt_20 clearfix">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row no-gutters">
-                            <div class="col-lg-4 col-md-12">
-                                <!-- col-img-img-one -->
-                                <div class="ttm-bg ttm-col-bgimage-yes col-bg-img-one ttm-left-span z-index-2">
-                                    <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
-                                    <div class="layer-content">
+            <section class="ttm-row padding_zero-section clearfix">
+                    <div class="container">
+                        <!-- row -->
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-7 col-md-12 col-xs-12">
+                                <!-- section title -->
+                                <div class="section-title">
+                                    <div class="title-header">
+                                        @if(@$homepage_info->welcome_subheading)
+                                            <h3>{{ucfirst(@$homepage_info->welcome_subheading)}}</h3>
+                                        @endif
+                                        @if(@$homepage_info->welcome_heading)
+                                            <h2 class="title">{{ucwords(@$homepage_info->welcome_heading)}}</h2>
+                                        @endif
                                     </div>
-                                </div><!-- col-img-bg-img-one end-->
-                                <img class="img-fluid ttm-equal-height-image w-100" src="{{asset('assets/frontend/images/bg-image/col-bgimage-1.jpg')}}" alt="bg-image">
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="ttm-bg ttm-col-bgcolor-yes ttm-bgcolor-darkgrey ttm-bg ttm-col-bgimage-yes col-bg-img-three ttm-right-span spacing-1 h-auto">
+{{--                                    <div class="title-desc"><p>Today’s business environment is highly competitive and fast-moving, which necessitates more flexible action and quicker response processes.</p></div>--}}
+                                </div><!-- section title end -->
+                                <div class="ttm-col-bgcolor-yes ttm-bgcolor-white ttm-col-bgimage-yes ttm-bg spacing-4 box-shadow d-inline-block border-rad_6 overflow-hidden">
                                     <div class="ttm-col-wrapper-bg-layer ttm-bg-layer">
                                         <div class="ttm-col-wrapper-bg-layer-inner"></div>
                                     </div>
-                                    <div class="layer-content">
-                                        <!-- section title -->
-                                        <div class="section-title">
-                                            <div class="title-header">
-                                                <h3>our benefits</h3>
-                                                <h2 class="title">Collaborate With Your Company</h2>
-                                            </div>
-                                            <div class="title-desc"><p>We’ve designed a culture that allows our stewards to assimilate with our clients and bring the best of who we are to your business.</p></div>
-                                        </div><!-- section title end -->
-                                        <div class="padding_top15 padding_bottom30 res-991-padding_bottom30">
-                                            <!-- featured-icon-box -->
-                                            <div class="featured-icon-box icon-align-before-content style2 icon-ver_align-top">
-                                                <div class="featured-icon">
-                                                    <div class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-icon_element-size-md ttm-icon_element-style-round">
-                                                        <i class="flaticon flaticon-copyright"></i>
+                                    <div class="layer-content justified">
+                                        {!! ucfirst(@$homepage_info->welcome_description) !!}
+                                        <div class="padding_top20 padding_bottom30 res-991-padding_right0">
+                                            <div class="d-sm-flex align-items-center">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="overflow-hidden">
+                                                        <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
+                                                            <i class="flaticon flaticon-website"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="padding_left15">
+                                                        <h3 class="margin_bottom0 fs-20">{{ucfirst(@$homepage_info->welcome_button)}}</h3>
+                                                        <label class="margin_bottom0">{{ ucfirst(@$homepage_info->welcome_link)}}</label>
                                                     </div>
                                                 </div>
-                                                <div class="featured-content">
-                                                    <div class="featured-title">
-                                                        <h3>Supply Chain and Operations</h3>
-                                                    </div>
-                                                    <div class="featured-desc">
-                                                        <p>We help organizations reimagine & transform supply chains for tomorrow with positive impact on the business.</p>
-                                                    </div>
-                                                </div>
-                                            </div><!-- featured-icon-box end -->
-                                            <!-- featured-icon-box -->
-                                            <div class="featured-icon-box icon-align-before-content style2  icon-ver_align-top">
-                                                <div class="featured-icon">
-                                                    <div class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-icon_element-size-md ttm-icon_element-style-round">
-                                                        <i class="flaticon flaticon-idea-4"></i>
+                                                <div class="margin_left30 padding_left30 border-left">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="overflow-hidden">
+                                                            <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
+                                                                <i class="flaticon flaticon-idea"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="padding_left15">
+                                                            <h3 class="margin_bottom0 fs-20">{{ ucfirst(@$homepage_info->welcome_button2)}}</h3>
+                                                            <label class="margin_bottom0">{{ucfirst(@$homepage_info->welcome_link2)}}</label>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="featured-content">
-                                                    <div class="featured-title">
-                                                        <h3>Business Process Outsourcing</h3>
-                                                    </div>
-                                                    <div class="featured-desc">
-                                                        <p>Today’s digitally disrupted market, where traditional revenue sources are becoming more sustainable growth.</p>
-                                                    </div>
-                                                </div>
-                                            </div><!-- featured-icon-box end -->
-                                        </div>
-                                        <div class="padding_left30 padding_right30 padding_top15 padding_bottom15 ttm-bgcolor-white">
-                                            <div class="row">
-                                                <div class="col-lg-4 col-md-4 col-sm-6">
-                                                    <!--featured-icon-box-->
-                                                    <div class="featured-icon-box icon-align-top-content ttm-bgcolor-skincolor p-20 padding_bottom15 padding_top25 text-center border-rad_6">
-                                                        <div class="featured-icon padding_top1">
-                                                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-white ttm-icon_element-size-md">
-                                                                <i class="flaticon flaticon-idea-1"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="featured-content">
-                                                            <div class="featured-title">
-                                                                <h3>High Quality</h3>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- featured-icon-box end-->
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-6">
-                                                    <!--featured-icon-box-->
-                                                    <div class="featured-icon-box icon-align-top-content ttm-bgcolor-darkgrey p-20 padding_bottom15 padding_top25 text-center border-rad_6">
-                                                        <div class="featured-icon padding_top1">
-                                                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-white ttm-icon_element-size-md">
-                                                                <i class="flaticon flaticon-charts"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="featured-content">
-                                                            <div class="featured-title">
-                                                                <h3>Innovations</h3>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- featured-icon-box end-->
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-6">
-                                                    <!--featured-icon-box-->
-                                                    <div class="featured-icon-box icon-align-top-content ttm-bgcolor-skincolor p-20 padding_bottom15 padding_top25 text-center border-rad_6">
-                                                        <div class="featured-icon padding_top1">
-                                                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-white ttm-icon_element-size-md">
-                                                                <i class="flaticon flaticon-corporate-3"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="featured-content">
-                                                            <div class="featured-title">
-                                                                <h3>Comfortable</h3>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- featured-icon-box end-->
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
+
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-5 col-md-8 mx-md-auto col-sm-10">
+                                <!-- ttm_single_image-wrapper -->
+                                <div class="ttm_single_image-wrapper d-inline-block p-10 ttm-bgcolor-white border-rad_6 position-relative z-index-1 box-shadow">
+                                    <img class="img-fluid" src="<?php if(!empty(@$homepage_info->welcome_image)){ echo '/images/home/welcome/'.@$homepage_info->welcome_image; } ?>" alt="single_02" height="100%" width="100%">
                                 </div>
                             </div>
                         </div><!-- row end -->
                     </div>
+                </section>
+        @endif
+
+        <section class="ttm-row broken-section clearfix">
+            <div class="container-fluid">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ttm-col-bgcolor-yes col-bg-img-four ttm-col-bgimage-yes ttm-bgcolor-darkgrey ttm-col-bgimage-yes ttm-bg spacing-5 border-rad_10 z-index_1 overflow-hidden">
+                            <div class="ttm-col-wrapper-bg-layer ttm-bg-layer">
+                                <div class="ttm-col-wrapper-bg-layer-inner"></div>
+                            </div>
+                            <div class="layer-content">
+                                <div class="container">
+                                    <div class="row ttm-vertical_sep">
+                                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                                            <!-- ttm-fid -->
+                                            <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style2">
+                                                <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
+                                                    <i class="flaticon flaticon-bussiness-man-1"></i>
+                                                </div>
+                                                <div class="ttm-fid-contents">
+                                                    <h4 class="ttm-fid-inner">
+                                                        <span data-appear-animation="animateDigits" data-from="0" data-to="8965" data-interval="15" data-before="" data-before-style="sup" data-after="" data-after-style="sub" class="numinate completed">8965</span>
+                                                        <span>K</span>
+                                                    </h4>
+                                                    <h3 class="ttm-fid-title">Delivered Packages</h3>
+                                                </div>
+                                            </div><!-- ttm-fid end -->
+                                        </div>
+                                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                                            <!-- ttm-fid -->
+                                            <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style2">
+                                                <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
+                                                    <i class="flaticon flaticon-maintenance"></i>
+                                                </div>
+                                                <div class="ttm-fid-contents">
+                                                    <h4 class="ttm-fid-inner">
+                                                        <span data-appear-animation="animateDigits" data-from="0" data-to="1805" data-interval="15" data-before="" data-before-style="sup" data-after="" data-after-style="sub" class="numinate completed">1805</span>
+                                                        <span>K</span>
+                                                    </h4>
+                                                    <h3 class="ttm-fid-title">Countries Covered</h3>
+                                                </div>
+                                            </div><!-- ttm-fid end -->
+                                        </div>
+                                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                                            <!-- ttm-fid -->
+                                            <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style2">
+                                                <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
+                                                    <i class="flaticon flaticon-idea"></i>
+                                                </div>
+                                                <div class="ttm-fid-contents">
+                                                    <h4 class="ttm-fid-inner">
+                                                        <span data-appear-animation="animateDigits" data-from="0" data-to="1200" data-interval="15" data-before="" data-before-style="sup" data-after="" data-after-style="sub" class="numinate completed">1200</span>
+                                                        <span>K</span>
+                                                    </h4>
+                                                    <h3 class="ttm-fid-title">Satisfied Clients</h3>
+                                                </div>
+                                            </div><!-- ttm-fid end -->
+                                        </div>
+                                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                                            <!-- ttm-fid -->
+                                            <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style2">
+                                                <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">
+                                                    <i class="flaticon flaticon-salary"></i>
+                                                </div>
+                                                <div class="ttm-fid-contents">
+                                                    <h4 class="ttm-fid-inner">
+                                                        <span data-appear-animation="animateDigits" data-from="0" data-to="4965" data-interval="15" data-before="" data-before-style="sup" data-after="K" data-after-style="sub" class="numinate completed">4965</span>
+                                                        <span>K</span>
+                                                    </h4>
+                                                    <h3 class="ttm-fid-title">Tons of Goods</h3>
+                                                </div>
+                                            </div><!-- ttm-fid end -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <!--padding_bottom_zero-section-->
-
 
         <!--tab-section-->
         <section class="ttm-row tab-section clearfix">
@@ -555,7 +586,6 @@
         </section>
         <!--tab-section end-->
 
-
         <!--testimonial-section-->
         <section class="ttm-row testimonial-section bg-img1 ttm-bgcolor-grey ttm-bg ttm-bgimage-yes clearfix">
             <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
@@ -680,7 +710,6 @@
         </section>
         <!--testimonial-section end-->
 
-
         <!--cta-section-->
         <section class="ttm-row cta-section ttm-textcolor-white bg-img2 clearfix">
             <div class="container">
@@ -706,7 +735,6 @@
             </div>
         </section>
         <!--cta-section end-->
-
 
         <!-- tab-section -->
         <section class="ttm-row tab-section clearfix">
@@ -912,7 +940,6 @@
         </section>
         <!-- tab-section end -->
 
-
         <!--fid-section-->
         <section class="ttm-row fid-section ttm-bgimage-yes bg-img3 ttm-bg ttm-bgcolor-darkgrey clearfix">
             <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
@@ -1001,7 +1028,7 @@
         </section>
         <!--fid-section end-->
 
-    @if(count($latestPosts) > 2)
+        @if(count($latestPosts) > 2)
         <!--blog-section-->
         <section class="ttm-row blog-section ttm-bgcolor-grey clearfix">
             <div class="container">
