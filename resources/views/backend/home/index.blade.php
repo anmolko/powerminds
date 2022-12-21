@@ -85,6 +85,12 @@
                                     </li>
                                     @if($homesettings !== null)
                                         <li class="nav-item">
+                                            <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#top-feature"
+                                               role="tab">
+                                                Top Feature section
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#simple-core-action"
                                                role="tab">
                                                 Core Values
@@ -540,6 +546,81 @@
 
                             </div>
 
+                            <div class="tab-pane fade" id="top-feature" role="tabpanel">
+
+                                {!! Form::open(['url'=>route('homepage.topfeatures', @$homesettings->id),'id'=>'homesettings-topfeature-header-form','class'=>'needs-validation','novalidate'=>'','method'=>'PUT','enctype'=>'multipart/form-data']) !!}
+
+                                <div class="row  mb-2">
+                                    <div class="col-lg-12">
+                                        <div class="sticky-side-div">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5 class="card-title mb-0">Top Feature Details</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <figure class="figure">
+                                                        <img src="{{asset('images/topfeatures.png')}}" class="figure-img img-fluid rounded" alt="...">
+                                                        <figcaption class="figure-caption">Output Sample.</figcaption>
+                                                    </figure>
+                                                    <div class="position-relative mb-3">
+                                                        <label class="form-label" for="tf_heading1"> Feature Heading 1 <span class="text-muted text-danger">*</span></label>
+                                                        <input type="text" class="form-control" maxlength="65" id="tf_heading1" name="tf_heading1" value="{{@$homesettings->tf_heading1}}"
+                                                               placeholder="Enter heading" required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter the heading 1.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="tf_description1">Feature small description  1 </label>
+                                                        <input type="text" class="form-control" maxlength="100" id="tf_description1" name="tf_description1" value="{{@$homesettings->tf_description1}}"
+                                                               placeholder="Enter small description">
+                                                    </div>
+                                                    <div class="position-relative mb-3">
+                                                        <label class="form-label" for="tf_heading2"> Feature Heading 2 <span class="text-muted text-danger">*</span></label>
+                                                        <input type="text" class="form-control" maxlength="65" id="tf_heading2" name="tf_heading2" value="{{@$homesettings->tf_heading2}}"
+                                                               placeholder="Enter heading 2" required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter the heading 2.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="tf_description2">Feature small description  2 </label>
+                                                        <input type="text" class="form-control" maxlength="100" id="tf_description2" name="tf_description2" value="{{@$homesettings->tf_description2}}"
+                                                               placeholder="Enter small description 2">
+                                                    </div>
+                                                    <div class="position-relative mb-3">
+                                                        <label class="form-label" for="tf_heading3"> Feature Heading 3 <span class="text-muted text-danger">*</span></label>
+                                                        <input type="text" class="form-control" maxlength="65" id="tf_heading2" name="tf_heading3" value="{{@$homesettings->tf_heading3}}"
+                                                               placeholder="Enter heading 3" required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter the heading 3.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="tf_description3">Feature small description  3 </label>
+                                                        <input type="text" class="form-control" maxlength="100" id="tf_description3" name="tf_description3" value="{{@$homesettings->tf_description3}}"
+                                                               placeholder="Enter small description 3">
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- end card body -->
+                                            </div>
+
+                                            <div class="text-center mb-3 mt-2">
+                                                <button type="submit" class="btn btn-success w-sm">Update Section</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                {!! Form::close() !!}
+
+
+                            </div>
+
                             <div class="tab-pane fade" id="simple-missionvision-action" role="tabpanel">
 
                                 {!! Form::open(['url'=>route('homepage.mv', @$homesettings->id),'id'=>'homesettings-mv-header-form','class'=>'needs-validation','novalidate'=>'','method'=>'PUT','enctype'=>'multipart/form-data']) !!}
@@ -654,7 +735,7 @@
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label">Industries Served <span class="text-muted text-danger">*</span></label>
                                                         <input type="number" class="form-control" name="project_completed" value="{{@$homesettings->project_completed}}"
-                                                               placeholder="Enter project completed number">
+                                                               placeholder="Enter Industries Served number">
                                                         <div class="invalid-feedback">
                                                             Please enter the Industries served number.
                                                         </div>
@@ -662,7 +743,7 @@
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label"> Clients Served <span class="text-muted text-danger">*</span></label>
                                                         <input type="number" class="form-control" name="happy_clients" value="{{@$homesettings->happy_clients}}"
-                                                               placeholder="Enter happy clients number">
+                                                               placeholder="Enter Clients Served number">
                                                         <div class="invalid-feedback">
                                                             Please enter the Clients Served number.
                                                         </div>
@@ -670,7 +751,7 @@
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label">Jobs Created <span class="text-muted text-danger">*</span></label>
                                                         <input type="number" class="form-control" name="success_stories" value="{{@$homesettings->success_stories}}"
-                                                               placeholder="Enter success stories number">
+                                                               placeholder="Enter Jobs Created number">
                                                         <div class="invalid-feedback">
                                                             Please enter the Jobs Created number.
                                                         </div>
@@ -678,7 +759,7 @@
                                                     <div class="position-relative mb-3">
                                                         <label class="form-label">PSMB Rated Training Provider <span class="text-muted text-danger">*</span></label>
                                                         <input type="number" class="form-control" name="visa_approved" value="{{@$homesettings->visa_approved}}"
-                                                               placeholder="Enter visa approved number">
+                                                               placeholder="Enter PSMB Rated Training Provider number">
                                                         <div class="invalid-feedback">
                                                             Please enter PSMB Rated Training Provider.
                                                         </div>

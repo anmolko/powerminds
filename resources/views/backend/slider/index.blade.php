@@ -67,7 +67,7 @@
 
                             <div class="form-group mb-3">
                                 <label>Sub Heading </label>
-                                <input type="text" maxlength="48" class="form-control" name="subheading">
+                                <input type="text" maxlength="130" class="form-control" name="subheading">
                                 <div class="invalid-feedback">
                                     Please enter the slider subheading.
                                 </div>
@@ -94,14 +94,6 @@
                                     Please enter the button link.
                                 </div>
                             </div>
-                            <div class="form-group mb-3">
-                                <label>Video link (small) desp </label>
-                                <input type="text" class="form-control" maxlength="30" name="slider_link_descp" >
-                                <div class="invalid-feedback">
-                                    Please enter the small descp for video.
-                                </div>
-                            </div>
-
                         </div>
                     </div>
 
@@ -264,7 +256,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label>Sub Heading </label>
-                                <input type="text" maxlength="48" class="form-control" name="subheading" id="subheading" >
+                                <input type="text" maxlength="130" class="form-control" name="subheading" id="subheading" >
                                 <div class="invalid-feedback">
                                     Please enter the slider subheading.
                                 </div>
@@ -274,13 +266,6 @@
                                 <input type="text" class="form-control" name="slider_link" id="slider_link">
                                 <div class="invalid-feedback">
                                     Please enter the video link.
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label>Video link (small) desp </label>
-                                <input type="text" class="form-control" maxlength="30" name="slider_link_descp" id="slider_link_descp" >
-                                <div class="invalid-feedback">
-                                    Please enter the small descp for video.
                                 </div>
                             </div>
 

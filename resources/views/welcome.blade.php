@@ -6,68 +6,84 @@
     .spacing-5 {
         padding: 250px 15px 80px;
     }
+    .ttm-icon.ttm-icon_element-onlytxt i{
+        top: -5px;
+    }
 
+    .ttm-icon.ttm-icon_element-size-lg i {
+        font-size: 75px;
+    }
 </style>
 
 @endsection
 @section('content')
     @if(count($sliders) > 0)
 
-        <!-- Banner -->
-    <div class="banner_slider">
-        @foreach(@$sliders as $slider)
+        <div class="banner_slider_wrapper">
+            <div class="banner_slider">
+                @foreach(@$sliders as $slider)
+                <div class="slide" style="background-image: url({{ asset('/images/sliders/'.$slider->image) }});    box-shadow: rgb(0 0 0) 0px 0px 540px 50px inset;" >
 
-            <div class="slide">
-                <div class="slide_img" style="background-image: url({{ asset('/images/sliders/'.$slider->image) }});"></div>
-                <div class="slide__content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="slide__content--headings d-flex">
-                                    <div data-animation="fadeInLeft" class="padding_left3 ttm-bgcolor-skincolor"></div>
-                                    <div class="padding_left30 padding_top10 padding_bottom10">
-{{--                                        <h3  data-animation="fadeInDown">{{@$slider->subheading}}</h3>--}}
-                                        <h2  data-animation="fadeInDown"><?php $split = explode(" ", ucwords(@$slider->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$slider->heading))."\n"}} </h2>
-                                        <h2  data-animation="fadeInDown"><span class="ttm-textcolor-skincolor">{{$split[count($split)-1]}}</span></h2>
-                                        <p  data-animation="fadeInDown" class="ttm-textcolor-darkgrey">{{ucfirst(@$slider->subheading)}}</p>
-                                        <div class="d-sm-flex margin_top30 align-items-center res-767-margin_top20" data-animation="fadeInUp" data-delay="1.4">
-
-                                            <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-border ttm-btn-color-dark margin_right4"
-                                               href="{{@$slider->link}}">
-                                                {{ (@$slider->button !== null) ? $slider->button :"read more"}}
-                                            </a>
-                                            @if(@$slider->slider_link !== null)
-                                                <a href="{{$slider->slider_link}}" target="_self" class="ttm_prettyphoto ttm-btn btn-inline ttm-btn-size-md margin_left30">
+                    <div class="slide__content justify-content-end ttm-textcolor-white">
+                        <div class="container">
+                            <div class="row">
+                                @if($loop->odd)
+                                    <div class="col-lg-12">
+                                    <div class="slide__content--headings d-md-flex padding_bottom40">
+                                        <h2  data-animation="fadeInLeft"><?php $split = explode(" ", ucwords(@$slider->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$slider->heading))."\n"}}  <span class="ttm-textcolor-skincolor">{{$split[count($split)-1]}}</span></h2>
+                                        <div data-animation="fadeInDown" class="padding_left3 margin_left40 margin_right40 ttm-bgcolor-skincolor"></div>
+                                        <div class="padding_bottom10 res-991-padding_bottom5">
+                                            <p  data-animation="fadeInRight" data-delay="0.3">{{ucfirst(@$slider->subheading)}}</p>
+                                            <div class="d-flex margin_top25 align-items-center res-991-margin_top15" data-animation="fadeInUp" data-delay="1.4">
+                                                <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-skincolor" href="{{@$slider->link}}">
+                                                    {{ (@$slider->button !== null) ? $slider->button :"read more"}}
+                                                </a>
+                                                @if(@$slider->slider_link !== null)
+                                                    <a href="{{$slider->slider_link}}" target="_self" class="ttm_prettyphoto ttm-btn btn-inline ttm-btn-size-md margin_left30">
                                                         <span class="ttm-icon ttm-icon_element-fill ttm-icon_element-color-skincolor ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_right15 margin_bottom0">
                                                             <i class="fa fa-play margin_left0 padding_left0"></i>
-                                                        </span><span> WATCH VIDEO</span>
-                                                </a>
-                                                <div data-animation="fadeInDown" class="arrow-block md-hide">
-                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/slides/slider-shape-border.png')}}" alt="arrow-img">
-                                                </div>
-                                                <div data-animation="fadeInDown" class="circle-block md-hide">
-                                                    <span>{{ ($slider->slider_link_descp !== null) ? ucwords($slider->slider_link_descp) :"how do we generate good idea"}}</span>
-                                                </div>
-                                            @endif
+                                                        </span>
+                                                    </a>
+                                                @endif
+                                            </div>
                                         </div>
 
                                     </div>
                                 </div>
+                                @else
+                                    <div class="col-lg-12">
+                                        <div class="slide__content--headings d-md-flex padding_bottom40 justify-content-between align-items-center">
+                                            <div class="w-75">
+                                                <h2  data-animation="fadeInDown" class="s2"><?php $split = explode(" ", ucwords(@$slider->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$slider->heading))."\n"}}  <span class="ttm-textcolor-skincolor">{{$split[count($split)-1]}}.</h2>
+                                                <p data-animation="fadeInDown" data-delay="0.3" class="w-75">{{ucfirst(@$slider->subheading)}}</p>
+                                            </div>
+                                            <div data-animation="fadeInUp" data-delay="1.4">
+                                                <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-skincolor" href="{{@$slider->link}}"> {{ (@$slider->button !== null) ? $slider->button :"Explore"}}</a>
+                                            </div>
+                                            @if(@$slider->slider_link !== null)
+                                                <a href="{{$slider->slider_link}}" target="_self" class="ttm_prettyphoto ttm-btn btn-inline ttm-btn-size-md margin_left30">
+                                                        <span class="ttm-icon ttm-icon_element-fill ttm-icon_element-color-skincolor ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_right15 margin_bottom0">
+                                                            <i class="fa fa-play margin_left0 padding_left0"></i>
+                                                        </span>
+                                                </a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-        @endforeach
-
-    </div>
-    <!-- Banner end-->
+        </div>
     @endif
 
 
     <!--site-main start-->
     <div class="site-main">
 
+        @if(!empty($homepage_info->tf_heading1))
         <section class="ttm-row broken-section ttm-bgcolor-skincolor clearfix">
             <div class="container-fluid">
                 <div class="row row-equal-height">
@@ -81,16 +97,16 @@
                                         <div class="featured-icon-box icon-align-before-content style4">
                                             <div class="featured-icon">
                                                 <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-white ttm-icon_element-size-lg">
-                                                    <i class="flaticon-management"></i>
+                                                    <i class="flaticon-briefcase-1"></i>
                                                     <i class="ttm-num ti-info"></i>
                                                 </div>
                                             </div>
                                             <div class="featured-content">
                                                 <div class="featured-title">
-                                                    <h3>Franchise Development</h3>
+                                                    <h3>{{@$homepage_info->tf_heading1}}</h3>
                                                 </div>
                                                 <div class="featured-desc">
-                                                    <p>Experts to build &amp; customize franchise.</p>
+                                                    <p>{{@$homepage_info->tf_description1}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -101,16 +117,16 @@
                                         <div class="featured-icon-box icon-align-before-content style4">
                                             <div class="featured-icon">
                                                 <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-white ttm-icon_element-size-lg">
-                                                    <i class="flaticon-idea"></i>
+                                                    <i class="flaticon-corporate-1"></i>
                                                     <i class="ttm-num ti-info"></i>
                                                 </div>
                                             </div>
                                             <div class="featured-content">
                                                 <div class="featured-title">
-                                                    <h3>Cost Transformation</h3>
+                                                    <h3>{{@$homepage_info->tf_heading2}}</h3>
                                                 </div>
                                                 <div class="featured-desc">
-                                                    <p>Align costs with strategy focus for growth.</p>
+                                                    <p>{{@$homepage_info->tf_description2}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,16 +137,16 @@
                                         <div class="featured-icon-box icon-align-before-content style4">
                                             <div class="featured-icon">
                                                 <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-white ttm-icon_element-size-lg">
-                                                    <i class="flaticon-presentation"></i>
+                                                    <i class="flaticon-corporate"></i>
                                                     <i class="ttm-num ti-info"></i>
                                                 </div>
                                             </div>
                                             <div class="featured-content">
                                                 <div class="featured-title">
-                                                    <h3>Sales &amp; Marketing</h3>
+                                                    <h3>{{@$homepage_info->tf_heading3}}</h3>
                                                 </div>
                                                 <div class="featured-desc">
-                                                    <p>Customer focused &amp; growth oriented.</p>
+                                                    <p>{{@$homepage_info->tf_description3}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -144,6 +160,7 @@
                 </div>
             </div>
         </section>
+        @endif
         <!--services-section-->
         <section class="ttm-row services-section clearfix">
             <div class="container">

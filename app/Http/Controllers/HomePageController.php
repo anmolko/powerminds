@@ -192,6 +192,26 @@ class HomePageController extends Controller
         return redirect()->back();
     }
 
+    public function topfeatures(Request $request, $id)
+    {
+        $update_theme                        =  HomePage::find($id);
+        $update_theme->tf_heading1           =  $request->input('tf_heading1');
+        $update_theme->tf_heading2           =  $request->input('tf_heading2');
+        $update_theme->tf_heading3           =  $request->input('tf_heading3');
+        $update_theme->tf_description1       =  $request->input('tf_description1');
+        $update_theme->tf_description2       =  $request->input('tf_description2');
+        $update_theme->tf_description3       =  $request->input('tf_description3');
+        $update_theme->updated_by            =  Auth::user()->id;
+
+        $status=$update_theme->update();
+        if($status){
+            Session::flash('success','Top features Section Updated Successfully');
+        } else{
+            Session::flash('error','Something Went Wrong. Top features could not be Updated');
+        }
+        return redirect()->back();
+    }
+
     public function corevalues(Request $request, $id)
     {
         $update_theme                           =  HomePage::find($id);

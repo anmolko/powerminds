@@ -14,8 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::table('homepages', function (Blueprint $table) {
-            $table->string('welcome_button2')->after('welcome_button')->nullable();
-            $table->string('welcome_link2')->after('welcome_button')->nullable();
+            $table->string('tf_heading1')->nullable();
+            $table->string('tf_heading2')->nullable();
+            $table->string('tf_heading3')->nullable();
+            $table->text('tf_description1')->nullable();
+            $table->text('tf_description2')->nullable();
+            $table->text('tf_description3')->nullable();
         });
     }
 
@@ -27,9 +31,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('homepages', function (Blueprint $table) {
-            $table->dropColumn('welcome_button2');
-            $table->dropColumn('welcome_link2');
-
+            //
         });
     }
 };
