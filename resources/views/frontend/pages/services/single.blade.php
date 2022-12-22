@@ -58,7 +58,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-12">
                             <div class="page-title-heading">
-                                <h2 class="title">{{ @$singleService->title }}</h2>
+                                <h2 class="title"></h2>
                             </div>
                             <div class="breadcrumb-wrapper">
                                 <span>
@@ -95,6 +95,11 @@
 
                         <div class="col-lg-8 content-area">
                             <div class="ttm-service-single-content-area">
+
+                                <div class="ttm-service-description pb-4">
+                                    <h3>{{ @$singleService->title }}</h3>
+                                    {!! @$singleService->sub_description !!}
+                                </div>
                                 <div class="ttm-featured-wrapper margin_bottom40">
                                     <img class="img-fluid" src="<?php if(@$singleService->banner_image){?>{{asset('/images/service/'.@$singleService->banner_image)}}<?php }?>" alt="{{@$singleService->slug}}">
                                 </div>

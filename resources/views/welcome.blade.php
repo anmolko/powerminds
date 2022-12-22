@@ -6,6 +6,10 @@
     .spacing-5 {
         padding: 250px 15px 80px;
     }
+
+    .pt-20{
+        padding-top: 80px!important;
+    }
     .ttm-icon.ttm-icon_element-onlytxt i{
         top: -5px;
     }
@@ -55,7 +59,7 @@
         <div class="banner_slider_wrapper">
             <div class="banner_slider">
                 @foreach(@$sliders as $slider)
-                <div class="slide" style="background-image: linear-gradient(to bottom, rgb(253 253 253 / 0%), rgb(0 0 1 / 80%)), url({{ asset('/images/sliders/'.$slider->image) }});" >
+                <div class="slide" style="background-image:  linear-gradient(rgba(12, 27, 51, 0) 0%, rgba(12, 27, 51, 0) 6%, rgba(12, 27, 51, 0.7) 70%, rgba(12, 27, 51, 0.88) 100%), url({{ asset('/images/sliders/'.$slider->image) }});" >
 
                     <div class="slide__content justify-content-end ttm-textcolor-white">
                         <div class="container">
@@ -202,7 +206,7 @@
 
         <!--welcome section-->
         @if(!empty($homepage_info->welcome_description))
-            <section class="ttm-row padding_zero-section clearfix">
+            <section class="ttm-row pt-20 padding_zero-section  clearfix">
                     <div class="container">
                         <!-- row -->
                         <div class="row">
@@ -488,187 +492,144 @@
         <!--What we do best-->
         @endif
 
-        <!--tab-section-->
-        <section class="ttm-row tab-section clearfix">
+        @if(count($latestServices)>0)
+        <!--Services-section-->
+        <section class="ttm-row double-section bg-img4 clearfix">
             <div class="container">
-                <!-- row -->
+                <!--row -->
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- section title -->
-                        <div class="section-title style2">
+                        <div class="section-title without-seperator title-style-center_text">
                             <div class="title-header">
-                                <h3>OUR STRATEGY</h3>
-                                <h2 class="title">We Make Best Consulting</h2>
+                                <h3>what we offer</h3>
+                                <h2 class="title">Discover Our Popular Services</h2>
                             </div>
                             <div class="title-desc">
-                                <p>The challenges it presents may seem daunting, but we help you approach change with confidence, adapt with purpose and embrace.</p>
+                                <p>Every Business is unique, at Powermind we understand this fact and instead of asking you to change. We deliver solutions that work with minimal disruption.</p>
+                            </div>
+                        </div><!-- section title end -->
+                    </div>
+                </div><!-- row end -->
+                <!-- row -->
+                <div class="row slick_slider" data-slick='{"slidesToShow": 3, "slidesToScroll": 1, "arrows":false, "autoplay":false, "dots":false, "infinite":true, "responsive":[{"breakpoint":992,"settings":{"slidesToShow": 2}},{"breakpoint":840,"settings":{"slidesToShow": 2}},{"breakpoint":650,"settings":{"slidesToShow": 1}}]}'>
+                   @foreach(@$latestServices as $service)
+                    <div class="col-md-4 col-sm-6">
+                        <!--featured-imagebox-->
+                        <div class="featured-imagebox featured-imagebox-services style2">
+                            <div class="featured-content">
+                                <div class="featured-title">
+                                    <h3><a href="{{route('service.single',$service->slug)}}">{{ucwords(@$service->title)}}</a></h3>
+                                </div>
+                            </div>
+                            <div class="ttm-box-view-overlay border-rad_6">
+                                <!-- featured-thumbnail -->
+                                <div class="featured-thumbnail">
+                                    <img class="img-fluid" src="<?php if(@$service->banner_image){?>{{asset('/images/service/'.@$service->banner_image)}}<?php }?>" alt="{{ucwords(@$service->slug)}}">
+                                </div><!-- featured-thumbnail end-->
+                                <div class="featured-hover-content">
+                                    <div class="featured-desc">
+                                        <p>{{ucwords(@$service->sub_description)}}</p>
+                                    </div>
+                                    <div class="bottom-footer">
+                                        <a class="ttm-btn btn-inline ttm-btn-size-sm ttm-btn-color-skincolor" href="{{route('service.single',$service->slug)}}">read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- featured-imagebox end-->
+                    </div>
+                    @endforeach
+                </div>
+                <!-- row end -->
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="margin_top35 text-center">
+                            <div class="end_txt_line">Challenges are just opportunies in disguise. <a class="ttm-textcolor-skincolor" href="{{route('service.frontend')}}"> View all Services!</a></div>
+                        </div>
+                    </div>
+                </div><!-- row end -->
+
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="ttm-bg ttm-col-bgcolor-yes ttm-bgcolor-white spacing-3 box-shadow">
+                            <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
+                            <div class="layer-content">
+                                <!-- slick_slider -->
+                                <div class="row slick_slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "arrows":false, "autoplay":false, "infinite":true, "responsive": [{"breakpoint":1200,"settings":{"slidesToShow": 5}}, {"breakpoint":1024,"settings":{"slidesToShow": 4}}, {"breakpoint":777,"settings":{"slidesToShow": 3}},{"breakpoint":575,"settings":{"slidesToShow": 2}}]}'>
+                                    <div class="col-lg-12">
+                                        <div class="client-box">
+                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-01">
+                                                <div class="client-thumbnail">
+                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-01.png')}}" alt="image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="client-box">
+                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-02">
+                                                <div class="client-thumbnail">
+                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-02.png')}}" alt="image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="client-box">
+                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-03">
+                                                <div class="client-thumbnail">
+                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-03.png')}}" alt="image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="client-box">
+                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-04">
+                                                <div class="client-thumbnail">
+                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-04.png')}}" alt="image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="client-box">
+                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-05">
+                                                <div class="client-thumbnail">
+                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-05.png')}}" alt="image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="client-box">
+                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-02">
+                                                <div class="client-thumbnail">
+                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-02.png')}}" alt="image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="client-box">
+                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-04">
+                                                <div class="client-thumbnail">
+                                                    <img class="img-fluid" src="{{asset('assets/frontend/')}}images/client/client-04.png" alt="image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- slick_slider end -->
                             </div>
                         </div>
                     </div>
                 </div><!-- row end -->
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="ttm-tabs ttm-tab-style-01" data-effect="fadeIn">
-                            <ul class="tabs text-center clearfix">
-                                <li class="tab"><a href="#"><i class="flaticon flaticon-idea"></i>Hi-Tech</a></li>
-                                <li class="tab"><a href="#"><i class="flaticon flaticon-employee"></i>Media</a></li>
-                                <li class="tab active"><a href="#"><i class="flaticon flaticon-organization"></i>Industrial</a></li>
-                                <li class="tab"><a href="#"><i class="flaticon flaticon-corporate"></i>Banking</a></li>
-                                <li class="tab"><a href="#"><i class="flaticon flaticon-money"></i>Medical</a></li>
-                                <li class="tab"><a href="#"><i class="flaticon flaticon-website"></i>Automotive</a></li>
-                            </ul>
-                            <div class="content-tab">
-                                <!-- content-inner -->
-                                <div class="content-inner">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="res-991-padding_bottom30 padding_right10 res-991-padding_right0">
-                                                <h3>Reason to Reject following Drawbacks</h3>
-                                                <p>To obtain higher performance, our leaders first identify the critical obstacles to forward to overcome loss. We define our company's mission & Prioritize company objetives</p>
-                                                <p><img class="img-fluid alignleft" src="{{asset('assets/frontend/images/bg-image/col-bgimage-1.jpg')}}" alt="image" width="150" height="100">Sometimes you get into it for the wrong reasons, &amp;amp; eventually it hits you on the face. These reasons can be drawbak but an eye opener too.</p>
-                                                <div class="padding_top10">
-                                                    <ul class="ttm-list ttm-list-style-icon ttm-list-icon-color-skincolor">
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Running out of money can be a good sign</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Clients are always right, except when they are wrong</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">You’re worth every penny, so show it</span></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-10">
-                                            <div class="d-inline-block single-img-wraper p-15 ttm-bgcolor-grey border-rad_6">
-                                                <img class="img-fluid auto_size" height="375" width="500" src="{{asset('assets/frontend/images/tab-img01.jpg')}}" alt="image">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- content-inner end-->
-                                <!-- content-inner -->
-                                <div class="content-inner">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-10">
-                                            <div class="d-inline-block single-img-wraper p-15 ttm-bgcolor-grey border-rad_6">
-                                                <img class="img-fluid auto_size" height="375" width="500" src="{{asset('assets/frontend/images/tab-img01.jpg')}}" alt="image">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="res-991-padding_top30 padding_left10 res-991-padding_left0">
-                                                <h3>Reason to Reject following Drawbacks</h3>
-                                                <p>To obtain higher performance, our leaders first identify the critical obstacles to forward to overcome loss. We define our company's mission & Prioritize company objetives</p>
-                                                <p><img class="img-fluid alignleft" src="{{asset('assets/frontend/images/single-img-09.jpg')}}" alt="image" width="150" height="100">Sometimes you get into it for the wrong reasons, &amp;amp; eventually it hits you on the face. These reasons can be drawbak but an eye opener too.</p>
-                                                <div class="padding_top10">
-                                                    <ul class="ttm-list ttm-list-style-icon ttm-list-icon-color-skincolor">
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Running out of money can be a good sign</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Clients are always right, except when they are wrong</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">You’re worth every penny, so show it</span></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- content-inner end-->
-                                <!-- content-inner -->
-                                <div class="content-inner active">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="res-991-padding_bottom30 padding_right10 res-991-padding_right0">
-                                                <h3>Reason to Reject following Drawbacks</h3>
-                                                <p>To obtain higher performance, our leaders first identify the critical obstacles to forward to overcome loss. We define our company's mission & Prioritize company objetives</p>
-                                                <p><img class="img-fluid alignleft" src="{{asset('assets/frontend/images/single-img-09.jpg')}}" alt="image" width="150" height="100">Sometimes you get into it for the wrong reasons, &amp;amp; eventually it hits you on the face. These reasons can be drawbak but an eye opener too.</p>
-                                                <div class="padding_top10">
-                                                    <ul class="ttm-list ttm-list-style-icon ttm-list-icon-color-skincolor">
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Running out of money can be a good sign</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Clients are always right, except when they are wrong</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">You’re worth every penny, so show it</span></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-10">
-                                            <div class="d-inline-block single-img-wraper p-15 ttm-bgcolor-grey border-rad_6">
-                                                <img class="img-fluid auto_size" height="375" width="500" src="{{asset('assets/frontend/images/tab-img01.jpg')}}" alt="image">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- content-inner end-->
-                                <!-- content-inner -->
-                                <div class="content-inner">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-10">
-                                            <div class="d-inline-block single-img-wraper p-15 ttm-bgcolor-grey border-rad_6">
-                                                <img class="img-fluid auto_size" height="375" width="500" src="{{asset('assets/frontend/images/tab-img01.jpg')}}" alt="image">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="res-991-padding_top30 padding_left10 res-991-padding_left0">
-                                                <h3>Reason to Reject following Drawbacks</h3>
-                                                <p>To obtain higher performance, our leaders first identify the critical obstacles to forward to overcome loss. We define our company's mission & Prioritize company objetives</p>
-                                                <p><img class="img-fluid alignleft" src="{{asset('assets/frontend/images/single-img-09.jpg')}}" alt="image" width="150" height="100">Sometimes you get into it for the wrong reasons, &amp;amp; eventually it hits you on the face. These reasons can be drawbak but an eye opener too.</p>
-                                                <div class="padding_top10">
-                                                    <ul class="ttm-list ttm-list-style-icon ttm-list-icon-color-skincolor">
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Running out of money can be a good sign</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Clients are always right, except when they are wrong</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">You’re worth every penny, so show it</span></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- content-inner end-->
-                                <!-- content-inner -->
-                                <div class="content-inner">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="res-991-padding_bottom30 padding_right10 res-991-padding_right0">
-                                                <h3>Reason to Reject following Drawbacks</h3>
-                                                <p>To obtain higher performance, our leaders first identify the critical obstacles to forward to overcome loss. We define our company's mission & Prioritize company objetives</p>
-                                                <p><img class="img-fluid alignleft" src="{{asset('assets/frontend/images/single-img-09.jpg')}}" alt="image" width="150" height="100">Sometimes you get into it for the wrong reasons, &amp;amp; eventually it hits you on the face. These reasons can be drawbak but an eye opener too.</p>
-                                                <div class="padding_top10">
-                                                    <ul class="ttm-list ttm-list-style-icon ttm-list-icon-color-skincolor">
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Running out of money can be a good sign</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Clients are always right, except when they are wrong</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">You’re worth every penny, so show it</span></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-10">
-                                            <div class="d-inline-block single-img-wraper p-15 ttm-bgcolor-grey border-rad_6">
-                                                <img class="img-fluid auto_size" height="375" width="500" src="{{asset('assets/frontend/images/tab-img01.jpg')}}" alt="image">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- content-inner end-->
-                                <!-- content-inner -->
-                                <div class="content-inner">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-10">
-                                            <div class="d-inline-block single-img-wraper p-15 ttm-bgcolor-grey border-rad_6">
-                                                <img class="img-fluid auto_size" height="375" width="500" src="{{asset('assets/frontend/images/tab-img01.jpg')}}" alt="image">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="res-991-padding_top30 padding_left10 res-991-padding_left0">
-                                                <h3>Reason to Reject following Drawbacks</h3>
-                                                <p>To obtain higher performance, our leaders first identify the critical obstacles to forward to overcome loss. We define our company's mission & Prioritize company objetives</p>
-                                                <p><img class="img-fluid alignleft" src="{{asset('assets/frontend/images/single-img-09.jpg')}}" alt="image" width="150" height="100">Sometimes you get into it for the wrong reasons, &amp;amp; eventually it hits you on the face. These reasons can be drawbak but an eye opener too.</p>
-                                                <div class="padding_top10">
-                                                    <ul class="ttm-list ttm-list-style-icon ttm-list-icon-color-skincolor">
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Running out of money can be a good sign</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">Clients are always right, except when they are wrong</span></li>
-                                                        <li><i class="fa fa-arrow-circle-right"></i><span class="ttm-list-li-content">You’re worth every penny, so show it</span></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- content-inner end-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
-        <!--tab-section end-->
+        <!--services-section end-->
+        @endif
+
 
         <!--testimonial-section-->
         <section class="ttm-row testimonial-section bg-img1 ttm-bgcolor-grey ttm-bg ttm-bgimage-yes clearfix">
@@ -830,297 +791,9 @@
         <!--cta-section end-->
         @endif
 
-        <!-- tab-section -->
-        <section class="ttm-row tab-section clearfix">
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- section-title -->
-                        <div class="section-title title-style-center_text">
-                            <div class="title-header">
-                                <h3>BUSINESS TO BUSINESS</h3>
-                                <h2 class="title">Learning Analytics Solutions</h2>
-                            </div>
-                            <div class="title-desc">
-                                <p>With a broad range of experience across multiple industries around the globe, our award-winning team produces that people love to use.</p>
-                            </div>
-                        </div><!-- section-title end -->
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="row ttm-tabs ttm-tab-style-02" data-effect="fadeIn">
-                            <div class="col-xl-8 col-lg-7 content-tab padding_right45">
-                                <!-- content-inner -->
-                                <div class="content-inner active">
-                                    <!-- featured-imagebox-post -->
-                                    <div class="featured-imagebox featured-imagebox-services style1 border-rad_6 ttm-textcolor-white">
-                                        <div class="featured-thumbnail">
-                                            <img src="{{asset('assets/frontend/images/services/services-01.jpg')}}" height="480" width="750" alt="image">
-                                        </div>
-                                        <div class="featured-content">
-                                            <div class="featured-title">
-                                                <span>25 Jobs in 10 Differents Companies</span>
-                                                <h3>Business Case for Sustainability</h3>
-                                            </div>
-                                            <div class="featured-desc">
-                                                <p>We are specialists in both economics and information techno gies and we apply our full range of talent.</p>
-                                            </div>
-                                            <a href="#" class="ttm-btn btn-inline ttm-btn-size-md">
-                                                    <span class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_bottom0">
-                                                        <i class="ti ti-angle-right margin_left0"></i>
-                                                    </span>
-                                            </a>
-                                        </div>
-                                    </div><!-- featured-imagebox-post end-->
-                                </div>
-                                <!-- content-inner -->
-                                <div class="content-inner">
-                                    <!-- featured-imagebox-post -->
-                                    <div class="featured-imagebox featured-imagebox-services style1 border-rad_6 ttm-textcolor-white">
-                                        <div class="featured-thumbnail">
-                                            <img src="{{asset('assets/frontend/images/services/services-02.jpg')}}" height="480" width="750" alt="image">
-                                        </div>
-                                        <div class="featured-content">
-                                            <div class="featured-title">
-                                                <span>25 Jobs in 10 Differents Companies</span>
-                                                <h3>Our Transformation Policy</h3>
-                                            </div>
-                                            <div class="featured-desc">
-                                                <p>We are specialists in both economics and information techno gies and we apply our full range of talent.</p>
-                                            </div>
-                                            <a href="#" class="ttm-btn btn-inline ttm-btn-size-md">
-                                                    <span class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_bottom0">
-                                                        <i class="ti ti-angle-right margin_left0"></i>
-                                                    </span>
-                                            </a>
-                                        </div>
-                                    </div><!-- featured-imagebox-post end-->
-                                </div>
-                                <!-- content-inner -->
-                                <div class="content-inner">
-                                    <!-- featured-imagebox-post -->
-                                    <div class="featured-imagebox featured-imagebox-services style1 border-rad_6 ttm-textcolor-white">
-                                        <div class="featured-thumbnail">
-                                            <img src="{{asset('assets/frontend/images/services/services-01.jpg')}}" height="480" width="750" alt="image">
-                                        </div>
-                                        <div class="featured-content">
-                                            <div class="featured-title">
-                                                <span>25 Jobs in 10 Differents Companies</span>
-                                                <h3>Our Customer Strategy</h3>
-                                            </div>
-                                            <div class="featured-desc">
-                                                <p>We are specialists in both economics and information techno gies and we apply our full range of talent.</p>
-                                            </div>
-                                            <a href="#" class="ttm-btn btn-inline ttm-btn-size-md">
-                                                    <span class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_bottom0">
-                                                        <i class="ti ti-angle-right margin_left0"></i>
-                                                    </span>
-                                            </a>
-                                        </div>
-                                    </div><!-- featured-imagebox-post end-->
-                                </div>
-                                <!-- content-inner -->
-                                <div class="content-inner">
-                                    <!-- featured-imagebox-post -->
-                                    <div class="featured-imagebox featured-imagebox-services style1 border-rad_6 ttm-textcolor-white">
-                                        <div class="featured-thumbnail">
-                                            <img src="{{asset('assets/frontend/images/services/services-02.jpg')}}" height="480" width="750" alt="image">
-                                        </div>
-                                        <div class="featured-content">
-                                            <div class="featured-title">
-                                                <span>25 Jobs in 10 Differents Companies</span>
-                                                <h3>Brand Management Career</h3>
-                                            </div>
-                                            <div class="featured-desc">
-                                                <p>We are specialists in both economics and information techno gies and we apply our full range of talent.</p>
-                                            </div>
-                                            <a href="#" class="ttm-btn btn-inline ttm-btn-size-md">
-                                                    <span class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_bottom0">
-                                                        <i class="ti ti-angle-right margin_left0"></i>
-                                                    </span>
-                                            </a>
-                                        </div>
-                                    </div><!-- featured-imagebox-post end-->
-                                </div>
-                                <!-- content-inner -->
-                                <div class="content-inner">
-                                    <!-- featured-imagebox-post -->
-                                    <div class="featured-imagebox featured-imagebox-services style1 border-rad_6 ttm-textcolor-white">
-                                        <div class="featured-thumbnail">
-                                            <img src="{{asset('assets/frontend/images/services/services-01.jpg')}}" height="480" width="750" alt="image">
-                                        </div>
-                                        <div class="featured-content">
-                                            <div class="featured-title">
-                                                <span>25 Jobs in 10 Differents Companies</span>
-                                                <h3>Our Advanced Analytics Graph</h3>
-                                            </div>
-                                            <div class="featured-desc">
-                                                <p>We are specialists in both economics and information techno gies and we apply our full range of talent.</p>
-                                            </div>
-                                            <a href="#" class="ttm-btn btn-inline ttm-btn-size-md">
-                                                    <span class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_bottom0">
-                                                        <i class="ti ti-angle-right margin_left0"></i>
-                                                    </span>
-                                            </a>
-                                        </div>
-                                    </div><!-- featured-imagebox-post end-->
-                                </div>
-                                <!-- content-inner -->
-                                <div class="content-inner">
-                                    <!-- featured-imagebox-post -->
-                                    <div class="featured-imagebox featured-imagebox-services style1 border-rad_6 ttm-textcolor-white">
-                                        <div class="featured-thumbnail">
-                                            <img src="{{asset('assets/frontend/images/services/services-01.jpg')}}" height="480" width="750" alt="image">
-                                        </div>
-                                        <div class="featured-content">
-                                            <div class="featured-title">
-                                                <span>25 Jobs in 10 Differents Companies</span>
-                                                <h3>Growth Strategies in Business</h3>
-                                            </div>
-                                            <div class="featured-desc">
-                                                <p>We are specialists in both economics and information techno gies and we apply our full range of talent.</p>
-                                            </div>
-                                            <a href="#" class="ttm-btn btn-inline ttm-btn-size-md">
-                                                    <span class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_bottom0">
-                                                        <i class="ti ti-angle-right margin_left0"></i>
-                                                    </span>
-                                            </a>
-                                        </div>
-                                    </div><!-- featured-imagebox-post end-->
-                                </div>
-                            </div>
-                            <ul class="col-xl-4 col-lg-5 res-991-padding_left15 padding_right15 tabs clearfix">
-                                <li class="tab active">
-                                    <a href="#">
-                                        <i class="flaticon flaticon-idea-1"></i>
-                                        <h3>Sustainability</h3>
-                                    </a>
-                                </li>
-                                <li class="tab">
-                                    <a href="#">
-                                        <i class="flaticon flaticon-salary"></i>
-                                        <h3>Transformation</h3>
-                                    </a>
-                                </li>
-                                <li class="tab">
-                                    <a href="#">
-                                        <i class="flaticon flaticon-employee"></i>
-                                        <h3>Customer Strategy</h3>
-                                    </a>
-                                </li>
-                                <li class="tab">
-                                    <a href="#">
-                                        <i class="flaticon flaticon-money"></i>
-                                        <h3>Marketing</h3>
-                                    </a>
-                                </li>
-                                <li class="tab">
-                                    <a href="#">
-                                        <i class="flaticon flaticon-presentation"></i>
-                                        <h3>Advanced Analytics</h3>
-                                    </a>
-                                </li>
-                                <li class="tab">
-                                    <a href="#">
-                                        <i class="flaticon flaticon-briefcase"></i>
-                                        <h3>Growth Strategies</h3>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- tab-section end -->
 
-        <!--fid-section-->
-{{--        <section class="ttm-row fid-section ttm-bgimage-yes bg-img3 ttm-bg ttm-bgcolor-darkgrey clearfix">--}}
-{{--            <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>--}}
-{{--            <div class="container">--}}
-{{--                <!-- row -->--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-lg-4 col-md-6">--}}
-{{--                        <!-- ttm-fid -->--}}
-{{--                        <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style1">--}}
-{{--                            <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">--}}
-{{--                                <i class="flaticon flaticon-presentation"></i>--}}
-{{--                            </div>--}}
-{{--                            <div class="ttm-fid-contents">--}}
-{{--                                <span>Projects</span>--}}
-{{--                                <h4 class="ttm-fid-inner">--}}
-{{--                                        <span   data-appear-animation="animateDigits"--}}
-{{--                                                data-from="0"--}}
-{{--                                                data-to="26"--}}
-{{--                                                data-interval="15"--}}
-{{--                                                data-before=""--}}
-{{--                                                data-before-style="sup"--}}
-{{--                                                data-after="K"--}}
-{{--                                                data-after-style="sub"--}}
-{{--                                                class="numinate">26</span>--}}
-{{--                                    <span>K</span>--}}
-{{--                                </h4>--}}
-{{--                                <h3 class="ttm-fid-title">Successful Projects</h3>--}}
-{{--                                <a class="ttm-btn ttm-btn-size-md btn-inline ttm-btn-color-skincolor" href="#">Get A Project</a>--}}
-{{--                            </div>--}}
-{{--                        </div><!-- ttm-fid end -->--}}
-{{--                    </div>--}}
-{{--                    <div class="col-lg-4 col-md-6">--}}
-{{--                        <!-- ttm-fid -->--}}
-{{--                        <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style1">--}}
-{{--                            <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">--}}
-{{--                                <i class="flaticon flaticon-idea-4"></i>--}}
-{{--                            </div>--}}
-{{--                            <div class="ttm-fid-contents">--}}
-{{--                                <span>Our Team</span>--}}
-{{--                                <h4 class="ttm-fid-inner">--}}
-{{--                                        <span   data-appear-animation="animateDigits"--}}
-{{--                                                data-from="0"--}}
-{{--                                                data-to="143"--}}
-{{--                                                data-interval="15"--}}
-{{--                                                data-before=""--}}
-{{--                                                data-before-style="sup"--}}
-{{--                                                data-after="+"--}}
-{{--                                                data-after-style="span"--}}
-{{--                                                class="numinate">143--}}
-{{--                                        </span>--}}
-{{--                                    <span>+</span>--}}
-{{--                                </h4>--}}
-{{--                                <h3 class="ttm-fid-title">Experienced Staff</h3>--}}
-{{--                                <a class="ttm-btn ttm-btn-size-md btn-inline ttm-btn-color-skincolor" href="#">Team Members</a>--}}
-{{--                            </div>--}}
-{{--                        </div><!-- ttm-fid end -->--}}
-{{--                    </div>--}}
-{{--                    <div class="col-lg-4 col-md-6">--}}
-{{--                        <!-- ttm-fid -->--}}
-{{--                        <div class="ttm-fid inside ttm-fid-with-icon ttm-fid-view-lefticon style1">--}}
-{{--                            <div class="ttm-fid-icon-wrapper ttm-textcolor-skincolor">--}}
-{{--                                <i class="flaticon flaticon-teamwork-1"></i>--}}
-{{--                            </div>--}}
-{{--                            <div class="ttm-fid-contents">--}}
-{{--                                <span>Happy Clients</span>--}}
-{{--                                <h4 class="ttm-fid-inner">--}}
-{{--                                        <span   data-appear-animation="animateDigits"--}}
-{{--                                                data-from="0"--}}
-{{--                                                data-to="99"--}}
-{{--                                                data-interval="15"--}}
-{{--                                                data-before=""--}}
-{{--                                                data-before-style="sup"--}}
-{{--                                                data-after="%"--}}
-{{--                                                data-after-style="span"--}}
-{{--                                                class="numinate">99--}}
-{{--                                        </span>--}}
-{{--                                    <span>%</span>--}}
-{{--                                </h4>--}}
-{{--                                <h3 class="ttm-fid-title">Client Satisfaction</h3>--}}
-{{--                                <a class="ttm-btn ttm-btn-size-md btn-inline ttm-btn-color-skincolor" href="#">Testmonials</a>--}}
-{{--                            </div>--}}
-{{--                        </div><!-- ttm-fid end -->--}}
-{{--                    </div>--}}
-{{--                </div><!-- row end -->--}}
-{{--            </div>--}}
-{{--        </section>--}}
-        <!--fid-section end-->
+
+
 
         @if(count($latestPosts) > 2)
         <!--blog-section-->

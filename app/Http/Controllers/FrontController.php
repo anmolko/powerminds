@@ -87,15 +87,15 @@ class FrontController extends Controller
 
     public function index()
     {
-        $clients =$this->client->orderBy('created_at', 'asc')->get();
+        $clients        = $this->client->orderBy('created_at', 'asc')->get();
         $latestServices = $this->service->inRandomOrder()->take(5)->get();
-        $countries  = CountryState::getCountries();
-        $sliders =$this->slider->where('status','active')->orderBy('created_at', 'asc')->get();
-        $homepage_info = $this->home_page->first();
+        $countries      = CountryState::getCountries();
+        $sliders        = $this->slider->where('status','active')->orderBy('created_at', 'asc')->get();
+        $homepage_info  = $this->home_page->first();
 
-        $testimonials = $this->testimonial->get();
-        $latestPosts = $this->blog->inRandomOrder()->take(6)->get();
-        $recruitments =$this->recruitment_process->get();
+        $testimonials   = $this->testimonial->get();
+        $latestPosts    = $this->blog->inRandomOrder()->take(6)->get();
+        $recruitments   = $this->recruitment_process->get();
 
         return view('welcome',compact('recruitments','testimonials','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
     }
