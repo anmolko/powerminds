@@ -65,7 +65,7 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <label class="form-label" for="name-input">Provider Name</label>
-                                <input type="text" name="name" class="form-control" id="name-input"  maxlength="15"
+                                <input type="text" name="name" class="form-control" id="name-input"  maxlength="30"
                                        placeholder="Enter name of testimonial provider" />
                                 <div class="invalid-feedback">
                                     Please enter the name.
@@ -73,7 +73,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="title-position">Position /  Company name</label>
-                                <input type="text" name="position" class="form-control" id="title-position" maxlength="18"
+                                <input type="text" name="position" class="form-control" id="title-position" maxlength="25"
                                        placeholder="Enter position/company name of provider" required>
                                 <div class="invalid-feedback">
                                     Please enter the position/company name.
@@ -81,7 +81,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="description-input">Description</label>
-                                <textarea class="form-control" maxlength="300" id="description-input" name="description" placeholder="Enter Testimonial description" rows="4" required></textarea>
+                                <textarea class="form-control" maxlength="600" id="description-input" name="description" placeholder="Enter Testimonial description" rows="4" required></textarea>
                                 <div class="invalid-feedback">
                                     Please enter the description.
                                 </div>
@@ -95,7 +95,7 @@
                                                 id="work-foreground-img-file-input" onchange="loadbasicFile('work-foreground-img-file-input','current-work-img',event)" name="image" required
                                                 class="work-foreground-img-file-input" >
 
-                                        <figcaption class="figure-caption">Select your related testimonial image (100 x 100px).</figcaption>
+                                        <figcaption class="figure-caption">Select your related testimonial image (150 x 150px).</figcaption>
                                         <div class="invalid-feedback" >
                                             Please select a image.
                                         </div>

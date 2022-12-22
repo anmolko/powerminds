@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="mb-3">
                         <label class="form-label" for="update-name">Provider Name</label>
-                        <input type="text" name="name" class="form-control" id="update-name"  maxlength="15"
+                        <input type="text" name="name" class="form-control" id="update-name"  maxlength="30"
                                placeholder="Enter name of testimonial provider" />
                         <div class="invalid-feedback">
                             Please enter the name.
@@ -19,7 +19,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="update-position">Position /  Company name</label>
-                        <input type="text" name="position" class="form-control" id="update-position"  maxlength="18"
+                        <input type="text" name="position" class="form-control" id="update-position"  maxlength="25"
                                placeholder="Enter position/company name of provider" required>
                         <div class="invalid-feedback">
                             Please enter the position/company name.
@@ -28,7 +28,7 @@
 
                     <div class="mb-3">
                         <label class="form-label" for="update-description">Description</label>
-                        <textarea class="form-control" maxlength="300" id="update-description" name="description" placeholder="Enter Testimonial description" rows="4" required></textarea>
+                        <textarea class="form-control" maxlength="600" id="update-description" name="description" placeholder="Enter Testimonial description" rows="4" required></textarea>
                         <div class="invalid-feedback">
                             Please enter the description.
                         </div>
@@ -42,7 +42,7 @@
                                         id="work-foreground-img-file-update" onchange="loadbasicFile('work-foreground-img-file-update','current-update-img',event)" name="image"
                                         class="work-foreground-img-file-update" >
 
-                                <figcaption class="figure-caption">Select your related testimonial image (100 x 100px).</figcaption>
+                                <figcaption class="figure-caption">Select your related testimonial image (150 x 150px).</figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>

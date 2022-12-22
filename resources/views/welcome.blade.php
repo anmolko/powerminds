@@ -630,6 +630,7 @@
         <!--services-section end-->
         @endif
 
+        @if(count($testimonials)>0)
 
         <!--testimonial-section-->
         <section class="ttm-row testimonial-section bg-img1 ttm-bgcolor-grey ttm-bg ttm-bgimage-yes clearfix">
@@ -645,13 +646,14 @@
                                 <h2 class="title">What Our Clients Say?</h2>
                             </div>
                             <div class="title-desc">
-                                <p>We are specialists in both economics and information technologies and we apply our full range of talent to creating the perfect solution for each client’s needs.</p>
+                                <p>We apply client centric approach in creating the perfect solution for each client’s needs, thus, their feedback is valuable to us.</p>
                             </div>
                         </div><!-- section-title end -->
                     </div>
                 </div><!-- row end -->
-                <div class="row slick_slider" data-slick='{"slidesToShow": 2, "slidesToScroll": 1, "arrows":false, "autoplay":false, "dots":false, "infinite":true, "responsive":[{"breakpoint":992,"settings":{"slidesToShow": 2}},{"breakpoint":840,"settings":{"slidesToShow": 1}}]}'>
-                    <div class="col-lg-6">
+                <div class="row slick_slider" data-slick='{"slidesToShow": 2, "slidesToScroll": 1, "arrows":false, "autoplay":true, "dots":false, "infinite":true, "responsive":[{"breakpoint":992,"settings":{"slidesToShow": 2}},{"breakpoint":840,"settings":{"slidesToShow": 1}}]}'>
+                    @foreach($testimonials as $testimonial)
+                        <div class="col-lg-6">
                         <!-- testimonials -->
                         <div class="testimonials ttm-testimonial-box-view-style1">
                             <div class="testimonial-content">
@@ -660,100 +662,29 @@
                                         <div class="testimonial-avatar">
                                             <!-- testimonials-img -->
                                             <div class="testimonial-img">
-                                                <img class="img-center" src="{{asset('assets/frontend/images/testimonial/01.jpg')}}" alt="testimonial-img">
+                                                <img class="img-center" src="<?php if(!empty(@$testimonial->image)){ echo '/images/testimonial/'.@$testimonial->image; } ?>" alt="testimonial-img">
                                             </div><!-- testimonials-img end-->
                                         </div>
                                         <!-- testimonials-caption -->
                                         <div class="testimonial-caption">
+                                            <h3>{{ucwords($testimonial->name)}}</h3>
                                             <div class="star-ratings">
-                                                <ul class="rating">
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star-half-o"></i></li>
-                                                </ul>
+                                                <label>{{ucwords($testimonial->position)}}</label>
                                             </div>
-                                            <h3>Raymon Myers</h3>
-                                            <label>CEO At Laboratory</label>
                                         </div>
                                     </div><!-- testimonials-caption end -->
                                 </div>
-                                <blockquote>Analysts have done an excellent job presenting the analysis and insights. I am confident in saying that they have helped move business!</blockquote>
+                                <blockquote>{!! @$testimonial->description !!}</blockquote>
                             </div>
                         </div>
                         <!-- testimonials END -->
                     </div>
-                    <div class="col-lg-6">
-                        <!-- testimonials -->
-                        <div class="testimonials ttm-testimonial-box-view-style1">
-                            <div class="testimonial-content">
-                                <div class="testimonial-content-inner">
-                                    <div class="d-flex align-items-center">
-                                        <div class="testimonial-avatar">
-                                            <!-- testimonials-img -->
-                                            <div class="testimonial-img">
-                                                <img class="img-center" src="{{asset('assets/frontend/images/testimonial/02.jpg')}}" alt="testimonial-img">
-                                            </div><!-- testimonials-img end-->
-                                        </div>
-                                        <!-- testimonials-caption -->
-                                        <div class="testimonial-caption">
-                                            <div class="star-ratings">
-                                                <ul class="rating">
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star-half-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <h3>Rayan Methew</h3>
-                                            <label>Business man</label>
-                                        </div>
-                                    </div><!-- testimonials-caption end-->
-                                </div>
-                                <blockquote>I would like to thank you for your excellent efforts and commitment in assisting us to obtain 510(k) clearance. I am impressed</blockquote>
-                            </div>
-                        </div>
-                        <!-- testimonials END -->
-                    </div>
-                    <div class="col-lg-6">
-                        <!-- testimonials -->
-                        <div class="testimonials ttm-testimonial-box-view-style1">
-                            <!-- testimonials-content -->
-                            <div class="testimonial-content">
-                                <div class="testimonial-content-inner">
-                                    <div class="d-flex align-items-center">
-                                        <div class="testimonial-avatar">
-                                            <!-- testimonials-img -->
-                                            <div class="testimonial-img">
-                                                <img class="img-center" src="{{asset('assets/frontend/images/testimonial/03.jpg')}}" alt="testimonial-img">
-                                            </div><!-- testimonials-img end-->
-                                        </div>
-                                        <!-- testimonials-caption -->
-                                        <div class="testimonial-caption">
-                                            <div class="star-ratings">
-                                                <ul class="rating">
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                    <li class="active"><i class="fa fa-star-half-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <h3>khon Martin</h3>
-                                            <label>Los Angeles</label>
-                                        </div>
-                                    </div><!-- testimonials-caption end-->
-                                </div>
-                                <blockquote>The Axacus team are ultimate rock stars! They are a highly educated,&amp; experienced team that is dedicated to helping..</blockquote>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
         <!--testimonial-section end-->
+        @endif
 
         @if(!empty($homepage_info->action_heading))
         <!--cta-section-->
