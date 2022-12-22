@@ -3,7 +3,7 @@ return [
     /**
      * Url path to use for this package routes
      */
-    'url_path' => '/nms-job',
+    'url_path' => '/powerminds-apply',
 
     /**
      * Template layout file. This is the path to the layout file your application uses
