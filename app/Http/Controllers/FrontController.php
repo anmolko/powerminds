@@ -61,7 +61,7 @@ class FrontController extends Controller
     protected $S_category = null;
     protected $recruitment_process = null;
 
-    public function __construct(RecruitmentProcess $recruitment_process,Career $career,Team $team,Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
+    public function __construct(RecruitmentProcess $recruitment_process,Career $career,Team $team,Testimonial $testimonial,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
     {
         $this->setting              = $setting;
         $this->bcategory            = $bcategory;
@@ -72,7 +72,6 @@ class FrontController extends Controller
         $this->client               = $client;
         $this->slider               = $slider;
         $this->home_page            = $home_page;
-        $this->demand               = $demand;
         $this->testimonial          = $testimonial;
         $this->album                = $album;
         $this->team                 = $team;
@@ -375,14 +374,6 @@ class FrontController extends Controller
     public function career(){
         $careers =    $this->career->orderBy('end_date', 'DESC')->get();
         return view('frontend.pages.career',compact('careers'));
-    }
-
-    public function demands(){
-        $today = date('Y-m-d');
-        $alldemands = $this->demand->orderBy('created_at', 'asc')->where('status','publish')->where('start_date','<=',$today)->where('end_date','>=',$today)->paginate(6);
-        $latestDemands = $this->demand->orderBy('created_at', 'DESC')->where('status','publish')->where('start_date','<=',$today)->where('end_date','>=',$today)->take(3)->get();
-
-        return view('frontend.pages.demand.index',compact('alldemands','latestDemands'));
     }
 
     public function demandSingle($slug){

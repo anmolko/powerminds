@@ -77,31 +77,31 @@
                                 <li><a href="@if(!empty(@$setting_data->instagram)) {{@$setting_data->instagram}} @endif" target="_blank" aria-label="instagram"><i class="fa fa-instagram"></i></a></li>
                                 @endif
                                 @if(!empty(@$setting_data->linkedin))
-                                <li><a href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" aria-label="linkedin"><i class="fa fa-linkedin-in"></i></a></li>
+                                <li><a href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" aria-label="linkedin"><i class="fa fa-linkedin"></i></a></li>
                                 @endif
                                 @if(!empty(@$setting_data->youtube))
                                 <li><a href="@if(!empty(@$setting_data->youtube)) {{@$setting_data->youtube}} @endif" target="_blank" aria-label="youtube"><i class="fa fa-youtube"></i></a></li>
                                 @endif
                             </ul>
                         </div>
-                        <div class="top_bar_contact_item d-flex align-items-center">
-                            <div class="header_search">
-                                <a href="#" class="btn-default search_btn"><i class="fa fa-search"></i></a>
-                                <div class="header_search_content">
-                                    <div class="header_search_content_inner">
-                                        <a href="#" class="close_btn"><i class="ti ti-close"></i></a>
-                                        <form id="searchbox" method="get" action="#">
-                                            <input class="search_query" type="text" id="search_query_top" name="s" placeholder="Type Word Then Enter.." value="">
-                                            <button type="submit" class="btn close-search"><i class="ti ti-search"></i></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="top_bar_contact_item d-flex align-items-center" style="padding-left: 0; border-right:none!important;">
+{{--                            <div class="header_search">--}}
+{{--                                <a href="#" class="btn-default search_btn"><i class="fa fa-search"></i></a>--}}
+{{--                                <div class="header_search_content">--}}
+{{--                                    <div class="header_search_content_inner">--}}
+{{--                                        <a href="#" class="close_btn"><i class="ti ti-close"></i></a>--}}
+{{--                                        <form id="searchbox" method="get" action="#">--}}
+{{--                                            <input class="search_query" type="text" id="search_query_top" name="s" placeholder="Type Word Then Enter.." value="">--}}
+{{--                                            <button type="submit" class="btn close-search"><i class="ti ti-search"></i></button>--}}
+{{--                                        </form>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="ttm-bg ttm-col-bgcolor-yes ttm-right-span ttm-bgcolor-skincolor ttm-textcolor-white mr-auto margin_left50 padding_left15">
                                 <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
                                 <div class="layer-content">
                                     <div class="header_btn">
-                                        <a class="ttm-btn ttm-btn-size-sm ttm-btn-color-white btn-inline" href="#">Get A Quote</a>
+                                        <a class="ttm-btn ttm-btn-size-sm ttm-btn-color-white btn-inline" href="{{route('contact.store')}}">Send a Message</a>
                                     </div>
                                 </div>
                             </div>
