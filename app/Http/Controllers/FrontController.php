@@ -372,7 +372,7 @@ class FrontController extends Controller
     }
 
     public function career(){
-        $careers =    $this->career->orderBy('end_date', 'DESC')->paginate(1);
+        $careers =    $this->career->orderBy('end_date', 'DESC')->paginate(6);
         return view('frontend.pages.career',compact('careers'));
     }
 
