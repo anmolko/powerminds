@@ -37,7 +37,7 @@
     .welcome-section ul li:before, .welcome-section ol li:before{
         content: "\f0a9";
         padding-right: 5px;
-        color: #e12454;
+        color: #27aae1;
         display: inline-block;
         font: normal normal normal 14px/1 FontAwesome;
         font-size: inherit;

@@ -61,25 +61,24 @@ class FrontController extends Controller
     protected $S_category = null;
     protected $recruitment_process = null;
 
-    public function __construct(RecruitmentProcess $recruitment_process,Career $career,ServiceCategory $S_category,Team $team,Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
+    public function __construct(RecruitmentProcess $recruitment_process,Career $career,Team $team,Testimonial $testimonial, Job $demand,AlbumGallery $album_gallery,Album $album,Slider $slider,HomePage $home_page,Client $client,PageSection $pagesection,Page $page,Service $service,Setting $setting,BlogCategory $bcategory,Blog $blog)
     {
-        $this->setting = $setting;
-        $this->bcategory = $bcategory;
-        $this->blog = $blog;
-        $this->service = $service;
-        $this->page = $page;
-        $this->S_category = $S_category;
-        $this->pagesection = $pagesection;
-        $this->client = $client;
-        $this->slider = $slider;
-        $this->home_page = $home_page;
-        $this->demand = $demand;
-        $this->testimonial = $testimonial;
-        $this->album = $album;
-        $this->team = $team;
-        $this->album_gallery = $album_gallery;
-        $this->career = $career;
-        $this->recruitment_process = $recruitment_process;
+        $this->setting              = $setting;
+        $this->bcategory            = $bcategory;
+        $this->blog                 = $blog;
+        $this->service              = $service;
+        $this->page                 = $page;
+        $this->pagesection          = $pagesection;
+        $this->client               = $client;
+        $this->slider               = $slider;
+        $this->home_page            = $home_page;
+        $this->demand               = $demand;
+        $this->testimonial          = $testimonial;
+        $this->album                = $album;
+        $this->team                 = $team;
+        $this->album_gallery        = $album_gallery;
+        $this->career               = $career;
+        $this->recruitment_process  = $recruitment_process;
 
     }
 
@@ -597,17 +596,6 @@ class FrontController extends Controller
         $countries    = CountryState::getCountries();
 
         return view('frontend.pages.clients',compact('clients','countries'));
-    }
-
-    public function category(){
-        $service_categories =$this->S_category->orderBy('name', 'asc')->get();
-        return view('frontend.pages.category.index',compact('service_categories'));
-    }
-
-    public function categorySingle($slug){
-        $singleService = $this->S_category->where('slug', $slug)->first();
-        $service_categories = $this->S_category->orderBy('name', 'asc')->get();
-        return view('frontend.pages.category.single',compact('singleService','service_categories'));
     }
 
 }

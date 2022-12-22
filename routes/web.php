@@ -266,17 +266,6 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::post('/teams-sortable','App\Http\Controllers\TeamController@orderUpdate')->name('teams.order');
     //End of teams
 
-    //service category
-
-    Route::get('/service-category', 'App\Http\Controllers\ServiceCategoryController@index')->name('service-category.index');
-    Route::get('/service-category/create', 'App\Http\Controllers\ServiceCategoryController@create')->name('service-category.create');
-    Route::post('/service-category', 'App\Http\Controllers\ServiceCategoryController@store')->name('service-category.store');
-    Route::put('/service-category/{servicecat}', 'App\Http\Controllers\ServiceCategoryController@update')->name('service-category.update');
-    Route::delete('/service-category/{servicecat}', 'App\Http\Controllers\ServiceCategoryController@destroy')->name('service-category.destroy');
-    Route::get('/service-category/{servicecat}/edit', 'App\Http\Controllers\ServiceCategoryController@edit')->name('service-category.edit');
-
-    //End of service category
-
     Route::get('/press-release', 'App\Http\Controllers\PressReleaseController@index')->name('press-release.index');
     Route::get('/press-release/create', 'App\Http\Controllers\PressReleaseController@create')->name('press-release.create');
     Route::post('/press-release', 'App\Http\Controllers\PressReleaseController@store')->name('press-release.store');
