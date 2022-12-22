@@ -50,6 +50,15 @@
     }
     .ttm-alt-btn{
         background-color: #223645 !important;
+        margin-right: 15px;
+    }
+
+    .section-title h2.call-action {
+        font-weight: 700;
+        text-transform: capitalize;
+        font-size: 40px;
+        line-height: 50px;
+        margin-bottom: 0;
     }
 </style>
 
@@ -700,7 +709,7 @@
                         <div class="section-title">
                             <div class="title-header">
                                 <h3 class="font-weight-normal">{{@$homepage_info->action_heading2}}</h3>
-                                <h2 class="title">{!! wordwrap(@$homepage_info->action_heading,30,"<br>\n",TRUE) !!}</h2>
+                                <h2 class="title call-action">{!! wordwrap(@$homepage_info->action_heading,45,"<br>\n",TRUE) !!}</h2>
                             </div>
                         </div><!-- section-title end -->
                         <div class="d-inline-block">
