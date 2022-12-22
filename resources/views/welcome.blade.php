@@ -7,6 +7,9 @@
         padding: 250px 15px 80px;
     }
 
+    #totop.top-visible{
+        background-color: #0a2339;
+    }
     .pt-20{
         padding-top: 80px!important;
     }
