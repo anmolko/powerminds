@@ -94,10 +94,11 @@ class FrontController extends Controller
         $homepage_info  = $this->home_page->first();
 
         $testimonials   = $this->testimonial->get();
+        $teams          = Team::get();
         $latestPosts    = $this->blog->inRandomOrder()->take(6)->get();
         $recruitments   = $this->recruitment_process->get();
 
-        return view('welcome',compact('recruitments','testimonials','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
+        return view('welcome',compact('recruitments','testimonials','teams','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
     }
 
     public function privacy()
