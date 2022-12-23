@@ -17,7 +17,7 @@
         line-height: 1.5 !important;
         border-radius: 0.2rem !important;
     }
-  
+
 
     button.dt-button.buttons-excel.buttons-html5 {
         color: #fff !important;
@@ -34,7 +34,7 @@
         line-height: 1.5 !important;
         border-radius: 0.2rem !important;
     }
- 
+
     button.dt-button.buttons-copy.buttons-html5 {
         color: #fff !important;
         background-color: #0062cc !important;
@@ -44,8 +44,8 @@
     div#submission-index_wrapper {
         margin-top: 10px;
     }
-   
-   
+
+
     div.dt-buttons {
         margin-right: 10px;
         margin-left: 10px;
@@ -62,7 +62,7 @@
                     <div class="card-header">
                         <h5 class="card-title">
                             {{ $pageTitle }} ({{ $submissions->count() }})
-                            
+
                             <a href="{{ route('formbuilder::forms.index') }}" class="btn btn-primary float-md-end btn-sm">
                                 <i class="fa fa-arrow-left"></i> Back To Forms
                             </a>
@@ -89,24 +89,24 @@
                                             <td>{{ $submission->user->name ?? 'n/a' }}</td>
                                             @foreach($form_headers as $header)
                                                 <td>
-                                                    {{ 
+                                                    {{
                                                         $submission->renderEntryContent(
                                                             $header['name'], $header['type'], true
-                                                        ) 
+                                                        )
                                                     }}
                                                 </td>
                                             @endforeach
                                             <td>
                                                 <a href="{{ route('formbuilder::forms.submissions.show', [$form, $submission->id]) }}" class="btn btn-primary btn-sm" title="View submission">
                                                     <i class="fa fa-eye"></i> View
-                                                </a> 
+                                                </a>
 
                                                 <form action="{{ route('formbuilder::forms.submissions.destroy', [$form, $submission]) }}" method="POST" id="deleteSubmissionForm_{{ $submission->id }}" class="d-inline-block">
-                                                    @csrf 
+                                                    @csrf
                                                     @method('DELETE')
 
                                                     <button type="submit" class="btn btn-danger btn-sm confirm-form" data-form="deleteSubmissionForm_{{ $submission->id }}" data-message="Delete this submission?" title="Delete submission">
-                                                        <i class="fa fa-trash-o"></i> 
+                                                        <i class="fa fa-trash-o"></i>
                                                     </button>
                                                 </form>
                                             </td>
@@ -125,7 +125,7 @@
                             <h4 class="text-danger text-center">
                                 No submission to display.
                             </h4>
-                        </div>  
+                        </div>
                     @endif
                 </div>
             </div>
