@@ -4,77 +4,75 @@
 
 <style>
 
-
-    .gallery .post-thumb.post-overlay-active {
-        height: 320px;
-    }
-
-    img.amgroup-gallery {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
 </style>
 @endsection
 @section('content')
-
-       <!--Page Header Start-->
-       <section class="page-header" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
-            <div class="page-header-shape-1"></div>
-            <div class="page-header-shape-2"></div>
+    <!-- page-title -->
+    <div class="ttm-page-title-row">
+        <div class="ttm-page-title-row-inner ttm-bgcolor-darkgrey">
             <div class="container">
-                <div class="page-header__inner">
-                    <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="/">Home</a></li>
-                        <li><span>.</span></li>
-                        <li><a href="{{url('/album')}}">Album </a></li>
-                    </ul>
-                    <h2>Our Album</h2>
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="page-title-heading">
+                            <h2 class="title">Our Collection</h2>
+                        </div>
+                        <div class="breadcrumb-wrapper">
+                                <span>
+                                    <i class="ti ti-home margin_right1"></i>
+                                    <a title="Homepage" href="/">Home</a>
+                                </span>
+                            <span>Albums</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-        <!--Page Header End-->
+        </div>
+    </div>
+    <!-- page-title end -->
+    <!--site-main start-->
+    <div class="site-main">
 
-        <section class="team-one">
+    @if(count(@$albums) > 0)
+
+        <!--grid-section-->
+        <section class="ttm-row grid-section clearfix">
             <div class="container">
+                <!-- row -->
                 <div class="row">
-
-                @if(count(@$albums) > 0)
                     @foreach($albums as $album)
-                     
-                        <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!--Team One Single-->
-                            <div class="team-one__single">
-                                <div class="team-one__img-box">
-                                    <div class="team-one__img">
-                                        <img alt="{{ucwords(@$album->name)}}" src="{{asset('/images/albums/'.@$album->cover_image)}}">
+                        <div class="col-lg-4 col-md-6">
+                            <!--featured-imagebox-->
+                            <div class="featured-imagebox featured-imagebox-services style2">
+                                <div class="featured-content">
+                                    <div class="featured-title">
+                                        <h3><a href="{{route('album.gallery',$album->slug)}}">{{ucwords(@$album->name)}}</a></h3>
                                     </div>
-                                
+                                    <span class="ser_cate">Images ({{count(@$album->gallery)}})  </span>
+
                                 </div>
-                                <div class="team-one__member-info">
-                                    <h4 class="team-one__member-name"><a href="{{route('album.gallery',$album->slug)}}" class="post-title" >{{ucwords(@$album->name)}} ({{count(@$album->gallery)}})</a></h4>
+                                <div class="ttm-box-view-overlay border-rad_6">
+                                    <!-- featured-thumbnail -->
+                                    <div class="featured-thumbnail">
+                                        <img class="img-fluid" src="{{asset('/images/albums/'.@$album->cover_image)}}" alt="image">
+                                    </div><!-- featured-thumbnail end-->
+                                    <div class="featured-hover-content">
+                                        <div class="bottom-footer">
+                                            <a class="ttm-btn btn-inline ttm-btn-size-sm ttm-btn-color-skincolor" href="{{route('album.gallery',$album->slug)}}">View Gallery</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </div><!-- featured-imagebox end-->
                         </div>
                     @endforeach
-                @else
 
-                    <section class="no-results not-found">
-                        <header >
-                            <h1 >Nothing Found</h1>
-                        </header>
-                        <div class="page-content">
-                            <p>Sorry, there are no Album published yet.</p>
-                        </div>
-                    </section>
-                @endif
-                                                                                                                
-                   
-                
                 </div>
+                <!-- row end -->
             </div>
         </section>
+        <!--grid-section end-->
+    @endif
+
+    </div><!--site-main end-->
 
 
 @endsection

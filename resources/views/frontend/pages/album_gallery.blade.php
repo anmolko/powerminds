@@ -1,88 +1,78 @@
 @extends('frontend.layouts.master')
-@section('title') {{ucwords(@$singleAlbum->name)}} | Album @endsection
+@section('title') {{ucwords(@$singleAlbum->name)}}'s Gallery @endsection
 @section('css')
 
 <style>
-  .portfolio-style-modern .portfolio-inner .post-thumb {
-        border: 4px solid #155b84;
-    }
 
-    .gallery-one__card {
-        height: 240px;
-
-      }
-    .gallery-one__card img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .gallery-one {
-        padding-top: 120px;
-        padding-bottom: 120px;
-    }
 </style>
 @endsection
 @section('content')
-
-
-       <!--Page Header Start-->
-       <section class="page-header" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}});">
-            <div class="page-header-shape-1"></div>
-            <div class="page-header-shape-2"></div>
+    <!-- page-title -->
+    <div class="ttm-page-title-row">
+        <div class="ttm-page-title-row-inner ttm-bgcolor-darkgrey">
             <div class="container">
-                <div class="page-header__inner">
-                    <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="/">Home</a></li>
-                        <li><span>.</span></li>
-                        <li><a href="{{url('/album')}}">Album </a></li>
-                    </ul>
-                    <h2>{{ucwords(@$singleAlbum->name)}}</h2>
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="page-title-heading">
+                            <h2 class="title">{{ucwords(@$singleAlbum->name)}}'s Gallery</h2>
+                        </div>
+                        <div class="breadcrumb-wrapper">
+                                <span>
+                                    <i class="ti ti-home margin_right1"></i>
+                                    <a title="Homepage" href="/">Home</a>
+                                </span>
+                                <span class="divide">
+                                    <i class="ti ti-home margin_right1"></i>
+                                    <a title="Homepage" href="{{url('/album')}}">Albums</a>
+                                </span>
+                            <span>Gallery</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-        <!--Page Header End-->
-     
-                                                                                                            
-            <section class="gallery-one">
-                <div class="container-fluid">
-                    <div class="row masonary-layout">
-                        @if(count(@$singleAlbum->gallery) > 0)
+        </div>
+    </div>
+    <!-- page-title end -->
 
-                            @foreach($singleAlbum->gallery as $gallery)
+    <!--site-main start-->
+    <div class="site-main">
 
-                            <div class="col-md-6 col-lg-4">
-                                <div class="team-one__single">
-                                    <div class="team-one__img-box">
-                                        <div class="team-one__img gallery-one__card">
-                                            <img src="{{asset('/images/albums/gallery/'.@$gallery->filename)}}" alt="">
-                                            <a href="{{asset('/images/albums/gallery/'.@$gallery->filename)}}" class="img-popup">
-                                                <span></span>
-                                            </a>
-                                        </div>
-                                        <div class="team-one__social">
-                                            <div class="team-one__member-info">
-                                                <p class="team-one__member-title">{{ ucfirst(str_replace('-',' ',$gallery->original_name))}}</p>
+
+        <!--grid-section-->
+        <section class="ttm-row grid-section clearfix">
+            <div class="container">
+                @if(count(@$singleAlbum->gallery) > 0)
+                    <!-- row -->
+                    <div class="row row-equal-height">
+                        @foreach($singleAlbum->gallery as $gallery)
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <!--featured-icon-box-->
+                                <div class="featured-imagebox featured-imagebox-portfolio style2" >
+                                    <!-- ttm-box-view-overlay -->
+                                    <div class="ttm-box-view-overlay">
+                                        <!-- featured-thumbnail -->
+                                        <div class="featured-thumbnail" >
+                                            <a href="#" tabindex="0"><img class="img-fluid" src="{{asset('/images/albums/gallery/thumb_'.@$gallery->filename)}}" alt="image"></a>
+                                        </div><!-- featured-thumbnail end-->
+                                        <div class="featured-content">
+                                            <div class="featured-iconbox ttm-media-link">
+                                                <a class="ttm_prettyphoto ttm_image" title="{{ucwords(@$singleAlbum->name)}}'s image" data-rel="prettyPhoto" href="{{asset('/images/albums/gallery/'.@$gallery->filename)}}" tabindex="0">
+                                                    <i class="fa fa-search"></i>
+                                                </a>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div><!-- /.col-md-6 col-lg-3 -->
-                            @endforeach
-                        @else
-
-                            <div class="no-results not-found">
-                                <header >
-                                    <h1 >Nothing Found</h1>
-                                </header>
-                                <div class="page-content">
-                                    <p>Sorry, Image havenot been posted in this album yet.</p>
-                                </div>
+                                    </div><!-- ttm-box-view-overlay end-->
+                                </div><!-- featured-icon-box end-->
                             </div>
-                        @endif 
+                        @endforeach
 
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </section><!-- /.gallery-one -->
-           
-     
+                    </div><!-- row end -->
+                @endif
+            </div>
+        </section>
+        <!--grid-section end-->
+
+
+    </div><!--site-main end-->
+
 @endsection

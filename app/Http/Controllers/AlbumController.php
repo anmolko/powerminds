@@ -73,10 +73,11 @@ class AlbumController extends Controller
             mkdir($this->photos_path, 0777);
         }
 
-        $destinationPath = base_path().'/public/images/albums/';
-        $extension = $file->getClientOriginalExtension();
-        $filename=$random_name.'_cover.'.$extension;
-        $uploadSuccess = Image::make($file->getRealPath())->orientate()->fit('370','422')->save($destinationPath.$filename);
+        $destinationPath    = base_path().'/public/images/albums/';
+        $extension          = $file->getClientOriginalExtension();
+        $filename           = $random_name.'_cover.'.$extension;
+        $uploadSuccess      = Image::make($file->getRealPath())->orientate()->fit('500','500')->save($destinationPath.$filename);
+
         $album = Album::create(array(
           'name' => $request->get('name'),
           'slug' => $request->get('slug'),
@@ -148,7 +149,7 @@ class AlbumController extends Controller
             $image       = $request->file('cover_image');
             $name1       = uniqid().'_cover.'.$image->getClientOriginalExtension();
             $path        = base_path().'/public/images/albums/';
-            $moved       = Image::make($image->getRealPath())->orientate()->fit('370','422')->save($path.$name1);
+            $moved       = Image::make($image->getRealPath())->orientate()->fit('500','500')->save($path.$name1);
 
             if ($moved){
                 $album->cover_image= $name1;
@@ -187,6 +188,7 @@ class AlbumController extends Controller
         foreach ($deletealbum->gallery as $elements) {
             if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path() . '/images/albums/gallery/' . $elements->filename) && file_exists(public_path() . '/images/albums/gallery/' . $elements->resized_name)) {
                 @unlink(public_path() . '/images/albums/gallery/' . $elements->filename);
+                @unlink(public_path() . '/images/albums/gallery/thumb_' . $elements->filename);
                 @unlink(public_path() . '/images/albums/gallery/' . $elements->resized_name);
             }
         }
@@ -223,10 +225,18 @@ class AlbumController extends Controller
 
 
         for ($i = 0; $i < count($photos); $i++) {
-            $photo = $photos[$i];
-            $name = $album->name."album_gallery_".date('YmdHis') . uniqid();
-            $save_name = $name . '.' . $photo->getClientOriginalExtension();
+            $photo      = $photos[$i];
+            $rep_name   = str_replace(' ','_',$album->name);
+            $name       = $rep_name."_album_gallery_".date('YmdHis') . uniqid();
+            $thumb      = 'thumb_'.$name;
+            $save_name  = $name . '.' . $photo->getClientOriginalExtension();
+            $thumb_name = $thumb . '.' . $photo->getClientOriginalExtension();
 
+
+            Image::make($photo)
+                ->fit(370, 250)
+                ->orientate()
+                ->save($this->photos_path . '/' . $thumb_name);
 
             Image::make($photo)
                 ->orientate()
@@ -249,19 +259,20 @@ class AlbumController extends Controller
 
     public function deleteGallery(Request $request)
     {
-        $filename = $request->get('filename');
+        $filename       = $request->get('filename');
         $uploaded_image = AlbumGallery::where('filename', $filename)->first();
 
         if (empty($uploaded_image)) {
             return Response::json(['message' => 'Sorry file does not exist'], 400);
         }
 
-        $file_path = $this->photos_path . '/' . $uploaded_image->filename;
-
-        if (file_exists($file_path)) {
+        $file_path       = $this->photos_path . '/' . $uploaded_image->filename;
+        $file_path_thumb = $this->photos_path . '/' . 'thumb_'.$request->get('filename');
+        if (file_exists($file_path) && $file_path_thumb) {
             @unlink($file_path);
-        }
+            @unlink($file_path_thumb);
 
+        }
 
 
         if (!empty($uploaded_image)) {

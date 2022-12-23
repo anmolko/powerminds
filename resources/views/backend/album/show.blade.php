@@ -31,7 +31,7 @@
                         <div class="card-header">
                             <h4 class="card-title mb-0">
                                 Add image in <strong> {{ucwords(@$album->name)}} </strong>Album      </h4>
-                            <p class="text-danger">Note* Please add the images(760 * 650px) in the multiplication of 2 (like 2, 4, 6) for perfect design  </p>
+                            <p class="text-danger">Note* Please add the images(1200 * 800px) in the multiplication of 3 (like 3, 6, 9) for perfect design  </p>
 
                         </div>
                         <div class="card-body">

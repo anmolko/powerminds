@@ -127,6 +127,7 @@
                                                                     <i class="ri-more-fill fs-17"></i>
                                                                 </a>
                                                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink2">
+                                                                    <a class="dropdown-item" href="{{route('album.gallery',$album->slug)}}" target="_blank"><i class=" ri-eye-line align-middle"></i> Frontend View </a>
                                                                     <li><a class="dropdown-item" href="{{route('album.show',@$album->id)}}"><i class="ri-pencil-fill me-2 align-middle"></i>Upload Gallery</a></li>
                                                                     <li><a class="dropdown-item action-edit" href="#" hrm-update-action="{{route('album.update',$album->id)}}" hrm-edit-action="{{route('album.edit',$album->id)}}"><i class="ri-pencil-fill me-2 align-middle"></i>Edit</a></li>
                                                                     <li><a class="dropdown-item action-delete" hrm-delete-per-action="{{route('album.destroy',$album->id)}}"><i class="ri-delete-bin-6-line me-2 align-middle"></i>Delete</a></li>
