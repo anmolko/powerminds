@@ -56,7 +56,7 @@
                                         </div><!-- featured-thumbnail end-->
                                         <div class="featured-content">
                                             <div class="featured-iconbox ttm-media-link">
-                                                <a class="ttm_prettyphoto ttm_image" title="{{ucwords(@$singleAlbum->name)}}'s image" data-rel="prettyPhoto" href="{{asset('/images/albums/gallery/'.@$gallery->filename)}}" tabindex="0">
+                                                <a class="ttm_prettyphoto ttm_image" rel="prettyPhoto[pp_gal]" title="{{ucwords(@$singleAlbum->name)}}'s image" data-rel="prettyPhoto" href="{{asset('/images/albums/gallery/'.@$gallery->filename)}}" tabindex="0">
                                                     <i class="fa fa-search"></i>
                                                 </a>
                                             </div>
