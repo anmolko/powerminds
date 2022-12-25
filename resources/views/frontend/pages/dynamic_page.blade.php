@@ -140,7 +140,6 @@
                       </section>
                 @endif
 
-
                 @if($value == "call_to_action_1")
                     <!--cta-section-->
                         <section class="ttm-row cta-section bg-img9 ttm-bgcolor-darkgrey ttm-bg ttm-bgimage-yes clearfix">
@@ -430,41 +429,53 @@
                 @if($value == "directors_message")
                     <!--- Basic Section--->
 
-                    <section class="about-me" style=" padding-top: 100px; padding-bottom: 100px;">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-5" style="margin: auto">
-
-                                    <div class="about-me__image get-in-touch__img wow fadeInLeft animated" data-wow-duration="1500ms" style="visibility: visible; margin-right: 0; animation-duration: 1500ms; animation-name: fadeInLeft;">
-                                        <img src="{{asset('/images/section_elements/basic_section/'.@$directors_message->image) }}" alt="">
-                                        <div class="get-in-touch__img-shapes">
-                                            <div class="get-in-touch__img-shape-1"></div>
-                                            <div class="get-in-touch__img-shape-2"></div>
+                        <!-- broken-section -->
+                        <section class="ttm-row broken-section bg-layer-equal-height margin_top160 res-991-margin_top0 clearfix">
+                            <div class="container">
+                                <div class="row no-gutters">
+                                    <div class="col-lg-5 col-md-6 col-sm-6 m-lg-0 m-auto">
+                                        <!-- col-bg-img-two -->
+                                        <div class="col-bg-img-two ttm-bg ttm-col-bgimage-yes border-rad_6 overflow-hidden mt_120 res-991-margin_top15">
+                                            <div class="ttm-col-wrapper-bg-layer ttm-bg-layer" style="background-image:  url({{ asset('/images/section_elements/basic_section/'.$directors_message->image) }})">
+                                                <div class="padding_top15 ttm-bgcolor-skincolor"></div>
+                                                <div class="ttm-col-wrapper-bg-layer-inner"></div>
+                                            </div>
+                                        </div>
+                                        <!-- col-bg-img-one end -->
+                                        <div class="d-inline-block border-rad_6 overflow-hidden m-auto text-center res-991-margin_left15 res-991-margin_right15">
+                                            <div class="res-991-padding_top15 mb_15 position-relative ttm-bgcolor-skincolor"></div>
+                                            <img src="{{asset('/images/section_elements/basic_section/'.@$directors_message->image) }}" class="ttm-equal-height-image img-fluid" alt="col-bgimage-1">
                                         </div>
                                     </div>
-        {{--                            <div class="about-me__image">--}}
-        {{--                                <img src="{{asset('/images/section_elements/basic_section/'.@$directors_message->image) }}" alt="">--}}
-        {{--                            </div><!-- /.about-me__image -->--}}
-                                </div><!-- /.col-md-12 -->
-                                <div class="col-md-12 col-lg-7">
-                                    <div class="about-me__content">
-                                        <h3 class="about-me__title">
-                                        <span class="text-red"><?php
-                                            $split = explode(" ", ucwords(@$directors_message->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$directors_message->heading))."\n"}}</span>
-                                            <span class="text-last">{{$split[count($split)-1]}}</span>
-
-
-
-                                        </h3>
-                                        <div class="about-me__summery justified" style="margin-top: 10px;">
-                                            {!! @$directors_message->description !!}
+                                    <div class="col-lg-7 col-md-12 col-sm-12">
+                                        <div class="ttm-bg ttm-col-bgimage-yes ttm-right-span ttm-bgcolor-grey border-rad_6 spacing-8 ">
+                                            <div class="ttm-col-wrapper-bg-layer ttm-bg-layer border-rad_6 overflow-hidden"></div>
+                                            <div class="layer-content">
+                                                <!-- section title -->
+                                                <div class="section-title">
+                                                    <div class="title-header">
+                                                        @if(@$directors_message->subheading !== null)
+                                                            <h3>{{@$directors_message->subheading}}</h3>
+                                                        @endif
+                                                        <h2 class="title">{{@$directors_message->heading}}</h2>
+                                                    </div>
+                                                    <div class="title-desc">
+                                                        {!! @$directors_message->description !!}
+                                                    </div>
+                                                </div>
+                                                <!-- section title end -->
+                                                <div class="d-inline-block margin_top15">
+                                                    <img class="img-fluid" src="<?php if(!empty(@$directors_message->extra_image)){ echo '/images/section_elements/basic_section/'.@$directors_message->extra_image; } ?>" alt="single_02" style="height: 70px; width: auto">
+                                                    <h4 class="pt-2">{{@$directors_message->extra_heading}}</h4>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <p class="get-in-touch__locatins-count-text">{{$directors_message->subheading}}</p>
-                                    </div><!-- /.about-me__content -->
-                                </div><!-- /.col-md-12 -->
-                            </div><!-- /.row -->
-                        </div><!-- /.container -->
-                    </section>
+                                        <!-- col-bg-img-two end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- broken-section end -->
                 @endif
 
                 @if($value == "flash_cards")

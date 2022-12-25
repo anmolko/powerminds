@@ -283,17 +283,23 @@
                                                         </div>
 
                                                         <div class="form-group mb-3">
-                                                            <label>Message Signature</label>
+                                                            <label>Subheading</label>
                                                             <input type="text" class="form-control" maxlength="35" name="subheading" value="{{@$directors_message->subheading}}">
+                                                            <div class="invalid-feedback">
+                                                                Please enter the basic section Sub heading.
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mb-3">
+                                                            <label>Name of Director</label>
+                                                            <input type="text" class="form-control" maxlength="45" name="extra_heading" value="{{@$directors_message->extra_heading}}">
                                                             <figcaption class="figure-caption">*For example: Name of Director</figcaption>
-
                                                             <div class="invalid-feedback">
                                                                 Please enter the basic section Sub heading.
                                                             </div>
                                                         </div>
                                                         <div class="form-group mb-3">
                                                             <label>Message <span class="text-muted text-danger">*</span></label>
-                                                            <textarea class="form-control" rows="6" name="description" maxlength="800" id="director_editor" required>{!! @$directors_message->description !!}</textarea>
+                                                            <textarea class="form-control" rows="6" name="description" maxlength="2000" id="director_editor" required>{!! @$directors_message->description !!}</textarea>
                                                             <div class="invalid-feedback">
                                                                 Please write the message.
                                                             </div>
@@ -309,14 +315,29 @@
                                                         </h4>
                                                     </div>
                                                     <div class="card-body">
+                                                        <label>Directors signature <span class="text-muted text-danger">*</span></label>
 
+                                                        <div style="margin: auto; width: 50%;">
+                                                            <img  id="current-director-sign-img"  src="<?php if(!empty(@$directors_message->extra_image)){ echo '/images/section_elements/basic_section/'.@$directors_message->extra_image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
+                                                            <input  type="file" accept="image/png, image/jpeg" hidden
+                                                                    id="director-sign-image" onchange="loadbasicFile('director-sign-image','current-director-sign-img',event)" name="extra_image" {{(@$directors_message->id !== null) ? "":"required" }}
+                                                                    class="profile-foreground-img-file-input" >
+
+                                                            <figcaption class="figure-caption">Image for current section.</figcaption>
+                                                            <div class="invalid-feedback" >
+                                                                Please select a image.
+                                                            </div>
+                                                            <label for="director-sign-image" class="profile-photo-edit btn btn-light feature-image-button">
+                                                                <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
+                                                            </label>
+                                                        </div>
                                                         <div>
                                                             <img  id="current-director-img"  src="<?php if(!empty(@$directors_message->image)){ echo '/images/section_elements/basic_section/'.@$directors_message->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
                                                             <input  type="file" accept="image/png, image/jpeg" hidden
                                                                     id="director-image" onchange="loadbasicFile('director-image','current-director-img',event)" name="image" {{(@$directors_message->id !== null) ? "":"required" }}
                                                                     class="profile-foreground-img-file-input" >
 
-                                                            <figcaption class="figure-caption">Image for current section. (SIZE: 570 x 590px)</figcaption>
+                                                            <figcaption class="figure-caption">Image for current section. (SIZE: 595 x 785px)</figcaption>
                                                             <div class="invalid-feedback" >
                                                                 Please select a image.
                                                             </div>
@@ -1259,7 +1280,6 @@
 
                                     @endif
 
-
                                 @if($value == 'slider_list')
                                      @if(sizeof($slider_list_elements) !== 0)
                                          {!! Form::open(['route' => 'section-elements.tablistUpdate','method'=>'post','class'=>'needs-validation','id'=>'slider-list-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
@@ -1376,7 +1396,7 @@
 
                                  @endif
 
-                                 @if($value == 'gallery_section')
+                                @if($value == 'gallery_section')
                                      <div class="row">
                                          <div class="col-md-12">
                                              <div class="card ctm-border-radius shadow-sm flex-fill">
