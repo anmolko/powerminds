@@ -9,7 +9,7 @@ class SectionElement extends Model
 {
     use HasFactory;
     protected $table ='section_elements';
-    protected $fillable =['id','heading','subheading','image','description','list_header','list_image','list_description','button','button_link','page_section_id','created_by','updated_by'];
+    protected $fillable =['id','heading','subheading','image','description','list_header','list_image','list_description','button','button_link','extra_heading','extra_button','extra_link','extra_image','extra_description','page_section_id','created_by','updated_by'];
 
     public function section()
     {

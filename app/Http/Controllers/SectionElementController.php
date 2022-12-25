@@ -182,7 +182,7 @@ class SectionElementController extends Controller
                 $image        = $request->file('image');
                 $name         = uniqid().'_basic_'.$image->getClientOriginalName();
                 $path         = base_path().'/public/images/section_elements/basic_section/';
-                $moved        = Image::make($image->getRealPath())->fit(600, 595)->orientate()->save($path.$name);
+                $moved        = Image::make($image->getRealPath())->fit(465, 645)->orientate()->save($path.$name);
                 if ($moved){
                     $data['image']= $name;
                 }
@@ -220,7 +220,6 @@ class SectionElementController extends Controller
                 $status = SectionElement::create($data);
             }
         }
-
         else if($section_name == 'basic_section2'){
             $data=[
                 'heading'                => $request->input('heading'),
@@ -229,33 +228,19 @@ class SectionElementController extends Controller
                 'description'            => $request->input('description'),
                 'button'                 => $request->input('button'),
                 'button_link'            => $request->input('button_link'),
+                'list_header'            => $request->input('list_header'),
+                'extra_link'             => $request->input('extra_link'),
+                'extra_heading'          => $request->input('extra_heading'),
+                'extra_button'           => $request->input('extra_button'),
                 'created_by'             => Auth::user()->id,
             ];
             if(!empty($request->file('image'))){
                 $image        = $request->file('image');
                 $name         = uniqid().'_basic2_'.$image->getClientOriginalName();
                 $path         = base_path().'/public/images/section_elements/basic_section/';
-                $moved        = Image::make($image->getRealPath())->fit(400, 610)->orientate()->save($path.$name);
+                $moved        = Image::make($image->getRealPath())->fit(505, 480)->orientate()->save($path.$name);
                 if ($moved){
                     $data['image']= $name;
-                }
-            }
-            if(!empty($request->file('list_header'))){
-                $image        = $request->file('list_header');
-                $name         = uniqid().'_basic3_'.$image->getClientOriginalName();
-                $path         = base_path().'/public/images/section_elements/basic_section/';
-                $moved        = Image::make($image->getRealPath())->fit(400, 350)->orientate()->save($path.$name);
-                if ($moved){
-                    $data['list_header']= $name;
-                }
-            }
-            if(!empty($request->file('list_description'))){
-                $image        = $request->file('list_description');
-                $name         = uniqid().'_basic4_'.$image->getClientOriginalName();
-                $path         = base_path().'/public/images/section_elements/basic_section/';
-                $moved        = Image::make($image->getRealPath())->fit(400, 230)->orientate()->save($path.$name);
-                if ($moved){
-                    $data['list_description']= $name;
                 }
             }
             $status = SectionElement::create($data);
@@ -277,6 +262,7 @@ class SectionElementController extends Controller
             $data=[
                 'page_section_id'        => $section_id,
                 'heading'                => $request->input('heading'),
+                'description'            => $request->input('description'),
                 'button'                 => $request->input('button'),
                 'button_link'            => $request->input('button_link'),
                 'created_by'             => Auth::user()->id,
@@ -495,7 +481,7 @@ class SectionElementController extends Controller
                 $image                = $request->file('image');
                 $name                 = uniqid().'_basic_'.$image->getClientOriginalName();
                 $path                 = base_path().'/public/images/section_elements/basic_section/';
-                $moved                = Image::make($image->getRealPath())->fit(600, 595)->orientate()->save($path.$name);
+                $moved                = Image::make($image->getRealPath())->fit(465, 645)->orientate()->save($path.$name);
                 if ($moved){
                     $basic->image = $name;
                     if (!empty($oldimage) && file_exists(public_path().'/images/section_elements/basic_section/'.$oldimage)){
@@ -536,6 +522,10 @@ class SectionElementController extends Controller
             $basic->description         = $request->input('description');
             $basic->button              = $request->input('button');
             $basic->button_link         = $request->input('button_link');
+            $basic->list_header         = $request->input('list_header');
+            $basic->extra_link          = $request->input('extra_link');
+            $basic->extra_heading       = $request->input('extra_heading');
+            $basic->extra_button        = $request->input('extra_button');
             $basic->updated_by          = Auth::user()->id;
             $oldimage                   = $basic->image;
             $oldimage2                  = $basic->list_header;
@@ -545,36 +535,11 @@ class SectionElementController extends Controller
                 $image                = $request->file('image');
                 $name                 = uniqid().'_basic2_'.$image->getClientOriginalName();
                 $path                 = base_path().'/public/images/section_elements/basic_section/';
-                $moved                = Image::make($image->getRealPath())->fit(400, 610)->orientate()->save($path.$name);
+                $moved                = Image::make($image->getRealPath())->fit(505, 480)->orientate()->save($path.$name);
                 if ($moved){
                     $basic->image = $name;
                     if (!empty($oldimage) && file_exists(public_path().'/images/section_elements/basic_section/'.$oldimage)){
                         @unlink(public_path().'/images/section_elements/basic_section/'.$oldimage);
-                    }
-                }
-            }
-
-            if (!empty($request->file('list_header'))){
-                $image                = $request->file('list_header');
-                $name                 = uniqid().'_basic3_'.$image->getClientOriginalName();
-                $path                 = base_path().'/public/images/section_elements/basic_section/';
-                $moved                = Image::make($image->getRealPath())->fit(400, 350)->orientate()->save($path.$name);
-                if ($moved){
-                    $basic->list_header = $name;
-                    if (!empty($oldimage2) && file_exists(public_path().'/images/section_elements/basic_section/'.$oldimage2)){
-                        @unlink(public_path().'/images/section_elements/basic_section/'.$oldimage2);
-                    }
-                }
-            }
-            if (!empty($request->file('list_description'))){
-                $image                = $request->file('list_description');
-                $name                 = uniqid().'_basic4_'.$image->getClientOriginalName();
-                $path                 = base_path().'/public/images/section_elements/basic_section/';
-                $moved                = Image::make($image->getRealPath())->fit(400, 230)->orientate()->save($path.$name);
-                if ($moved){
-                    $basic->list_description = $name;
-                    if (!empty($oldimage3) && file_exists(public_path().'/images/section_elements/basic_section/'.$oldimage3)){
-                        @unlink(public_path().'/images/section_elements/basic_section/'.$oldimage3);
                     }
                 }
             }
@@ -596,6 +561,7 @@ class SectionElementController extends Controller
             $action                      = SectionElement::find($id);
             $action->page_section_id     = $section_id;
             $action->heading             = $request->input('heading');
+            $action->description         = $request->input('description');
             $action->button              = $request->input('button');
             $action->button_link         = $request->input('button_link');
             $action->updated_by          = Auth::user()->id;

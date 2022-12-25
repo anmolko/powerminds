@@ -81,8 +81,6 @@ class FrontController extends Controller
 
     }
 
-
-
     public function index()
     {
         $clients        = $this->client->orderBy('created_at', 'asc')->get();
@@ -209,7 +207,8 @@ class FrontController extends Controller
         if (!$page_section) {
             return abort(404);
         }
-        $sections      = array();
+        $sections       = array();
+        $homepage_info  = $this->home_page->first();
 
         $list_2        = "";
         $list_3        = "";
@@ -316,7 +315,7 @@ class FrontController extends Controller
             }
         }
 
-        return view('frontend.pages.dynamic_page',compact( 'video_section_elements','basic_elements2','directors_message','page_detail','sections','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements'));
+        return view('frontend.pages.dynamic_page',compact( 'video_section_elements','homepage_info','basic_elements2','directors_message','page_detail','sections','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements'));
 
     }
 

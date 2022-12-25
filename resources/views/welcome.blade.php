@@ -341,7 +341,7 @@
                                                                     data-after-style="sub"
                                                                     class="numinate">{{ (@$homepage_info->success_stories) ? @$homepage_info->success_stories : '360'}}
                                                             </span>
-                                                        <span>K</span>
+                                                        <span>+</span>
                                                     </h4>
                                                     <h3 class="ttm-fid-title">Jobs Created </h3>
                                                 </div>
@@ -774,14 +774,14 @@
                             </div>
                         </div><!-- section-title end -->
                         <div class="d-inline-block">
-                            @if(@$homepage_info->action_button)
-                                <a class="ttm-alt-btn ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-skincolor" href="{{@$homepage_info->action_link}}" tabindex="0">
+                            @if(@$homepage_info->action_link)
+                                <a class="ttm-btn ttm-btn-size-md ttm-btn-style-border ttm-btn-shape-rounded ttm-btn-color-white" href="{{@$homepage_info->action_link}}" tabindex="0">
                                     {{@$homepage_info->action_button}}
                                 </a>
                             @endif
                                 @if(@$homepage_info->action_link2)
 
-                                    <a href="{{@$homepage_info->action_link2}}" target="_self" class="ttm_prettyphoto ttm-btn-color-white  ttm-btn btn-inline ttm-btn-size-md">
+                                    <a href="{{@$homepage_info->action_link2}}" target="_self" class="ttm_prettyphoto ttm-btn-color-white pl-3 ttm-btn btn-inline ttm-btn-size-md">
                                         <span class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-textcolor-white ttm-icon_element-size-xs ttm-icon_element-style-rounded margin_right10 margin_bottom0">
                                             <i class="ti ti-control-play margin_left0 padding_left1"></i>
                                         </span>
