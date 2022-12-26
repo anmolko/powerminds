@@ -142,7 +142,7 @@
 
                 @if($value == "call_to_action_1")
                     <!--cta-section-->
-                        <section class="ttm-row cta-section bg-img9 ttm-bgcolor-darkgrey ttm-bg ttm-bgimage-yes clearfix">
+                     <section class="ttm-row cta-section bg-img9 ttm-bgcolor-darkgrey ttm-bg ttm-bgimage-yes clearfix">
                             <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
                             <div class="container">
                                 <!--row-->
@@ -166,7 +166,7 @@
                                 </div><!--row end-->
                             </div>
                         </section>
-                        <!--cta-section end-->
+                     <!--cta-section end-->
 
                 @endif
 
@@ -272,68 +272,66 @@
                 @endif
 
                 @if($value == "background_image_section")
-                  <!--- Background Image--->
-                  <section class="we-make">
-                    <div class="we-make-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/we-make-bg.jpg')}})"></div>
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-xl-6 col-lg-6">
-                          <div class="core-features__left">
-                            <div class="section-title text-left">
-                              @if(@$bgimage_elements->subheading)
+                    <!--padding_zero-section-->
+                        <section class="ttm-row padding_zero-section margin_left30 margin_right30 res-991-m-0 border-rad_6 clearfix"
+                        style="
+                            background-image: url(<?php if(!empty(@$bgimage_elements->image)){ echo '/images/section_elements/bgimage_section/'.@$bgimage_elements->image; }else{ echo '/assets/frontend/images/bg-image/row-bgimage-6.jpg'; } ?>);
 
-                              <span class="section-title__tagline">{!! ucfirst(@$bgimage_elements->subheading) !!}</span>
-                              @endif
-                              <h2 class="section-title__title">
-                                  <span><?php
-                                      $split = explode(" ", ucfirst(@$bgimage_elements->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucfirst(@$bgimage_elements->heading))."\n"}}</span>
-                                  <span class="text-last">{{$split[count($split)-1]}}</span>
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            background-attachment: fixed;
+                            background-position: center;
+                            " >
+{{--                            asset('assets/frontend/images/bg-image/row-bgimage-6.jpg')--}}
+                            <div class="container">
+                                <!-- row -->
+                                <div class="row">
+                                    <div class="col-lg-6 ml-auto">
+                                        <div class="ttm-col-bgcolor-yes ttm-bgcolor-skincolor ttm-col-bgimage-yes ttm-bg spacing-6 border-rad_6 overflow-hidden">
+                                            <div class="ttm-col-wrapper-bg-layer ttm-bg-layer">
+                                                <div class="ttm-col-wrapper-bg-layer-inner"></div>
+                                            </div>
+                                            <div class="layer-content">
+                                                <!-- section title -->
+                                                <div class="section-title">
+                                                    <div class="title-header">
+                                                        @if(@$bgimage_elements->subheading)
+                                                            <h3>{{@$bgimage_elements->subheading}}</h3>
+                                                        @endif
+                                                        <h4 class="title">{{@$bgimage_elements->heading}}</h4>
+                                                    </div>
+                                                </div><!-- section title end -->
+                                                <div class="accordion">
+                                                    <!-- toggle -->
+                                                    <div class="toggle ttm-toggle_style_classic ttm-toggle-title-bgcolor-white">
+                                                        <div class="toggle-title"><a href="#" class="active">{{@$bgimage_elements->list_image}}</a></div>
+                                                        <div class="toggle-content show justified">
+                                                            <p>{{@$bgimage_elements->description}}</p>
 
-                              </h2>
+                                                        </div>
+                                                    </div><!-- toggle end -->
+                                                    <!-- toggle -->
+                                                    <div class="toggle ttm-toggle_style_classic ttm-toggle-title-bgcolor-white">
+                                                        <div class="toggle-title"><a href="#">{{@$bgimage_elements->list_header}}</a></div>
+                                                        <div class="toggle-content justified">
+                                                            <p>{{@$bgimage_elements->list_description}}</p>
+                                                        </div>
+                                                    </div><!-- toggle end -->
+                                                    <!-- toggle -->
+                                                    <div class="toggle ttm-toggle_style_classic ttm-toggle-title-bgcolor-white">
+                                                        <div class="toggle-title"><a href="#">{{@$bgimage_elements->extra_heading}}</a></div>
+                                                        <div class="toggle-content justified">
+                                                            <p>{{@$bgimage_elements->extra_description}}</p>
+                                                        </div>
+                                                    </div><!-- toggle end -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="core-features__left-bottom">
-                              <div class="core-features__left-bottom-img">
-                                <img src="{{asset('/images/section_elements/bgimage_section/'.@$bgimage_elements->image)}}" alt="">
-                              </div>
-                              <div class="core-features__left-bottom-text">
-                                <p>{{@$bgimage_elements->description}}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6">
-                          <div class="core-features__promicess">
-                            <ul class="list-unstyled core-features__promicess-list">
-                              <li>
-                                <div class="text">
-                                  <p>{{@$bgimage_elements->list_description}}</p>
-                                </div>
-                                <div class="icon">
-                                  <span class="icon-tick"></span>
-                                </div>
-                              </li>
-                              <li>
-                                <div class="text">
-                                  <p>{{@$bgimage_elements->list_header}}</p>
-                                </div>
-                                <div class="icon">
-                                  <span class="icon-tick"></span>
-                                </div>
-                              </li>
-                              <li>
-                                <div class="text">
-                                  <p>{{@$bgimage_elements->list_image}}</p>
-                                </div>
-                                <div class="icon">
-                                  <span class="icon-tick"></span>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
+                        </section>
+                        <!--padding_zero-section end-->
                 @endif
 
                 @if($value == "basic_section2")
@@ -991,6 +989,8 @@
 
 
              @endif
+
+
         </div>
 
 

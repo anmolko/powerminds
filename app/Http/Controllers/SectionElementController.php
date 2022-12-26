@@ -308,10 +308,12 @@ class SectionElementController extends Controller
                 'page_section_id'        => $section_id,
                 'heading'                => $request->input('heading'),
                 'subheading'             => $request->input('subheading'),
-                'description'            => $request->input('description'),
-                'list_description'       => $request->input('list_description'),
-                'list_header'            => $request->input('list_header'),
                 'list_image'             => $request->input('list_image'),
+                'description'            => $request->input('description'),
+                'list_header'            => $request->input('list_header'),
+                'list_description'       => $request->input('list_description'),
+                'extra_heading'          => $request->input('extra_heading'),
+                'extra_description'      => $request->input('extra_description'),
                 'created_by'             => Auth::user()->id,
             ];
 
@@ -319,7 +321,7 @@ class SectionElementController extends Controller
                 $image = $request->file('image');
                 $name = uniqid() . '__background__' . $image->getClientOriginalName();
                 $path = base_path() . '/public/images/section_elements/bgimage_section/';
-                $moved = Image::make($image->getRealPath())->resize(170, 108)->orientate()->save($path . $name);
+                $moved = Image::make($image->getRealPath())->fit(1900, 930)->orientate()->save($path . $name);
                 if ($moved) {
                     $data['image'] = $name;
                 }
@@ -627,10 +629,12 @@ class SectionElementController extends Controller
             $action->page_section_id     = $section_id;
             $action->heading             = $request->input('heading');
             $action->subheading          = $request->input('subheading');
-            $action->description         = $request->input('description');
-            $action->list_description    = $request->input('list_description');
-            $action->list_header         = $request->input('list_header');
             $action->list_image          = $request->input('list_image');
+            $action->description         = $request->input('description');
+            $action->list_header         = $request->input('list_header');
+            $action->list_description    = $request->input('list_description');
+            $action->extra_heading       = $request->input('extra_heading');
+            $action->extra_description   = $request->input('extra_description');
             $action->updated_by          = Auth::user()->id;
             $oldimage                    = $action->image;
 
@@ -639,7 +643,7 @@ class SectionElementController extends Controller
                 $image        = $request->file('image');
                 $name         = uniqid().'__background__'.$image->getClientOriginalName();
                 $path         = base_path().'/public/images/section_elements/bgimage_section/';
-                $moved        = Image::make($image->getRealPath())->resize(170, 108)->orientate()->save($path.$name);
+                $moved        = Image::make($image->getRealPath())->fit(1900, 930)->orientate()->save($path.$name);
                 if ($moved){
                     $action->image = $name;
                     if (!empty($oldimage) && file_exists(public_path().'/images/section_elements/bgimage_section/'.$oldimage)){

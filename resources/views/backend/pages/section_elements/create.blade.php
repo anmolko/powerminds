@@ -715,95 +715,141 @@
                                             </figure>
 
                                             <div id="background-image-form-ajax">
-                                         <div class="row">
-                                             <div class="col-md-8">
-                                                 <div class="card ctm-border-radius shadow-sm flex-fill">
-                                                     <div class="card-header">
-                                                         <h4 class="card-title mb-0">
-                                                             Background Image Section Details
-                                                         </h4>
+                                                 <div class="row">
+                                                     <div class="col-md-8">
+                                                         <div class="card ctm-border-radius shadow-sm flex-fill">
+                                                             <div class="card-header">
+                                                                 <h4 class="card-title mb-0">
+                                                                     Background Image Section Details
+                                                                 </h4>
+                                                             </div>
+                                                             <div class="card-body">
+                                                                 <div class="form-group mb-3">
+                                                                     <label>Heading <span class="text-muted text-danger">*</span></label>
+                                                                     <input type="text" maxlength="30" class="form-control" name="heading" value="{{@$bgimage_elements->heading}}" required>
+                                                                     <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
+                                                                     <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
+                                                                     <div class="invalid-feedback">
+                                                                         Please enter the Background Image Section heading.
+                                                                     </div>
+                                                                 </div>
+
+                                                                 <div class="form-group mb-3">
+                                                                     <label>Sub Heading </label>
+                                                                     <input type="text" class="form-control" maxlength="30" name="subheading" value="{{@$bgimage_elements->subheading}}">
+                                                                     <div class="invalid-feedback">
+                                                                         Please enter the section Sub heading.
+                                                                     </div>
+                                                                 </div>
+                                                                 <div class="position-relative mb-3">
+                                                                     <label class="form-label">First section: Heading 1 <span class="text-muted text-danger">*</span></label>
+                                                                     <input type="text" class="form-control" maxlength="30" name="list_image" value="{{@$bgimage_elements->list_image}}"
+                                                                            placeholder="Enter heading " required>
+                                                                     <div class="invalid-feedback">
+                                                                         Please enter the heading.
+                                                                     </div>
+                                                                 </div>
+                                                                 <div class="position-relative mb-3">
+                                                                     <label class="form-label">First section: Description 1 <span class="text-muted text-danger">*</span></label>
+                                                                     <textarea class="form-control" maxlength="400" name="description" placeholder="Enter description" rows="4" required>{{@$bgimage_elements->description}}</textarea>
+                                                                     <div class="invalid-tooltip">
+                                                                         Please enter the description.
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
                                                      </div>
-                                                     <div class="card-body">
-                                                         <div class="form-group mb-3">
-                                                             <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                             <input type="text" maxlength="50" class="form-control" name="heading" value="{{@$bgimage_elements->heading}}" required>
-                                                             <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
-                                                             <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
-                                                             <div class="invalid-feedback">
-                                                                 Please enter the Background Image Section heading.
+
+                                                     <div class="col-md-4">
+                                                         <div class="card ctm-border-radius shadow-sm flex-fill">
+                                                             <div class="card-header">
+                                                                 <h4 class="card-title mb-0">
+                                                                     Background Image Section's Image <span class="text-muted text-danger">*</span>
+                                                                 </h4>
+                                                             </div>
+                                                             <div class="card-body">
+                                                                 <div>
+                                                                     <img  id="current-backgroundss-img"  src="<?php if(!empty(@$bgimage_elements->image)){ echo '/images/section_elements/bgimage_section/'.@$bgimage_elements->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
+                                                                     <input  type="file" accept="image/png, image/jpeg" hidden
+                                                                             id="background-image" onchange="loadbasicFile('background-image','current-backgroundss-img',event)" name="image"
+                                                                             class="profile-foreground-img-file-input" >
+
+                                                                     <figcaption class="figure-caption">Banner image for current background section. (SIZE: 1900 x 930px)</figcaption>
+                                                                     <div class="invalid-feedback" >
+                                                                         Please select a image.
+                                                                     </div>
+                                                                     <label for="background-image" class="profile-photo-edit btn btn-light feature-image-button">
+                                                                         <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
+                                                                     </label>
+                                                                 </div>
+
                                                              </div>
                                                          </div>
-
-                                                         <div class="form-group mb-3">
-                                                             <label>Sub Heading </label>
-                                                             <input type="text" class="form-control" maxlength="30" name="subheading" value="{{@$bgimage_elements->subheading}}">
-                                                             <div class="invalid-feedback">
-                                                                 Please enter the section Sub heading.
-                                                             </div>
-                                                         </div>
-
-                                                         <div class="form-group mb-3">
-                                                             <label>Description <span class="text-muted text-danger">*</span></label>
-                                                             <textarea class="form-control" maxlength="150" rows="3" name="description" required>{{@$bgimage_elements->description}}</textarea>
-                                                             <div class="invalid-feedback">
-                                                                 Please write the short description.
-                                                             </div>
-                                                         </div>
-
-                                                         <div class="form-group mb-3">
-                                                             <label>Text one </label>
-                                                             <input type="text" class="form-control" maxlength="100" name="list_description" value="{{@$bgimage_elements->list_description}}"/>
-                                                             <div class="invalid-feedback">
-                                                                 Please write the box one text.
-                                                             </div>
-                                                         </div>
-                                                         <div class="form-group mb-3">
-                                                             <label>Text two </label>
-                                                             <input type="text" class="form-control" maxlength="100" name="list_header" value="{{@$bgimage_elements->list_header}}"/>
-                                                             <div class="invalid-feedback">
-                                                                 Please write the box two text.
-                                                             </div>
-                                                         </div>
-                                                         <div class="form-group mb-3">
-                                                             <label>Text three </label>
-                                                             <input type="text" class="form-control" maxlength="100" name="list_image" value="{{@$bgimage_elements->list_image}}"/>
-                                                             <div class="invalid-feedback">
-                                                                 Please write the box three text.
-                                                             </div>
-                                                         </div>
-
-                                                     </div>
-                                                 </div>
-                                             </div>
-
-                                             <div class="col-md-4">
-                                                 <div class="card ctm-border-radius shadow-sm flex-fill">
-                                                     <div class="card-header">
-                                                         <h4 class="card-title mb-0">
-                                                             Background Image Section's Image <span class="text-muted text-danger">*</span>
-                                                         </h4>
-                                                     </div>
-                                                     <div class="card-body">
-                                                         <div>
-                                                             <img  id="current-backgroundss-img"  src="<?php if(!empty(@$bgimage_elements->image)){ echo '/images/section_elements/bgimage_section/'.@$bgimage_elements->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
-                                                             <input  type="file" accept="image/png, image/jpeg" hidden
-                                                                     id="background-image" onchange="loadbasicFile('background-image','current-backgroundss-img',event)" name="image" {{(@$bgimage_elements !=="")? "":"required"}}
-                                                                     class="profile-foreground-img-file-input" >
-
-                                                             <figcaption class="figure-caption">Banner image for current background section. (SIZE: 170 x 108px)</figcaption>
-                                                             <div class="invalid-feedback" >
-                                                                 Please select a image.
-                                                             </div>
-                                                             <label for="background-image" class="profile-photo-edit btn btn-light feature-image-button">
-                                                                 <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
-                                                             </label>
-                                                         </div>
-
                                                      </div>
                                                  </div>
-                                             </div>
-                                         </div>
-                                     </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-lg-6">
+                                                        <div class="nosticky-side-div">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                    <h5 class="card-title mb-0">Second Section</h5>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="position-relative mb-3">
+                                                                        <label class="form-label">Heading 2 <span class="text-muted text-danger">*</span></label>
+                                                                        <input type="text" class="form-control" maxlength="30" name="list_header" value="{{@$bgimage_elements->list_header}}"
+                                                                               placeholder="Enter heading " required>
+                                                                        <div class="invalid-feedback">
+                                                                            Please enter the heading.
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="position-relative mb-3">
+                                                                        <label class="form-label"> Description 2 <span class="text-muted text-danger">*</span></label>
+                                                                        <textarea class="form-control" maxlength="400" name="list_description" placeholder="Enter description" rows="4" required>{{@$bgimage_elements->list_description}}</textarea>
+                                                                        <div class="invalid-tooltip">
+                                                                            Please enter the description.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- end card body -->
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="nosticky-side-div">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                    <h5 class="card-title mb-0">Third Section</h5>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="position-relative mb-3">
+                                                                        <label class="form-label">Heading 3 <span class="text-muted text-danger">*</span></label>
+                                                                        <input type="text" class="form-control" maxlength="30" name="extra_heading" value="{{@$bgimage_elements->extra_heading}}"
+                                                                               placeholder="Enter heading " required>
+                                                                        <div class="invalid-feedback">
+                                                                            Please enter the heading.
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="position-relative mb-3">
+                                                                        <label class="form-label"> Description 3 <span class="text-muted text-danger">*</span></label>
+                                                                        <textarea class="form-control" maxlength="400" name="extra_description" placeholder="Enter description" rows="4" required>{{@$bgimage_elements->extra_description}}</textarea>
+                                                                        <div class="invalid-tooltip">
+                                                                            Please enter the description.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- end card body -->
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                      <div class="text-center  mb-3" id="background-image-form-button">
                                          <button id="background-button-submit" class="btn btn-success w-sm">
                                              {{(@$bgimage_elements !==null)? "Update Details":"Add Details"}}</button>
