@@ -880,18 +880,10 @@
                                                  </div>
                                                  <div class="card-body">
                                                      <div class="form-group mb-3">
-                                                         <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                         <input type="text" class="form-control" name="heading[]" value="{{@$flash_elements[0]->heading}}" maxlength="60" required>
+                                                         <label>Heading </label>
+                                                         <input type="text" class="form-control" name="heading[]" value="{{@$flash_elements[0]->heading}}" maxlength="40">
                                                          <div class="invalid-feedback">
-                                                             Please enter the basic section heading.
-                                                         </div>
-                                                     </div>
-
-                                                     <div class="form-group mb-3">
-                                                         <label>Subheading</label>
-                                                         <input type="text" maxlength="40" class="form-control" value="{{@$flash_elements[0]->subheading}}" name="subheading[]">
-                                                         <div class="invalid-feedback">
-                                                             Please enter the sub heading.
+                                                             Please enter the heading.
                                                          </div>
                                                      </div>
                                                  </div>
@@ -909,7 +901,7 @@
                                                      <div id="accor_borderedExamplecollapse3" class="accordion-collapse collapse show" aria-labelledby="processelect-heading-mission" data-bs-parent="#accordionBordered2">
                                                          <div class="accordion-body">
                                                              <div class="row">
-                                                                 <div class="col-md-9">
+                                                                 <div class="col-md-12">
 
                                                                      <div class="form-group mb-3">
                                                                          <label>Heading <span class="text-muted text-danger">*</span></label>
@@ -930,33 +922,6 @@
                                                                      </div>
 
                                                                  </div>
-
-                                                                 <div class="col-md-3">
-                                                                     <div class="card ctm-border-radius shadow-sm flex-fill">
-                                                                         <div class="card-header">
-                                                                             <h4 class="card-title mb-0">
-                                                                                 Image
-                                                                             </h4>
-                                                                         </div>
-                                                                         <div class="card-body">
-                                                                             <div>
-                                                                                 <img  id="current-icon-img0"  src="<?php if(!empty(@$flash_elements[0]->image)){ echo '/images/section_elements/list_1/'.@$flash_elements[0]->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
-                                                                                 <input  type="file" accept="image/png, image/jpeg" hidden
-                                                                                         id="icons-image0" onchange="loadbasicFile('icons-image0','current-icon-img0',event)" name="image[]"
-                                                                                         class="profile-foreground-img-file-input" >
-
-                                                                                 <figcaption class="figure-caption">Image for first card. (SIZE: 500 x 334px)</figcaption>
-                                                                                 <div class="invalid-feedback" >
-                                                                                     Please select a image.
-                                                                                 </div>
-                                                                                 <label for="icons-image0" class="profile-photo-edit btn btn-light feature-image-button">
-                                                                                     <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
-                                                                                 </label>
-                                                                             </div>
-
-                                                                         </div>
-                                                                     </div>
-                                                                 </div>
                                                              </div>
                                                          </div>
                                                      </div>
@@ -971,7 +936,7 @@
                                                      <div id="accor_borderedExamplecollapse4" class="accordion-collapse collapse" aria-labelledby="processelect-heading-vision" data-bs-parent="#accordionBordered2">
                                                          <div class="accordion-body">
                                                              <div class="row">
-                                                                 <div class="col-md-9">
+                                                                 <div class="col-md-12">
                                                                      <div class="form-group mb-3">
                                                                          <label>Heading <span class="text-muted text-danger">*</span></label>
                                                                          <input type="hidden" class="form-control" value="{{@$flash_elements[1]->id}}" name="id[]">
@@ -985,32 +950,6 @@
                                                                          <textarea class="form-control" maxlength="500" rows="6" name="list_description[]" required>{{@$flash_elements[1]->list_description}}</textarea>
                                                                          <div class="invalid-feedback">
                                                                              Please write the card 1 description.
-                                                                         </div>
-                                                                     </div>
-                                                                 </div>
-                                                                 <div class="col-md-3">
-                                                                     <div class="card ctm-border-radius shadow-sm flex-fill">
-                                                                         <div class="card-header">
-                                                                             <h4 class="card-title mb-0">
-                                                                                 Image
-                                                                             </h4>
-                                                                         </div>
-                                                                         <div class="card-body">
-                                                                             <div>
-                                                                                 <img  id="current-icon-img1"  src="<?php if(!empty(@$flash_elements[1]->image)){ echo '/images/section_elements/list_1/'.@$flash_elements[1]->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
-                                                                                 <input  type="file" accept="image/png, image/jpeg" hidden
-                                                                                         id="icons-image1" onchange="loadbasicFile('icons-image1','current-icon-img1',event)" name="image[]"
-                                                                                         class="profile-foreground-img-file-input" >
-
-                                                                                 <figcaption class="figure-caption">Image for box2. (SIZE: 500 x 334px)</figcaption>
-                                                                                 <div class="invalid-feedback" >
-                                                                                     Please select a image.
-                                                                                 </div>
-                                                                                 <label for="icons-image1" class="profile-photo-edit btn btn-light feature-image-button">
-                                                                                     <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
-                                                                                 </label>
-                                                                             </div>
-
                                                                          </div>
                                                                      </div>
                                                                  </div>
@@ -1029,7 +968,7 @@
                                                          <div class="accordion-body">
                                                              <div class="row">
 
-                                                                 <div class="col-md-9">
+                                                                 <div class="col-md-12">
 
                                                                      <div class="form-group mb-3">
                                                                          <label>Heading <span class="text-muted text-danger">*</span></label>
@@ -1047,32 +986,6 @@
                                                                          </div>
                                                                      </div>
 
-                                                                 </div>
-                                                                 <div class="col-md-3">
-                                                                     <div class="card ctm-border-radius shadow-sm flex-fill">
-                                                                         <div class="card-header">
-                                                                             <h4 class="card-title mb-0">
-                                                                                 Icon Image
-                                                                             </h4>
-                                                                         </div>
-                                                                         <div class="card-body">
-                                                                             <div>
-                                                                                 <img  id="current-icon-img2"  src="<?php if(!empty(@$flash_elements[2]->image)){ echo '/images/section_elements/list_1/'.@$flash_elements[2]->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
-                                                                                 <input  type="file" accept="image/png, image/jpeg" hidden
-                                                                                         id="icons-image2" onchange="loadbasicFile('icons-image2','current-icon-img2',event)" name="image[]"
-                                                                                         class="profile-foreground-img-file-input" >
-
-                                                                                 <figcaption class="figure-caption">Image for icon. (SIZE: 500 x 334px)</figcaption>
-                                                                                 <div class="invalid-feedback" >
-                                                                                     Please select a image.
-                                                                                 </div>
-                                                                                 <label for="icons-image2" class="profile-photo-edit btn btn-light feature-image-button">
-                                                                                     <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
-                                                                                 </label>
-                                                                             </div>
-
-                                                                         </div>
-                                                                     </div>
                                                                  </div>
                                                              </div>
                                                          </div>

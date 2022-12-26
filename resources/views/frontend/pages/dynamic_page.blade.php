@@ -272,7 +272,7 @@
                 @endif
 
                 @if($value == "background_image_section")
-                    <!--padding_zero-section-->
+                        <!--padding_zero-section-->
                         <section class="ttm-row padding_zero-section margin_left30 margin_right30 res-991-m-0 border-rad_6 clearfix"
                         style="
                             background-image: url(<?php if(!empty(@$bgimage_elements->image)){ echo '/images/section_elements/bgimage_section/'.@$bgimage_elements->image; }else{ echo '/assets/frontend/images/bg-image/row-bgimage-6.jpg'; } ?>);
@@ -477,106 +477,52 @@
                 @endif
 
                 @if($value == "flash_cards")
-                  <!--- Mission Vision--->
 
-                  <section class="web-solutions">
-                    <div class="web-solutions-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/web-solutions-bg.jpg')}})">
-                    </div>
-                    <div class="container">
-                      <div class="section-title text-center">
-                        @if(@$flash_elements[0]->subheading)
-                        <span class="section-title__tagline">{{ucfirst(@$flash_elements[0]->subheading)}}</span>
+                        <section class="ttm-row ttm-bgcolor-grey padding_top70 padding_bottom55 clearfix">
 
-                        @endif
-                        @if(@$flash_elements[0]->heading)
-                        <h2 class="section-title__title">
+                            <div class="container">
+                                    @if(@$flash_elements[0]->heading)
+                                        <h3>{{ucfirst(@$flash_elements[0]->heading)}}</h3>
+                                    @endif
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ttm-team-member-content">
+                                            <div class="row row-equal-height">
+                                                @foreach(@$flash_elements as $key=>$flash_element)
 
-                            <span><?php
-                                $split = explode(" ", ucwords(@$flash_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$flash_elements[0]->heading))."\n"}}</span>
-                            <span class="text-last">{{$split[count($split)-1]}}</span>
+                                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                                    <!--featured-icon-box-->
+                                                    <div class="featured-icon-box icon-align-top-content style9">
+                                                        <div class="featured-icon">
+                                                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-lg">
+                                                                @if($key == '0')
+                                                                    <i class="fa fa-bullseye"></i>
+                                                                @elseif($key == '1')
+                                                                    <i class="fa fa-low-vision"></i>
+                                                                @else
+                                                                    <i class="fa fa-heart-o"></i>
+                                                                @endif
 
-                        </h2>
-                        @endif
-                      </div>
-                      <div class="row">
-                        <div class="col-xl-12">
-                          <div class="web-solutions__box tabs-box">
-                            <ul class="tab-btns tab-buttons clearfix list-unstyled">
-                              <li data-tab="#one" class="tab-btn active-btn"><span>{{ucwords(@$flash_elements[0]->list_header)}}</span></li>
-                              <li data-tab="#two" class="tab-btn"><span>{{ucwords(@$flash_elements[1]->list_header)}}</span></li>
-                              <li data-tab="#three" class="tab-btn"><span>{{ucwords(@$flash_elements[2]->list_header)}}</span></li>
-                            </ul>
-                            <div class="tabs-content">
-                              @foreach(@$flash_elements as $flash_element)
-                                @if($loop->index == 0)
-                                  <div class="tab active-tab" id="one" style="display: block;">
-                                    <div class="web-solutions__content">
-                                      <div class="row">
-                                        <div class="col-xl-6 col-lg-6">
-                                          <div class="web-solutions__content-img">
-                                            <img src="{{asset('/images/section_elements/list_1/'.@$flash_element->image)}}" alt="">
-                                          </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="featured-content">
+                                                            <div class="featured-title">
+                                                                <h3>{{ucwords(@$flash_element->list_header)}}</h3>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>{{@$flash_element->list_description}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- featured-icon-box end-->
+                                                </div>
+
+                                                @endforeach
+                                            </div>
                                         </div>
-                                        <div class="col-xl-6 col-lg-6">
-                                          <div class="web-solutions__content-right">
-                                            <p class="web-solutions__content-desc">{{ucfirst(@$flash_element->list_description) }} </p>
-
-                                          </div>
-                                        </div>
-                                      </div>
                                     </div>
-                                  </div>
-                                @endif
-
-                                @if($loop->index == 1)
-                                  <div class="tab" id="two" style="display: none;">
-                                    <div class="web-solutions__content">
-                                      <div class="row">
-                                        <div class="col-xl-6 col-lg-6">
-                                          <div class="web-solutions__content-img">
-                                            <img src="{{asset('/images/section_elements/list_1/'.@$flash_element->image)}}" alt="">
-
-                                          </div>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6">
-                                          <div class="web-solutions__content-right">
-                                            <p class="web-solutions__content-desc">{{ucfirst(@$flash_element->list_description) }} </p>
-
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                @endif
-
-                                @if($loop->index == 2)
-
-                                  <div class="tab" id="three" style="display: none;">
-                                    <div class="web-solutions__content">
-                                      <div class="row">
-                                        <div class="col-xl-6 col-lg-6">
-                                          <div class="web-solutions__content-img">
-                                            <img src="{{asset('/images/section_elements/list_1/'.@$flash_element->image)}}" alt="">
-
-                                          </div>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6">
-                                          <div class="web-solutions__content-right">
-                                            <p class="web-solutions__content-desc">{{ucfirst(@$flash_element->list_description) }} </p>
-
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                @endif
-                              @endforeach
+                                </div>
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
+                        </section>
                 @endif
 
                 @if($value == "simple_header_and_description")

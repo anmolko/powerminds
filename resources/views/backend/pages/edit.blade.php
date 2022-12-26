@@ -235,7 +235,7 @@
                             </div>
                             <div class="card shadow-none">
                                 <div class="card-header">
-                                    <h5 class="card-title text-primary mb-0">Mission, Vision & Values</h5>
+                                    <h5 class="card-title text-primary mb-0">Flash Cards ( Mission, Vision & Values </h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
