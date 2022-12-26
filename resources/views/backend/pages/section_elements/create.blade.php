@@ -525,7 +525,7 @@
 
                                                      <div class="form-group mb-3">
                                                          <label>Description <span class="text-muted text-danger">*</span></label>
-                                                         <textarea class="form-control" maxlength="560" rows="6" name="description" required>{{@$map_descp->description}}</textarea>
+                                                         <textarea class="form-control" maxlength="850" rows="6" name="description" required>{{@$map_descp->description}}</textarea>
                                                          <div class="invalid-feedback">
                                                              Please enter the description.
                                                          </div>
@@ -545,18 +545,6 @@
                                                              Please enter the button link.
                                                          </div>
                                                      </div>
-
-
-                                                     <div class="form-group mb-3">
-                                                         <label>Generated Map Code </label>
-                                                         <textarea class="form-control" rows="6" name="list_description" required>{{@$map_descp->list_description}}</textarea>
-                                                         <div class="invalid-feedback">
-                                                             Please enter the map code.
-                                                         </div>
-                                                         <span class="text-muted text-danger">*Use the following link to generate map code: <a target="_blank" href="https://google-map-generator.com/#select">Map Generator</a></span>
-                                                         <span class="text-muted text-danger">*recommended map height: 500 x 560px</span>
-                                                     </div>
-
                                                  </div>
                                              </div>
                                          </div>

@@ -2,7 +2,11 @@
 @section('title') {{ucwords(@$page_detail->name)}} @endsection
 @section('css')
     <style>
-
+        #map {
+            display: block;
+            height: 550px;
+            width: 190%;
+        }
     .theme-btn.style-three, a.theme-btn.style-three.faq-button {
         color: #293043 !important;
         background: transparent;
@@ -281,73 +285,66 @@
                 @endif
 
                 @if($value == "video_section")
-
-
                     <!--grid-section-->
-                        <section class="ttm-row grid-section clearfix">
-                            <div class="container">
-                                <!-- row -->
-                                <div class="section-title title-style-center_text">
-                                    <div class="title-header">
-                                        <h3>Powermind special showcase</h3>
-                                        <h2 class="title">Our Video Gallery</h2>
-                                    </div>
+                    <section class="ttm-row grid-section clearfix">
+                        <div class="container">
+                            <!-- row -->
+                            <div class="section-title title-style-center_text">
+                                <div class="title-header">
+                                    <h3>Powermind special showcase</h3>
+                                    <h2 class="title">Our Video Gallery</h2>
                                 </div>
-                                <div class="row row-equal-height">
-                                    @foreach(@$video_section_elements as $video_element)
-                                        @if(@$video_element->heading == "youtube")
-                                            @if(str_contains(@$video_element->description,'youtube'))
-                                                <?php
-                                                $thumbnail=get_youtube_thumbnail($video_element->description);
-                                                ?>
-                                            @else
-                                                <?php
-                                                $thumbnail=get_vimeo_thumbnail($video_element->description);
-                                                ?>
-                                            @endif
-                                        @else
-                                            @if(str_contains(@$video_element->description,'youtube'))
-                                                <?php
-                                                $thumbnail=get_youtube_thumbnail($video_element->description);
-                                                ?>
-                                            @else
-                                                <?php
-                                                $thumbnail=get_vimeo_thumbnail($video_element->description);
-                                                ?>
-                                            @endif
-                                        @endif
-                                        <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <!--featured-icon-box-->
-                                        <div class="featured-imagebox featured-imagebox-portfolio style2">
-                                            <!-- ttm-box-view-overlay -->
-                                            <div class="ttm-box-view-overlay">
-                                                <!-- featured-thumbnail -->
-                                                <div class="featured-thumbnail">
-                                                    <a href="#" tabindex="0"><img class="img-fluid" src="{{@$thumbnail}}" style="    height: 208px;" alt="image"></a>
-                                                </div><!-- featured-thumbnail end-->
-                                                <div class="featured-content">
-
-                                                    <div class="featured-iconbox ttm-media-link">
-                                                        <a href="{{@$video_element->description}}" target="_self" class="ttm_prettyphoto ttm_image">
-                                                    <span class="ttm-icon ttm-icon_element-color-white ttm-textcolor-white  ttm-icon_element-style-rounded">
-                                                         <i class="fa fa-play"></i>
-                                                    </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div><!-- ttm-box-view-overlay end-->
-                                        </div><!-- featured-icon-box end-->
-                                    </div>
-                                    @endforeach
-                                </div><!-- row end -->
                             </div>
-                        </section>
-                        <!--grid-section end-->
+                            <div class="row row-equal-height">
+                                @foreach(@$video_section_elements as $video_element)
+                                    @if(@$video_element->heading == "youtube")
+                                        @if(str_contains(@$video_element->description,'youtube'))
+                                            <?php
+                                            $thumbnail=get_youtube_thumbnail($video_element->description);
+                                            ?>
+                                        @else
+                                            <?php
+                                            $thumbnail=get_vimeo_thumbnail($video_element->description);
+                                            ?>
+                                        @endif
+                                    @else
+                                        @if(str_contains(@$video_element->description,'youtube'))
+                                            <?php
+                                            $thumbnail=get_youtube_thumbnail($video_element->description);
+                                            ?>
+                                        @else
+                                            <?php
+                                            $thumbnail=get_vimeo_thumbnail($video_element->description);
+                                            ?>
+                                        @endif
+                                    @endif
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <!--featured-icon-box-->
+                                    <div class="featured-imagebox featured-imagebox-portfolio style2">
+                                        <!-- ttm-box-view-overlay -->
+                                        <div class="ttm-box-view-overlay">
+                                            <!-- featured-thumbnail -->
+                                            <div class="featured-thumbnail">
+                                                <a href="#" tabindex="0"><img class="img-fluid" src="{{@$thumbnail}}" style="    height: 208px;" alt="image"></a>
+                                            </div><!-- featured-thumbnail end-->
+                                            <div class="featured-content">
 
-
-
-
-
+                                                <div class="featured-iconbox ttm-media-link">
+                                                    <a href="{{@$video_element->description}}" target="_self" class="ttm_prettyphoto ttm_image">
+                                                <span class="ttm-icon ttm-icon_element-color-white ttm-textcolor-white  ttm-icon_element-style-rounded">
+                                                     <i class="fa fa-play"></i>
+                                                </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div><!-- ttm-box-view-overlay end-->
+                                    </div><!-- featured-icon-box end-->
+                                </div>
+                                @endforeach
+                            </div><!-- row end -->
+                        </div>
+                    </section>
+                    <!--grid-section end-->
                 @endif
 
                 @if($value == "background_image_section")
@@ -635,53 +632,53 @@
                 @endif
 
                 @if($value == "map_and_description")
-                  <!--- Map & Description--->
-                  <section class="about-two">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-md-12 col-lg-5">
-                          <div class="about-two__image">
-                            @if(@$map_descp->list_description)
-                              {!! @$map_descp->list_description !!}
-                              @elseif(@$setting_data->google_map)
-                                <iframe frameborder="0" width="100%" height="660px"scrolling="no" marginheight="0" marginwidth="0" src="{{@$setting_data->google_map}}"
-                                          title="%3$s" aria-label="%3$s"></iframe>
-                            @endif
-                            @if(@$map_descp->button)
-                                <a href="{{@$map_descp->button_link}}" class="thm-btn map-button"><span>{{ucwords(@$map_descp->button)}}</span></a>
-                              @endif
-                          </div><!-- /.about-two__image -->
-                        </div><!-- /.col-md-12 -->
-                        <div class="col-md-12 col-lg-7">
-                          <div class="about-two__content" style="padding: 50px;">
-                            <div class="section-title text-left">
-                                @if(@$map_descp->subheading)
-                                  <span class="section-title__tagline">{{ucfirst(@$map_descp->subheading)}}</span>
 
-                                  @endif
-                                  @if(@$map_descp->heading)
-                                  <h2 class="section-title__title">
-                                      <span><?php
-                                          $split = explode(" ", ucwords(@$map_descp->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$map_descp->heading))."\n"}}</span>
-                                      <span class="text-last">{{$split[count($split)-1]}}</span>
+                        <section class="ttm-row skill-section ttm-bgcolor-grey res-991-m-0 border-rad_6 clearfix">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="d-inline-block">
+                                            <!-- ttm_single_image-wrapper -->
+                                            <div class="ttm_single_image-wrapper z-index-1 position-relative image-top-left-angle">
+                                                <div id="google_map" class="google_map">
+                                                    <div class="map_container clearfix">
+                                                        <div id="map">
+                                                            <iframe src="{{@$setting_data->google_map}}" width="100%" height="100%" aria-hidden="false" tabindex="0"></iframe>
+                                                        </div>
 
-                                  </h2>
-                                  @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="padding_left30 padding_top40 res-991-padding_left0">
+                                            <!-- section-title -->
+                                            <div class="section-title">
+                                                <div class="title-header">
+                                                    @if(@$map_descp->subheading)
+                                                    <h3>{{@$map_descp->subheading}}</h3>
+                                                    @endif
+                                                    <h2 class="title">{{@$map_descp->heading}}</h2>
+                                                </div>
+                                                <div class="title-desc justified">
+                                                    {!! @$map_descp->description !!}
+                                                </div>
+                                                @if(@$map_descp->button_link)
+
+                                                    <div class="d-inline-block ">
+                                                        <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-skincolor margin_right20 margin_top15" href="{{@$map_descp->button_link}}">
+                                                            {{ (@$map_descp->button !== null) ? @$map_descp->button:"Explore more" }}
+                                                        </a>
+                                                    </div>
+                                                @endif
+                                            </div><!-- section-title end -->
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="about-two__box">
-                              <!-- /.about-two__box__icon -->
-                              <div class="about-two__box__content">
-                               {{ ucfirst(@$map_descp->description) }}
-                            </div><!-- /.about-two__box__content -->
-                            </div><!-- /.about-two__box -->
-                            <!-- /.about-two__summery -->
-                          </div><!-- /.about-two__content -->
-                        </div><!-- /.col-md-12 -->
-                      </div><!-- /.row -->
-                    </div><!-- /.container -->
-                  </section>
-
-
+                        </section>
 
                 @endif
 

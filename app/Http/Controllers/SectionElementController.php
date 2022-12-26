@@ -262,7 +262,6 @@ class SectionElementController extends Controller
                 'subheading'             => $request->input('subheading'),
                 'page_section_id'        => $section_id,
                 'description'            => $request->input('description'),
-                'list_description'       => $request->input('list_description'),
                 'button'                 => $request->input('button'),
                 'button_link'            => $request->input('button_link'),
                 'created_by'             => Auth::user()->id,
@@ -565,7 +564,6 @@ class SectionElementController extends Controller
             $map->subheading          = $request->input('subheading');
             $map->page_section_id     = $section_id;
             $map->description         = $request->input('description');
-            $map->list_description    = $request->input('list_description');
             $map->button              = $request->input('button');
             $map->button_link         = $request->input('button_link');
             $map->updated_by          = Auth::user()->id;
