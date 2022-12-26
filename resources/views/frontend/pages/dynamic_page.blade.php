@@ -436,7 +436,7 @@
                                     <div class="col-lg-5 col-md-6 col-sm-6 m-lg-0 m-auto">
                                         <!-- col-bg-img-two -->
                                         <div class="col-bg-img-two ttm-bg ttm-col-bgimage-yes border-rad_6 overflow-hidden mt_120 res-991-margin_top15">
-                                            <div class="ttm-col-wrapper-bg-layer ttm-bg-layer" style="background-image:  url({{ asset('/images/section_elements/basic_section/'.$directors_message->image) }})">
+                                            <div class="ttm-col-wrapper-bg-layer ttm-bg-layer" style=" background-image:url({{ asset('/images/section_elements/basic_section/'.@$directors_message->image) }}) !important;">
                                                 <div class="padding_top15 ttm-bgcolor-skincolor"></div>
                                                 <div class="ttm-col-wrapper-bg-layer-inner"></div>
                                             </div>

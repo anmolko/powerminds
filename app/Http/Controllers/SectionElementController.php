@@ -201,10 +201,11 @@ class SectionElementController extends Controller
             if(!empty($request->file('image'))){
                 $image        = $request->file('image');
                 $name         = uniqid().'_director_'.$image->getClientOriginalName();
+                $newname      = str_replace(' ','-',$name);
                 $path         = base_path().'/public/images/section_elements/basic_section/';
-                $moved        = Image::make($image->getRealPath())->fit(595, 785)->orientate()->save($path.$name);
+                $moved        = Image::make($image->getRealPath())->fit(595, 785)->orientate()->save($path.$newname);
                 if ($moved){
-                    $data['image']= $name;
+                    $data['image']= $newname;
                 }
             }
             if(!empty($request->file('extra_image'))){
@@ -514,10 +515,11 @@ class SectionElementController extends Controller
             if (!empty($request->file('image'))){
                 $image                = $request->file('image');
                 $name                 = uniqid().'_director_'.$image->getClientOriginalName();
+                $newname              = str_replace(' ','-',$name);
                 $path                 = base_path().'/public/images/section_elements/basic_section/';
-                $moved                = Image::make($image->getRealPath())->fit(595, 785)->orientate()->save($path.$name);
+                $moved                = Image::make($image->getRealPath())->fit(595, 785)->orientate()->save($path.$newname);
                 if ($moved){
-                    $basic->image = $name;
+                    $basic->image = $newname;
                     if (!empty($oldimage) && file_exists(public_path().'/images/section_elements/basic_section/'.$oldimage)){
                         @unlink(public_path().'/images/section_elements/basic_section/'.$oldimage);
                     }
