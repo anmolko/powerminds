@@ -309,7 +309,7 @@
                                         <div class="col-md-12 mb-2">
                                             <div class="form-group">
                                                 <label>Number of Tab List <span class="text-muted text-danger">*</span></label>
-                                                <input type="number" min="2" class="form-control" name="list_number_2" value="{{$list2}}">
+                                                <input type="number" min="1" class="form-control" name="list_number_2" value="{{$list2}}">
                                                 <div class="invalid-feedback">
                                                     Please enter the Accordion tab number.
                                                 </div>

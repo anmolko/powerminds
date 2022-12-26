@@ -102,6 +102,9 @@
         border-color: transparent;
         background-color: transparent;
     }
+        .section-title.style2 .title-header{
+            width: 55%;
+        }
 </style>
 
 @endsection
@@ -683,49 +686,43 @@
                 @endif
 
                 @if($value == "accordion_section")
-                    <!-- FAQs Page Area start -->
-                    <section class="faqs-page">
-                        <div class="faqs-page-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/faqs-page-bg.jpg')}})"></div>
-                        <div class="container">
-                          <div class="section-title text-center">
-                            <span class="section-title__tagline">{{ucwords(@$accordian2_elements[0]->subheading)}}</span>
-                            <h2 class="section-title__title">
-                                   <span><?php
-                                       $split = explode(" ", ucwords(@$accordian2_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$accordian2_elements[0]->heading))."\n"}}</span>
-                                <span class="text-last">{{$split[count($split)-1]}}</span>
-
-                            </h2>
-                          </div>
-                          <div class="row">
-                            @foreach($accordian2_elements->chunk(2) as $index => $chunk )
-
-                              <div class="col-xl-6 col-lg-6">
-                                <div class="faqs-page__single">
-                                  <div class="accrodion-grp faq-one-accrodion" data-grp-name="faq-one-accrodion">
-                                    @foreach($chunk as  $accordian2_element)
-
-                                        <div class="accrodion @if($loop->first) active @endif @if($loop->last) last-chiled @endif">
-                                          <div class="accrodion-title">
-                                            <h4>{{@$accordian2_element->list_header}}</h4>
-                                          </div>
-                                          <div class="accrodion-content" style="@if($loop->first)  @else display: none; @endif">
-                                            <div class="inner">
-                                              <p>{!! @$accordian2_element->list_description !!}</p>
-                                            </div><!-- /.inner -->
-                                          </div>
-                                        </div>
-                                    @endforeach
-
-                                  </div>
+                        <section class="ttm-row blog-section clearfix">
+                            <div class="container">
+                                <!-- row -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <!-- section title -->
+                                        <div class="section-title style2">
+                                            <div class="title-header">
+                                                @if(ucwords(@$accordian2_elements[0]->subheading) !== null)
+                                                    <h3>{{ucwords(@$accordian2_elements[0]->subheading)}}</h3>
+                                                @endif
+                                                <h2 class="title">{{ucwords(@$accordian2_elements[0]->heading)}}</h2>
+                                            </div>
+                                            <div class="title-desc">
+                                                <p>{{ucwords(@$accordian2_elements[0]->description)}}</p>
+                                            </div>
+                                        </div><!-- section title end -->
+                                    </div>
                                 </div>
-                              </div>
-                            @endforeach
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="accordion padding_top15 padding_left15 res-991-padding_left0 res-991-padding_top30">
+                                            @foreach($accordian2_elements as $accordian2_element )
+                                                <div class="toggle ttm-toggle_style_classic style2 ttm-toggle-title-bgcolor-white">
+                                                    <div class="toggle-title box-shadow"><a href="#" class="@if($loop->first) active @endif">{{@$accordian2_element->list_header}}</a></div>
+                                                    <div class="toggle-content @if($loop->first) show @endif">
+                                                        <p>{!! @$accordian2_element->list_description !!}</p>
+                                                    </div>
+                                                </div><!-- toggle end -->
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
 
 
-                          </div>
-                        </div>
-                      </section>
-                  <!-- FAQs Page Area end -->
                 @endif
 
                 @if($value == "gallery_section")
@@ -1006,7 +1003,6 @@
 
 
              @endif
-
 
 
         </div>

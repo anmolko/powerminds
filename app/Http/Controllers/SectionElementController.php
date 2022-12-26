@@ -352,11 +352,13 @@ class SectionElementController extends Controller
         elseif ($section_name == 'accordion_section'){
                 $list2_num   = $request->input('list_number_2');
                 for ($i=0;$i<$list2_num;$i++){
-                    $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
-                    $subheading  =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
+                    $heading      =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
+                    $subheading   =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
+                    $description  =  (array_key_exists($i, $request->input('description')) ?  $request->input('description')[$i]: Null);
                     $data=[
                         'heading'               => $heading,
                         'subheading'            => $subheading,
+                        'description'           => $description,
                         'page_section_id'       => $section_id,
                         'list_header'           => $request->input('list_header')[$i],
                         'list_description'      => $request->input('list_description')[$i],
@@ -687,10 +689,12 @@ class SectionElementController extends Controller
             for ($i=0;$i<$list2_num;$i++) {
                 $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
                 $subheading  =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
+                $description  =  (array_key_exists($i, $request->input('description')) ?  $request->input('description')[$i]: Null);
                 if($request->input('id')[$i] == null){
                     $data=[
                         'heading'               => $heading,
                         'subheading'            => $subheading,
+                        'description'           => $description,
                         'page_section_id'       => $section_id,
                         'list_header'           => $request->input('list_header')[$i],
                         'list_description'      => $request->input('list_description')[$i],
@@ -702,6 +706,7 @@ class SectionElementController extends Controller
                     $accordian2                      = SectionElement::find($request->input('id')[$i]);
                     $accordian2->heading             = $heading;
                     $accordian2->subheading          = $subheading;
+                    $accordian2->description         = $description;
                     $accordian2->page_section_id     = $section_id;
                     $accordian2->list_header         = $request->input('list_header')[$i];
                     $accordian2->list_description    = $request->input('list_description')[$i];

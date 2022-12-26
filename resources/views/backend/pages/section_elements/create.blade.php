@@ -1063,16 +1063,23 @@
                                                      <div class="card-body">
                                                          <div class="form-group mb-3">
                                                              <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                             <input type="text" class="form-control" maxlength="30" name="heading[]" value="{{@$accordian2_elements[0]->heading}}" required>
+                                                             <input type="text" class="form-control" maxlength="25" name="heading[]" value="{{@$accordian2_elements[0]->heading}}" required>
                                                              <div class="invalid-feedback">
                                                                  Please enter the heading.
                                                              </div>
                                                          </div>
                                                          <div class="form-group mb-3">
                                                              <label>Sub Heading <span class="text-muted text-danger">*</span></label>
-                                                             <input type="text" class="form-control" maxlength="40" name="subheading[]" value="{{@$accordian2_elements[0]->subheading}}" required>
+                                                             <input type="text" class="form-control" maxlength="40" name="subheading[]" value="{{@$accordian2_elements[0]->subheading}}">
                                                              <div class="invalid-feedback">
                                                                  Please enter the sub heading.
+                                                             </div>
+                                                         </div>
+                                                         <div class="form-group mb-3">
+                                                             <label>Description <span class="text-muted text-danger">*</span></label>
+                                                             <textarea class="form-control" rows="6" maxlength="130" name="description[]">{{@$accordian2_elements[0]->description}}</textarea>
+                                                             <div class="invalid-feedback">
+                                                                 Please enter the description.
                                                              </div>
                                                          </div>
                                                      </div>
