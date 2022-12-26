@@ -942,16 +942,21 @@ class SectionElementController extends Controller
 
 
         for ($i = 0; $i < count($photos); $i++) {
-            $photo = $photos[$i];
-            $name = $page_section->page->slug."_page_gallery_".date('YmdHis') . uniqid();
-            $save_name = $name . '.' . $photo->getClientOriginalExtension();
-
-            $resize_name = "Thumb_".$name . '.' . $photo->getClientOriginalExtension();
+            $photo       = $photos[$i];
+            $name        = $page_section->page->slug."_page_gallery_".date('YmdHis') . uniqid();
+            $rep_name    = str_replace(' ','_',$name);
+            $save_name   = $rep_name . '.' . $photo->getClientOriginalExtension();
+            $resize_name = "Thumb_".$save_name;
+            $thumb_name  = $resize_name . '.' . $photo->getClientOriginalExtension();
 
             Image::make($photo)
                 ->orientate()
-                // ->resize(500, 500)
                 ->save($this->photos_path . '/' . $resize_name);
+
+            Image::make($photo)
+                ->orientate()
+                ->fit(370, 250)
+                ->save($this->photos_path . '/' . $save_name);
 
             $photo->move($this->photos_path, $save_name);
 

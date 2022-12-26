@@ -726,163 +726,155 @@
                 @endif
 
                 @if($value == "gallery_section")
-                  <!--- Gallery Section 1-->
-                <section class="gallery-one">
 
+                    <!--grid-section-->
+                        <section class="ttm-row grid-section clearfix">
+                            <div class="container">
+                                <div class="section-title title-style-center_text">
+                                    <div class="title-header">
+                                        <h3>Powermind showcase</h3>
+                                        <h2 class="title">Our Gallery</h2>
+                                    </div>
+                                </div>
+                            @if(count(@$gallery_elements) > 0)
+                                <!-- row -->
+                                    <div class="row row-equal-height">
+                                        @foreach(@$gallery_elements as $gallery_element)
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                                <!--featured-icon-box-->
+                                                <div class="featured-imagebox featured-imagebox-portfolio style2" >
+                                                    <!-- ttm-box-view-overlay -->
+                                                    <div class="ttm-box-view-overlay">
+                                                        <!-- featured-thumbnail -->
+                                                        <div class="featured-thumbnail" >
+                                                            <a href="#" tabindex="0"><img class="img-fluid" src="{{asset('/images/section_elements/gallery/'.@$gallery_element->resized_name)}}" alt="image"></a>
+                                                        </div><!-- featured-thumbnail end-->
+                                                        <div class="featured-content">
+                                                            <div class="featured-iconbox ttm-media-link">
+                                                                <a class="ttm_prettyphoto ttm_image" rel="prettyPhoto[pp_gal]" title="{{ ucfirst(str_replace('-',' ',$gallery_element->original_name))}}'s image" data-rel="prettyPhoto" href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" tabindex="0">
+                                                                    <i class="fa fa-search"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- ttm-box-view-overlay end-->
+                                                </div><!-- featured-icon-box end-->
+                                            </div>
+                                        @endforeach
 
-                  <div class="container-fluid">
-                      @if(Request::is('about-us'))
-                          <div class="section-title text-center">
-                              <span class="section-title__tagline">Our Gallery</span>
-                              <h2 class="section-title__title">
-                                <span>Legal </span><span class="text-last">Documents</span>
-                              </h2>
-                          </div>
-
-                          @else
-                          <div class="section-title text-center">
-                              <span class="section-title__tagline">NMS Recruitment</span>
-                              <h2 class="section-title__title">
-                                  <span>Our </span><span class="text-last">Gallery</span>
-                              </h2>
-                          </div>
-                      @endif
-                    <div class="row masonary-layout">
-
-                    @foreach(@$gallery_elements as $gallery_element)
-
-                      <div class="col-md-6 col-lg-4">
-                          <div class="team-one__single">
-                              <div class="team-one__img-box">
-                                  <div class="team-one__img gallery-one__card">
-                                      <img src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="">
-                                      <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-popup">
-                                          <span></span>
-                                      </a>
-                                  </div>
-                                  <div class="team-one__social">
-                                      <div class="team-one__member-info">
-                                          <p class="team-one__member-title">{{ ucfirst(str_replace('-',' ',$gallery_element->original_name))}}</p>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div><!-- /.col-md-6 col-lg-3 -->
-                      @endforeach
-
-
-                    </div><!-- /.row -->
-                  </div><!-- /.container-fluid -->
-                </section><!-- /.gallery-one -->
+                                    </div><!-- row end -->
+                                @endif
+                            </div>
+                        </section>
+                     <!--grid-section end-->
 
                 @endif
 
-                @if($value == "slider_list")
-                  <!-- Slider List Area start -->
-                  @if(@$slider_list_elements[0]->heading)
+{{--                @if($value == "slider_list")--}}
+{{--                  <!-- Slider List Area start -->--}}
+{{--                  @if(@$slider_list_elements[0]->heading)--}}
 
-                    <!--Portfolio Two Start-->
-                    <section class="portfolio-two" style="margin-top: 80px;margin-bottom: 20px;">
-                        <div class="container">
-                            <div class="section-title text-center">
-                                <span class="section-title__tagline">{{ucfirst(@$slider_list_elements[0]->description)}}</span>
-                                <h2 class="section-title__title">
-                                    <span><?php
-                                        $split = explode(" ", ucwords(@$slider_list_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$slider_list_elements[0]->heading))."\n"}}</span>
-                                    <span class="text-last">{{$split[count($split)-1]}}</span>
-                                </h2>
-                            </div>
-                            <div class="portfolio-two__carousel owl-theme owl-carousel">
+{{--                    <!--Portfolio Two Start-->--}}
+{{--                    <section class="portfolio-two" style="margin-top: 80px;margin-bottom: 20px;">--}}
+{{--                        <div class="container">--}}
+{{--                            <div class="section-title text-center">--}}
+{{--                                <span class="section-title__tagline">{{ucfirst(@$slider_list_elements[0]->description)}}</span>--}}
+{{--                                <h2 class="section-title__title">--}}
+{{--                                    <span><?php--}}
+{{--                                        $split = explode(" ", ucwords(@$slider_list_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$slider_list_elements[0]->heading))."\n"}}</span>--}}
+{{--                                    <span class="text-last">{{$split[count($split)-1]}}</span>--}}
+{{--                                </h2>--}}
+{{--                            </div>--}}
+{{--                            <div class="portfolio-two__carousel owl-theme owl-carousel">--}}
 
-                              @for ($i = 1; $i <=@$list_3; $i++)
+{{--                              @for ($i = 1; $i <=@$list_3; $i++)--}}
 
-                                <div class="portfolio-one__single">
-                                    <div class="portfolio-one__img">
-                                        <img src="{{asset('/images/section_elements/list_1/'.@$slider_list_elements[$i-1]->list_image)}}" alt="">
-                                        <div class="portfolio-one__experience">
+{{--                                <div class="portfolio-one__single">--}}
+{{--                                    <div class="portfolio-one__img">--}}
+{{--                                        <img src="{{asset('/images/section_elements/list_1/'.@$slider_list_elements[$i-1]->list_image)}}" alt="">--}}
+{{--                                        <div class="portfolio-one__experience">--}}
 
-                                            <div class="portfolio-one__fimlor">
-                                                <p class="portfolio-one__fimlor-title"><a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">{{ucwords(@$slider_list_elements[$i-1]->list_header)}}</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="portfolio-one__arrow">
-                                            <a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}"><span class="icon-right-arrow"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endfor
+{{--                                            <div class="portfolio-one__fimlor">--}}
+{{--                                                <p class="portfolio-one__fimlor-title"><a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">{{ucwords(@$slider_list_elements[$i-1]->list_header)}}</a></p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="portfolio-one__arrow">--}}
+{{--                                            <a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}"><span class="icon-right-arrow"></span></a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                @endfor--}}
 
-                            </div>
-                        </div>
-                    </section>
-                    <!--Portfolio Two End-->
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </section>--}}
+{{--                    <!--Portfolio Two End-->--}}
 
-                  @endif
-                @endif
+{{--                  @endif--}}
+{{--                @endif--}}
 
-                @if($value == "simple_accordion_tab2")
+{{--                @if($value == "simple_accordion_tab2")--}}
 
-                <section class="we-change">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="we-change__left-faqs">
-                                    <div class="section-title text-left">
-                                      <span class="section-title__tagline">{{ucwords(@$process_elements[0]->description)}}</span>
-                                      <h2 class="section-title__title">
-                                          <span><?php
-                                              $split = explode(" ", ucwords(@$process_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$process_elements[0]->heading))."\n"}}</span>
-                                          <span class="text-last">{{$split[count($split)-1]}}</span>
-                                      </h2>
-                                    </div>
-                                    <div class="we-change__faqs">
-                                        <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
-                                            <div class="accrodion active">
-                                                <div class="accrodion-title">
-                                                    <h4>{{@$process_elements[0]->list_header}}</h4>
-                                                </div>
-                                                <div class="accrodion-content">
-                                                    <div class="inner">
-                                                        <p>{!! @$process_elements[0]->list_description !!}</p>
-                                                    </div><!-- /.inner -->
-                                                </div>
-                                            </div>
-                                            <div class="accrodion">
-                                                <div class="accrodion-title">
-                                                    <h4>{{@$process_elements[1]->list_header}}</h4>
-                                                </div>
-                                                <div class="accrodion-content">
-                                                    <div class="inner">
-                                                        <p>{!! @$process_elements[1]->list_description !!}</p>
-                                                    </div><!-- /.inner -->
-                                                </div>
-                                            </div>
-                                            <div class="accrodion last-chiled">
-                                                <div class="accrodion-title">
-                                                    <h4>{{@$process_elements[2]->list_header}}</h4>
-                                                </div>
-                                                <div class="accrodion-content">
-                                                    <div class="inner">
-                                                        <p>{!! @$process_elements[2]->list_description !!}</p>
-                                                    </div><!-- /.inner -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="we-change__right">
-                                    <div class="we-change__right-img">
-                                        <img src="{{asset('/images/section_elements/list_1/'.@$process_elements[0]->list_image)}}" alt="">
+{{--                <section class="we-change">--}}
+{{--                    <div class="container">--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="col-xl-6">--}}
+{{--                                <div class="we-change__left-faqs">--}}
+{{--                                    <div class="section-title text-left">--}}
+{{--                                      <span class="section-title__tagline">{{ucwords(@$process_elements[0]->description)}}</span>--}}
+{{--                                      <h2 class="section-title__title">--}}
+{{--                                          <span><?php--}}
+{{--                                              $split = explode(" ", ucwords(@$process_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$process_elements[0]->heading))."\n"}}</span>--}}
+{{--                                          <span class="text-last">{{$split[count($split)-1]}}</span>--}}
+{{--                                      </h2>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="we-change__faqs">--}}
+{{--                                        <div class="accrodion-grp" data-grp-name="faq-one-accrodion">--}}
+{{--                                            <div class="accrodion active">--}}
+{{--                                                <div class="accrodion-title">--}}
+{{--                                                    <h4>{{@$process_elements[0]->list_header}}</h4>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="accrodion-content">--}}
+{{--                                                    <div class="inner">--}}
+{{--                                                        <p>{!! @$process_elements[0]->list_description !!}</p>--}}
+{{--                                                    </div><!-- /.inner -->--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="accrodion">--}}
+{{--                                                <div class="accrodion-title">--}}
+{{--                                                    <h4>{{@$process_elements[1]->list_header}}</h4>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="accrodion-content">--}}
+{{--                                                    <div class="inner">--}}
+{{--                                                        <p>{!! @$process_elements[1]->list_description !!}</p>--}}
+{{--                                                    </div><!-- /.inner -->--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="accrodion last-chiled">--}}
+{{--                                                <div class="accrodion-title">--}}
+{{--                                                    <h4>{{@$process_elements[2]->list_header}}</h4>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="accrodion-content">--}}
+{{--                                                    <div class="inner">--}}
+{{--                                                        <p>{!! @$process_elements[2]->list_description !!}</p>--}}
+{{--                                                    </div><!-- /.inner -->--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-xl-6">--}}
+{{--                                <div class="we-change__right">--}}
+{{--                                    <div class="we-change__right-img">--}}
+{{--                                        <img src="{{asset('/images/section_elements/list_1/'.@$process_elements[0]->list_image)}}" alt="">--}}
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                @endif
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </section>--}}
+{{--                @endif--}}
 
 
 
