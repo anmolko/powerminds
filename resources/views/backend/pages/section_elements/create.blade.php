@@ -1034,9 +1034,9 @@
                                                          <label>Description <span class="text-muted text-danger">*</span></label>
                                                          <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
                                                          <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
-                                                         <textarea class="form-control" rows="6" name="description" defaultid="header_descp_editor" id="task-textarea" required>{{@$header_descp_elements->description}}</textarea>
+                                                         <textarea class="form-control" rows="6" name="description" id="task-textarea" required>{{@$header_descp_elements->description}}</textarea>
                                                          <div class="invalid-feedback">
-                                                             Please write the short description for section.
+                                                             Please write the description for section.
                                                          </div>
                                                      </div>
                                                  </div>
@@ -1565,7 +1565,14 @@
 
 @section('js')
 {{--    <!-- <script src="{{asset('assets/backend/plugins/ckeditor/ckeditor.js')}}"></script> -->--}}
-{{--    @include('backend.ckeditor')--}}
+    <script type="text/javascript">
+        var section_list = new Array();
+        <?php foreach($sections as $key => $val){ ?>
+        section_list.push('<?php echo $val; ?>');
+            <?php } ?>
+    </script>
+
+    @include('backend.ckeditor')
     <script src="{{asset('assets/backend/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
     <script src="{{asset('assets/backend/plugins/dropzone/dropzone.js')}}"></script>
     <script src="{{asset('assets/backend/plugins/dropzone/dropzone.config.js')}}"></script>
@@ -1582,12 +1589,6 @@
     </script>
 
     <script type="text/javascript">
-        var section_list = new Array();
-        <?php foreach($sections as $key => $val){ ?>
-        section_list.push('<?php echo $val; ?>');
-        <?php } ?>
-
-
         var loadbasicFile = function(id1,id2,event) {
             var image       = document.getElementById(id1);
             var replacement = document.getElementById(id2);
@@ -1657,7 +1658,7 @@
             });
         }
 
-        function createEditor ( elementId ) {
+        function createEditor2 ( elementId ) {
             return ClassicEditor
                 .create( document.querySelector( '#' + elementId ), {
                     toolbar : {
@@ -1741,14 +1742,14 @@
 
 
         $(document).ready(function () {
-            if(section_list.includes("simple_header_and_description")){
-                createEditor('task-textarea');
-            }
             if(section_list.includes("directors_message")){
-                createEditor('director_editor');
+                createEditor2('director_editor');
             }
             if(section_list.includes("basic_section")){
-                createEditor('basic_editor');
+                createEditor2('basic_editor');
+            }
+            if(section_list.includes("simple_header_and_description")){
+                createEditor('task-textarea');
             }
 
             {{--if(section_list.includes("accordion_section_2")){--}}

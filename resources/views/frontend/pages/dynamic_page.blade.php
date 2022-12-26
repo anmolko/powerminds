@@ -27,6 +27,77 @@
     .ttm-fid.inside.ttm-fid-with-icon.style1{
      margin-left: 0px !important;
     }
+    .featured-icon-box.style9{
+        box-shadow: 0 0 12px 0 rgb(43 52 59 / 30%)!important;
+    }
+    .ttm-pf-view-left-image .ttm-pf-single-content-area h2 {
+        text-align: center;
+        font-size: 36px;
+        line-height: 46px;
+        margin-bottom: 20px;
+    }
+
+    .ck-texts blockquote {
+        display: block;
+        padding: 55px 50px 55px 30px;
+        position: relative;
+        color: #223645;
+        margin: 30px 0 30px 0;
+        font-weight: 600;
+        background-color: #ebf5f5;
+        font-size: 22px;
+        line-height: 36px;
+        min-height: 100px;
+        border-radius: 10px;
+        font-style: italic;
+        border: none;
+    }
+    .ck-texts blockquote:before {
+        display: block;
+        height: 60%;
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 4px;
+        top: 40px;
+        background-color: #000;
+    }
+
+    .ck-texts blockquote:after {
+        content: "\e67f";
+        font-family: "themify";
+        font-size: 110px;
+        line-height: 110px;
+        font-weight: 400;
+        position: absolute;
+        left: 40px;
+        letter-spacing: 0;
+        top: 30px;
+        opacity: 0.06;
+        font-style: normal;
+        display: block;
+    }
+    .ttm-icon {
+        margin-bottom: 2px;
+    }
+
+    .featured-imagebox-portfolio.style2 .ttm-media-link {
+        display: flex;
+        position: relative;
+        padding-top: 5px;
+        padding-bottom: 4px;
+    }
+    .featured-imagebox-portfolio.style2 .ttm-media-link a{
+        border: none;
+        font-size: 40px;
+    }
+    .featured-imagebox-portfolio.style2 .ttm-media-link:after {
+        height: 0px;
+    }
+    .featured-imagebox-portfolio.style2 .ttm-media-link a:hover{
+        border-color: transparent;
+        background-color: transparent;
+    }
 </style>
 
 @endsection
@@ -211,63 +282,71 @@
 
                 @if($value == "video_section")
 
-                <section class="blog-one blog-grid">
-                    <div class="container">
-                          <div class="section-title text-center">
-                              <span class="section-title__tagline">NMS Recent Activites</span>
-                              <h2 class="section-title__title">
-                                  <span>Video</span>
-                                  <span class="text-last">Gallery</span>
-                              </h2>
-                          </div>
 
-                        <div class="row">
-                          @foreach(@$video_section_elements as $video_element)
-                                @if(@$video_element->heading == "youtube")
-                                    @if(str_contains(@$video_element->description,'youtube'))
-                                        <?php
-                                            $thumbnail=get_youtube_thumbnail($video_element->description);
-                                        ?>
-                                    @else
-                                        <?php
-                                        $thumbnail=get_vimeo_thumbnail($video_element->description);
-                                        ?>
-                                    @endif
-                                @else
-                                    @if(str_contains(@$video_element->description,'youtube'))
-                                        <?php
-                                            $thumbnail=get_youtube_thumbnail($video_element->description);
-                                        ?>
-                                    @else
-                                        <?php
-                                        $thumbnail=get_vimeo_thumbnail($video_element->description);
-                                        ?>
-                                    @endif
-                                @endif
-
-                              <div class="col-xl-4 col-lg-6 col-md-6">
-                                <!--Blog One Single-->
-                                <div class="blog-one__single wow fadeInUp" data-wow-delay="100ms">
-                                    <div class="blog-one__img-box">
-                                        <div class="blog-one__img">
-                                            <img src="{{@$thumbnail}}" alt="">
-                                            <a href="{{@$video_element->description}}" class="video-popup">
-                                              <div class="video-one__video-icon">
-                                                  <span class="icon-play-button"></span>
-                                                  <i class="ripple"></i>
-                                              </div>
-                                            </a>
-                                        </div>
-
+                    <!--grid-section-->
+                        <section class="ttm-row grid-section clearfix">
+                            <div class="container">
+                                <!-- row -->
+                                <div class="section-title title-style-center_text">
+                                    <div class="title-header">
+                                        <h3>Powermind special showcase</h3>
+                                        <h2 class="title">Our Video Gallery</h2>
                                     </div>
-
                                 </div>
-                            </div>
+                                <div class="row row-equal-height">
+                                    @foreach(@$video_section_elements as $video_element)
+                                        @if(@$video_element->heading == "youtube")
+                                            @if(str_contains(@$video_element->description,'youtube'))
+                                                <?php
+                                                $thumbnail=get_youtube_thumbnail($video_element->description);
+                                                ?>
+                                            @else
+                                                <?php
+                                                $thumbnail=get_vimeo_thumbnail($video_element->description);
+                                                ?>
+                                            @endif
+                                        @else
+                                            @if(str_contains(@$video_element->description,'youtube'))
+                                                <?php
+                                                $thumbnail=get_youtube_thumbnail($video_element->description);
+                                                ?>
+                                            @else
+                                                <?php
+                                                $thumbnail=get_vimeo_thumbnail($video_element->description);
+                                                ?>
+                                            @endif
+                                        @endif
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <!--featured-icon-box-->
+                                        <div class="featured-imagebox featured-imagebox-portfolio style2">
+                                            <!-- ttm-box-view-overlay -->
+                                            <div class="ttm-box-view-overlay">
+                                                <!-- featured-thumbnail -->
+                                                <div class="featured-thumbnail">
+                                                    <a href="#" tabindex="0"><img class="img-fluid" src="{{@$thumbnail}}" style="    height: 208px;" alt="image"></a>
+                                                </div><!-- featured-thumbnail end-->
+                                                <div class="featured-content">
 
-                          @endforeach
-                        </div>
-                     </div>
-                 </section>
+                                                    <div class="featured-iconbox ttm-media-link">
+                                                        <a href="{{@$video_element->description}}" target="_self" class="ttm_prettyphoto ttm_image">
+                                                    <span class="ttm-icon ttm-icon_element-color-white ttm-textcolor-white  ttm-icon_element-style-rounded">
+                                                         <i class="fa fa-play"></i>
+                                                    </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div><!-- ttm-box-view-overlay end-->
+                                        </div><!-- featured-icon-box end-->
+                                    </div>
+                                    @endforeach
+                                </div><!-- row end -->
+                            </div>
+                        </section>
+                        <!--grid-section end-->
+
+
+
+
 
                 @endif
 
@@ -526,38 +605,33 @@
                 @endif
 
                 @if($value == "simple_header_and_description")
-                  <!--- Simple Header Description--->
-                  <section class="portfolio-fullwidth">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-xl-12">
-                          <div class="portfolio-fullwidth__img-box">
-                          </div>
-                          <div class="portfolio-fullwidth__content">
-                          @if(@$header_descp_elements->heading)
+                        <section class="ttm-row clearfix" style="    padding: 50px 0;">
+                            <div class="container">
+                                <!-- row -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ttm-pf-single-content-wrapper ttm-pf-view-left-image">
+                                            <div class="ttm-pf-single-content-wrapper-innerbox">
 
-                            <h2 class="portfolio-fullwidth__title"
-                            style="margin: auto;
-                              width: 70%;
-                              text-align: center;
-                              margin-bottom: 40px;
-                              text-transform: uppercase;">
-
-                                <span class="text-red"><?php
-                                    $split = explode(" ", ucwords(@$header_descp_elements->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$header_descp_elements->heading))."\n"}}</span>
-                                <span class="text-last">{{$split[count($split)-1]}}</span>
-
-                            </h2>
-                              @endif
-
-                              <div class="portfolio-fullwidth__text-1 winrecruit" style="text-align: justify;">
-                                {!! @$header_descp_elements->description !!}
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
+                                                <div class="ttm-pf-single-content-area">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            @if(@$header_descp_elements->heading !== null)
+                                                                <h2>{{@$header_descp_elements->heading}}</h2>
+                                                            @endif
+                                                             <div class="ck-texts">
+                                                                {!! @$header_descp_elements->description !!}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- row end-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                 @endif
 
                 @if($value == "map_and_description")
@@ -935,6 +1009,7 @@
 
 
              @endif
+
 
 
         </div>

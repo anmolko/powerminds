@@ -3141,7 +3141,7 @@ ul.pagination .page-item .page-link{
 }
 .ck-texts .image{
     text-align: center;
-    margin: 0.9em auto;
+    margin: 0.5em auto;
     min-width: 50px;
 }
 .ck-texts figcaption{
@@ -3163,4 +3163,35 @@ ul.pagination .page-item .page-link{
 
 .justified{
     text-align: justify;
+}
+
+.ck-texts ul, .ck-texts ol{
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    font-size: 15px;
+}
+.ck-texts ul li, .ck-texts ol li{
+    position: relative;
+    padding-bottom: 8px;
+}
+.ck-texts ul li:before{
+    content: "\f0a9";
+    padding-right: 5px;
+    color: #27aae1;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+.ck-texts ol li:before{
+    content: "\f178";
+    padding-right: 5px;
+    color: #27aae1;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
 }
