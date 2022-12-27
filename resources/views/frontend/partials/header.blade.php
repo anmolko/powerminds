@@ -122,7 +122,8 @@
                                 <!-- site-branding -->
                                 <div class="site-branding ">
                                     <a class="home-link" href="/" title="Axacus" rel="home">
-                                        <img id="logo-img" height="45" width="175" class="img-fluid auto_size" src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }else{?>{{asset('assets/frontend/images/logo-img.svg')}}<?php } ?>" alt="@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Power Minds Pvt. Ltd. @endif" title="@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Power Minds Pvt. Ltd. @endif">
+                                        <img
+                                            id="logo-img" height="65" width="250" class="img-fluid auto_size" src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }else{?>{{asset('assets/frontend/images/logo-img.svg')}}<?php } ?>" alt="@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Power Minds Pvt. Ltd. @endif" style=" max-height: 80px;" title="@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Power Minds Pvt. Ltd. @endif">
                                     </a>
                                 </div><!-- site-branding end -->
                                 <div class="d-flex flex-row">

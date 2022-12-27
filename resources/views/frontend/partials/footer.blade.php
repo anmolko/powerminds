@@ -195,7 +195,8 @@
                         </div>
                         <div class="order-2 footer-logo">
                             <img class="img-fluid"
-                                 src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }else{?>  {{asset('assets/frontend/images/footer-logo.svg')}}  <?php }?>"9
+                                 src="<?php if(@$setting_data->logo_white){?>{{asset('/images/settings/'.@$setting_data->logo_white)}}<?php }else{?>  {{asset('assets/frontend/images/footer-logo.svg')}}  <?php }?>"
+                                 style="max-height: 80px;"
                                  alt="logo">
                         </div>
                         <div class="order-3">
