@@ -3165,17 +3165,17 @@ ul.pagination .page-item .page-link{
     text-align: justify;
 }
 
-.ck-texts ul, .ck-texts ol{
+.ck-texts ul, .ck-texts ol, .custom-section ul, .custom-section ol{
     list-style: none;
     padding: 10px 0;
     margin: 0;
     font-size: 15px;
 }
-.ck-texts ul li, .ck-texts ol li{
+.ck-texts ul li, .ck-texts ol li, .custom-section ul li, .custom-section ol li{
     position: relative;
     padding-bottom: 8px;
 }
-.ck-texts ul li:before{
+.ck-texts ul li:before, .custom-section ul li:before{
     content: "\f0a9";
     padding-right: 5px;
     color: #27aae1;
@@ -3185,7 +3185,7 @@ ul.pagination .page-item .page-link{
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
 }
-.ck-texts ol li:before{
+.ck-texts ol li:before, .custom-section ol li:before{
     content: "\f178";
     padding-right: 5px;
     color: #27aae1;

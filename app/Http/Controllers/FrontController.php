@@ -294,7 +294,7 @@ class FrontController extends Controller
                     ->where('page_section_id', $section->id)
                     ->get();
             }
-            else if ($section->section_slug == 'slider_list'){
+            else if ($section->section_slug == 'image_description_list'){
                 $list_3      = $section->list_number_3;
                 $slider_list_elements = SectionElement::with('section')
                     ->where('page_section_id', $section->id)

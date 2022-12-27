@@ -90,7 +90,7 @@ class PageController extends Controller
                             'page_id' => $page->id,
                             'created_by' => Auth::user()->id,
                         ]);
-                    } elseif ($value == 'slider_list') {
+                    } elseif ($value == 'image_description_list') {
                         $section_status = PageSection::create([
                             'section_name' => $section_name,
                             'section_slug' => $value,
@@ -171,8 +171,8 @@ class PageController extends Controller
                 $ordered_sections[$section->section_slug] = 'simple_accordian_tab2.png';
                 $list2      = $section->list_number_2;
                 $list2_id   = $section->id;
-            }elseif ($section->section_slug == 'slider_list'){
-                $ordered_sections[$section->section_slug] = 'list_option_1.png';
+            }elseif ($section->section_slug == 'image_description_list'){
+                $ordered_sections[$section->section_slug] = 'image_description_list.png';
                 $list3       = $section->list_number_3;
                 $list3_id    = $section->id;
                 $slider_type = $section->list_number_1;
@@ -247,7 +247,7 @@ class PageController extends Controller
             $listval2 = ($request->input('list_number_2') == null) ? 2 : $request->input('list_number_2');
             $listval3 = ($request->input('list_number_3') == null) ? 3 : $request->input('list_number_3');
             $listval4 = ($request->input('list_number_4') == null) ? 3 : $request->input('list_number_4');
-            $slider_type = ($request->input('list_number_1_slider') == null) ? 'slider_list' : $request->input('list_number_1_slider');
+            $slider_type = ($request->input('list_number_1_slider') == null) ? 'image_description_list' : $request->input('list_number_1_slider');
             $process_sel = ($request->input('list_number_3_process_sel') == null) ? 3 : $request->input('list_number_3_process_sel');
             if ($incoming_sections !== null) {
                 foreach ($incoming_sections as $key => $value) {
@@ -282,7 +282,7 @@ class PageController extends Controller
                                 'page_id' => $page->id,
                                 'created_by' => Auth::user()->id,
                             ]);
-                        } elseif ($value == 'slider_list') {
+                        } elseif ($value == 'image_description_list') {
                             $data = [
                                 'section_name' => $section_name,
                                 'section_slug' => $value,
@@ -329,7 +329,7 @@ class PageController extends Controller
                             $section_element->list_number_2 = $request->input('list_number_2');
                             $section_element->position = $pos[$key];
                             $section_status = $section_element->update();
-                        } elseif ($value == 'slider_list') {
+                        } elseif ($value == 'image_description_list') {
                             $section_element = PageSection::find($request->input('list_3_id'));
                             $section_element->list_number_3 = $request->input('list_number_3');
                             $section_element->list_number_1 = $slider_type;
@@ -388,7 +388,7 @@ class PageController extends Controller
                                     @unlink(public_path() . '/images/section_elements/bgimage_section/' . $bgimage_element->image);
                                 }
                             }
-                            if ($section->section_slug == 'slider_list') {
+                            if ($section->section_slug == 'image_description_list') {
                                 $list1_element = SectionElement::where('page_section_id', $section->id)
                                     ->get();
                                 foreach ($list1_element as $elements) {
@@ -531,7 +531,7 @@ class PageController extends Controller
                     }
                 }
             }
-            if($section->section_slug == 'slider_list'){
+            if($section->section_slug == 'image_description_list'){
                 $list1_element = SectionElement::where('page_section_id', $section->id)
                     ->get();
                 foreach ($list1_element as $elements){

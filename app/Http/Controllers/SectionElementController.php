@@ -138,7 +138,7 @@ class SectionElementController extends Controller
                     ->where('page_section_id', $section->id)
                     ->first();
             }
-            else if ($section->section_slug == 'slider_list'){
+            else if ($section->section_slug == 'image_description_list'){
                 $list_3      = $section->list_number_3;
                 $slider_list_elements = SectionElement::with('section')
                     ->where('page_section_id', $section->id)
@@ -367,16 +367,15 @@ class SectionElementController extends Controller
                     $status = SectionElement::create($data);
                 }
         }
-        elseif ($section_name == 'slider_list'){
+        elseif ($section_name == 'image_description_list'){
             $list3_num   = $request->input('list_number_3');
             for ($i=0;$i<$list3_num;$i++){
                 $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
-                $subheading  =  (array_key_exists($i, $request->input('description')) ?  $request->input('description')[$i]: Null);
+                $subheading  =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
                 $data=[
                     'heading'               => $heading,
-                    'description'           => $subheading,
+                    'subheading'            => $subheading,
                     'list_header'           => $request->input('list_header')[$i],
-                    'subheading'            => $request->input('subheading')[$i],
                     'page_section_id'       => $section_id,
                     'list_description'      => $request->input('list_description')[$i],
                     'created_by'            => Auth::user()->id,
@@ -384,12 +383,9 @@ class SectionElementController extends Controller
                 if (array_key_exists($i,$request->file('list_image'))){
                     $image        = $request->file('list_image')[$i];
                     $name         = uniqid().'_list1_'.$image->getClientOriginalName();
-                    $thumb        = 'thumb_'.$name;
                     $path         = base_path().'/public/images/section_elements/list_1/';
-                    $thumb_path   = base_path().'/public/images/section_elements/list_1/thumb/';
-                    $moved        = Image::make($image->getRealPath())->fit(1170, 535)->orientate()->save($path.$name);
-                    $thumb        = Image::make($image->getRealPath())->fit(570, 426)->orientate()->save($thumb_path.$thumb);
-                    if ($moved && $thumb){
+                    $moved        = Image::make($image->getRealPath())->fit(350, 235)->orientate()->save($path.$name);
+                    if ($moved){
                         $data['list_image']= $name;
                     }
                 }
@@ -747,32 +743,28 @@ class SectionElementController extends Controller
             }
 
         }
-        elseif ($section_name == 'slider_list') {
+        elseif ($section_name == 'image_description_list') {
             $list3_num   = $request->input('list_number_3');
             $db_elements     = json_decode($request->input('slider_list_elements'),true);
             $db_elements_id  = array_map(function($item){ return $item['id']; }, $db_elements);
             for ($i=0;$i<$list3_num;$i++) {
                 $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
-                $subheading  =  (array_key_exists($i, $request->input('description')) ?  $request->input('description')[$i]: Null);
+                $subheading  =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
                 if($request->input('id')[$i] == null){
                     $data=[
                         'heading'               => $heading,
-                        'description'           => $subheading,
+                        'subheading'            => $subheading,
                         'list_header'           => $request->input('list_header')[$i],
                         'page_section_id'       => $section_id,
-                        'subheading'            => $request->input('subheading')[$i],
                         'list_description'      => $request->input('list_description')[$i],
                         'created_by'            => Auth::user()->id,
                     ];
                     if (array_key_exists($i,$request->file('list_image'))){
                         $image        = $request->file('list_image')[$i];
                         $name         = uniqid().'_list1_'.$image->getClientOriginalName();
-                        $thumb        = 'thumb_'.$name;
                         $path         = base_path().'/public/images/section_elements/list_1/';
-                        $thumb_path   = base_path().'/public/images/section_elements/list_1/thumb/';
-                        $moved        = Image::make($image->getRealPath())->fit(1170, 535)->orientate()->save($path.$name);
-                        $thumb        = Image::make($image->getRealPath())->fit(570, 426)->orientate()->save($thumb_path.$thumb);
-                        if ($moved && $thumb){
+                        $moved        = Image::make($image->getRealPath())->fit(350, 235)->orientate()->save($path.$name);
+                        if ($moved){
                             $data['list_image']= $name;
                         }
                     }
@@ -781,32 +773,24 @@ class SectionElementController extends Controller
                 else{
                     $sliderlist                      = SectionElement::find($request->input('id')[$i]);
                     $sliderlist->heading             = $heading;
-                    $sliderlist->description         = $subheading;
+                    $sliderlist->subheading          = $subheading;
                     $sliderlist->list_header         = $request->input('list_header')[$i];
                     $sliderlist->page_section_id     = $section_id;
-                    $sliderlist->subheading          = $request->input('subheading')[$i];
                     $sliderlist->list_description    = $request->input('list_description')[$i];
                     $sliderlist->updated_by          = Auth::user()->id;
                     $oldimage                        = $sliderlist->list_image;
-                    $thumbimage                      = 'thumb_'.$sliderlist->list_image;
 
                     if($request->file('list_image') !== null){
                         if (array_key_exists($i,$request->file('list_image'))){
                             $image        = $request->file('list_image')[$i];
                             $name         = uniqid().'_list1_'.$image->getClientOriginalName();
-                            $thumb        = 'thumb_'.$name;
                             $path         = base_path().'/public/images/section_elements/list_1/';
-                            $thumb_path   = base_path().'/public/images/section_elements/list_1/thumb/';
-                            $moved        = Image::make($image->getRealPath())->fit(1170, 535)->orientate()->save($path.$name);
-                            $thumb        = Image::make($image->getRealPath())->fit(570, 426)->orientate()->save($thumb_path.$thumb);
+                            $moved        = Image::make($image->getRealPath())->fit(350, 235)->orientate()->save($path.$name);
 
                             if ($moved){
                                 $sliderlist->list_image = $name;
                                 if (!empty($oldimage) && file_exists(public_path().'/images/section_elements/list_1/'.$oldimage)){
                                     @unlink(public_path().'/images/section_elements/list_1/'.$oldimage);
-                                }
-                                if (!empty($thumbimage) && file_exists(public_path().'/images/section_elements/list_1/thumb/'.$thumbimage)){
-                                    @unlink(public_path().'/images/section_elements/list_1/thumb/'.$thumbimage);
                                 }
                             }
                         }

@@ -602,7 +602,7 @@
                 @endif
 
                 @if($value == "simple_header_and_description")
-                        <section class="ttm-row clearfix" style="    padding: 50px 0;">
+                        <section class="ttm-row clearfix" style="padding: 50px 0px 0px 0px;">
                             <div class="container">
                                 <!-- row -->
                                 <div class="row">
@@ -764,48 +764,49 @@
 
                 @endif
 
-{{--                @if($value == "slider_list")--}}
-{{--                  <!-- Slider List Area start -->--}}
-{{--                  @if(@$slider_list_elements[0]->heading)--}}
+                @if($value == "image_description_list")
 
-{{--                    <!--Portfolio Two Start-->--}}
-{{--                    <section class="portfolio-two" style="margin-top: 80px;margin-bottom: 20px;">--}}
-{{--                        <div class="container">--}}
-{{--                            <div class="section-title text-center">--}}
-{{--                                <span class="section-title__tagline">{{ucfirst(@$slider_list_elements[0]->description)}}</span>--}}
-{{--                                <h2 class="section-title__title">--}}
-{{--                                    <span><?php--}}
-{{--                                        $split = explode(" ", ucwords(@$slider_list_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$slider_list_elements[0]->heading))."\n"}}</span>--}}
-{{--                                    <span class="text-last">{{$split[count($split)-1]}}</span>--}}
-{{--                                </h2>--}}
-{{--                            </div>--}}
-{{--                            <div class="portfolio-two__carousel owl-theme owl-carousel">--}}
+                    <!--blog-section-->
+                        <section class="ttm-row blog-section clearfix" style="padding: 30px 0">
+                            <div class="container">
+                                <!-- row -->
+                                @if(@$slider_list_elements[0]->heading)
+                                    <div class="row" style="padding-top: 20px">
+                                        <div class="col-lg-12">
+                                            <div class="section-title title-style-center_text">
+                                                <div class="title-header">
+                                                    <h3>{{$slider_list_elements[0]->subheading}}</h3>
+                                                    <h2 class="title">{{@$slider_list_elements[0]->heading}}</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                <div class="row row-equal-height">
+                                    @for ($i = 1; $i <=@$list_3; $i++)
 
-{{--                              @for ($i = 1; $i <=@$list_3; $i++)--}}
-
-{{--                                <div class="portfolio-one__single">--}}
-{{--                                    <div class="portfolio-one__img">--}}
-{{--                                        <img src="{{asset('/images/section_elements/list_1/'.@$slider_list_elements[$i-1]->list_image)}}" alt="">--}}
-{{--                                        <div class="portfolio-one__experience">--}}
-
-{{--                                            <div class="portfolio-one__fimlor">--}}
-{{--                                                <p class="portfolio-one__fimlor-title"><a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">{{ucwords(@$slider_list_elements[$i-1]->list_header)}}</a></p>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="portfolio-one__arrow">--}}
-{{--                                            <a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}"><span class="icon-right-arrow"></span></a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                @endfor--}}
-
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </section>--}}
-{{--                    <!--Portfolio Two End-->--}}
-
-{{--                  @endif--}}
-{{--                @endif--}}
+                                        <div class="col-lg-4">
+                                            <!-- featured-imagebox-post -->
+                                            <div class="featured-imagebox featured-imagebox-post style1">
+                                                <div class="featured-thumbnail">
+                                                    <img class="img-fluid" src="{{asset('/images/section_elements/list_1/'.@$slider_list_elements[$i-1]->list_image)}}" alt="">
+                                                </div>
+                                                <div class="featured-content" style="padding: 5px 15px 17px 15px;">
+                                                    <div class="post-title featured-title" style="text-align: center">
+                                                        <h4 style="font-size: 20px;">{{ucwords(@$slider_list_elements[$i-1]->list_header)}}</h4>
+                                                    </div>
+                                                    <div class="featured-desc justified custom-section">
+                                                        {!! (@$slider_list_elements[$i-1]->list_description) !!}
+                                                    </div>
+                                                </div>
+                                            </div><!-- featured-imagebox-post end -->
+                                        </div>
+                                    @endfor
+                                </div>
+                            </div>
+                        </section>
+                        <!--blog-section end-->
+                @endif
 
                 @if($value == "simple_tab")
 
@@ -989,6 +990,7 @@
 
 
              @endif
+
 
         </div>
 

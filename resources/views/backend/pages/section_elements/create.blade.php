@@ -1238,7 +1238,7 @@
 
                                     @endif
 
-                                @if($value == 'slider_list')
+                                @if($value == 'image_description_list')
                                      @if(sizeof($slider_list_elements) !== 0)
                                          {!! Form::open(['route' => 'section-elements.tablistUpdate','method'=>'post','class'=>'needs-validation','id'=>'slider-list-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
                                      @else
@@ -1246,7 +1246,7 @@
                                      @endif
                                          <figure class="figure">
                                              <figcaption>Output Sample.</figcaption>
-                                             <img src="{{asset('assets/backend/img/page_sections/list_option_1.png')}}"  class="figure-img img-fluid rounded" alt="...">
+                                             <img src="{{asset('assets/backend/img/page_sections/image_description_list.png')}}"  class="figure-img img-fluid rounded" alt="...">
                                          </figure>
                                      <div id="slider-list-form-ajax">
                                          <div class="row">
@@ -1259,15 +1259,15 @@
                                                      </div>
                                                      <div class="card-body">
                                                          <div class="form-group mb-3">
-                                                             <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                             <input type="text" class="form-control" maxlength="40" name="heading[]" value="{{@$slider_list_elements[0]->heading}}" required>
+                                                             <label>Heading </label>
+                                                             <input type="text" class="form-control" maxlength="40" name="heading[]" value="{{@$slider_list_elements[0]->heading}}">
                                                              <div class="invalid-feedback">
                                                                  Please enter the heading.
                                                              </div>
                                                          </div>
                                                          <div class="form-group mb-3">
-                                                             <label>Sub Heading <span class="text-muted text-danger">*</span></label>
-                                                             <input type="text" class="form-control" name="description[]" maxlength="30" value="{{@$slider_list_elements[0]->description}}" required>
+                                                             <label>Sub Heading </label>
+                                                             <input type="text" class="form-control" name="subheading[]" maxlength="30" value="{{@$slider_list_elements[0]->subheading}}">
                                                              <div class="invalid-feedback">
                                                                  Please enter the sub heading.
                                                              </div>
@@ -1286,7 +1286,7 @@
                                                  <div class="accordion-item">
                                                      <h2 class="accordion-header" id="slider-lists-{{$i}}">
                                                          <button class="accordion-button {{($i==1) ? '':'collapsed'}}" type="button" data-bs-toggle="collapse" data-bs-target="#accor_borderedExamplecollapsedd_{{$i}}" aria-expanded="{{($i==1) ? 'true':'false'}}" aria-controls="accor_borderedExamplecollapsedd_{{$i}}">
-                                                             Slider {{$i}} details
+                                                             List {{$i}} details
                                                          </button>
                                                      </h2>
                                                      <div id="accor_borderedExamplecollapsedd_{{$i}}" class="accordion-collapse collapse {{($i==1) ? 'show':''}} " aria-labelledby="slider-lists-{{$i}}" data-bs-parent="#accordionBordered11">
@@ -1306,21 +1306,14 @@
                                                                          </div>
                                                                      </div>
                                                                      <div class="form-group mb-3">
-                                                                         <label>Slug </label>
-                                                                         <input type="text" class="form-control" name="subheading[]" id="slider_slug_{{$i-1}}"  value="{{@$slider_list_elements[$i-1]->subheading}}" >
+                                                                         <label>Description </label>
+                                                                         <textarea class="form-control" rows="6" name="list_description[]" id="image_description_list_editor_{{$i}}" >{{@$slider_list_elements[$i-1]->list_description}}</textarea>
+                                                                         <span class="ctm-text-sm">Please write the description</span>
                                                                          <div class="invalid-feedback">
-                                                                             Please enter the slug.
+                                                                             Please write the long description.
                                                                          </div>
-                                                                     </div>
-                                                                     <div class="form-group mb-3">
-                                                                                 <label>Long Description<span class="text-muted text-danger">*</span></label>
-                                                                                 <textarea class="form-control" rows="6"  name="list_description[]" required>{{@$slider_list_elements[$i-1]->list_description}}</textarea>
-                                                                                 <span class="ctm-text-sm">Please write the description</span>
-                                                                                 <div class="invalid-feedback">
-                                                                                     Please write the long description.                                                                                            </div>
-                                                                             </div>
-
-                                                                 </div>
+                                                                        </div>
+                                                                    </div>
                                                                  <div class="col-md-5">
                                                                      <div>
                                                                          <img  id="current-sliderlist-{{$i}}-img"  src="<?php if(!empty(@$slider_list_elements[$i-1]->list_image)){ echo '/images/section_elements/list_1/'.@$slider_list_elements[$i-1]->list_image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
@@ -1328,7 +1321,7 @@
                                                                                  id="sliderlist-{{$i}}-image" onchange="loadbasicFile('sliderlist-{{$i}}-image','current-sliderlist-{{$i}}-img',event)" name="list_image[]" {{(@$slider_list_elements[$i-1]->id !== null) ? "":"required" }}
                                                                                  class="profile-foreground-img-file-input" >
 
-                                                                         <figcaption class="figure-caption">Banner image for current slider. (SIZE: 1170px X 535px)</figcaption>
+                                                                         <figcaption class="figure-caption">Image. (SIZE: 350px X 235px)</figcaption>
                                                                          <div class="invalid-feedback" >
                                                                              Please select a image.
                                                                          </div>
@@ -2420,6 +2413,7 @@
         }
 
         function createEditor2 ( elementId ) {
+
             return ClassicEditor
                 .create( document.querySelector( '#' + elementId ), {
                     toolbar : {
@@ -2453,7 +2447,6 @@
                     editor.model.document.on( 'change:data', () => {
                         $( '#' + elementId).text(editor.getData());
                     } );
-
                 } )
                 .catch( err => {
                     console.error( err.stack );
@@ -2513,12 +2506,12 @@
                 createEditor('task-textarea');
             }
 
-            {{--if(section_list.includes("accordion_section_2")){--}}
-            {{--    var list2 = "{{$list_2}}";--}}
-            {{--    for ($i = 1; $i <=list2; $i++){--}}
-            {{--        createEditor('accordian_two_editor_'+$i);--}}
-            {{--    }--}}
-            {{--}--}}
+            if(section_list.includes("image_description_list")){
+                var list3 = "{{$list_3}}";
+                for ($i = 1; $i <=list3; $i++){
+                    createEditor2('image_description_list_editor_'+$i);
+                }
+            }
 
 
         });
@@ -2692,7 +2685,7 @@
             });
         }
 
-        if($.inArray("slider_list", section_list) !== -1) {
+        if($.inArray("image_description_list", section_list) !== -1) {
 
             $("#slider-list-form").submit(function(event){
                 event.preventDefault(); //prevent default action
