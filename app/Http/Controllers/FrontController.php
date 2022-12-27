@@ -302,7 +302,7 @@ class FrontController extends Controller
             }
 
 
-            else if ($section->section_slug == 'simple_accordion_tab2'){
+            else if ($section->section_slug == 'simple_tab'){
                 $process_num = $section->list_number_3;
                 $process_elements = SectionElement::with('section')
                     ->where('page_section_id', $section->id)

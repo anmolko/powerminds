@@ -145,7 +145,7 @@ class SectionElementController extends Controller
                     ->get();
             }
 
-            else if ($section->section_slug == 'simple_accordion_tab2'){
+            else if ($section->section_slug == 'simple_tab'){
                 $process_num = $section->list_number_3;
                 $process_elements = SectionElement::with('section')
                     ->where('page_section_id', $section->id)
@@ -396,28 +396,22 @@ class SectionElementController extends Controller
                 $status = SectionElement::create($data);
             }
         }
-        elseif ($section_name == 'simple_accordion_tab2'){
+        elseif ($section_name == 'simple_tab'){
             $process_num   = $request->input('list_number_3_process_num');
             for ($i=0;$i<$process_num;$i++){
-                $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
-                $subheading  =  (array_key_exists($i, $request->input('description')) ?  $request->input('description')[$i]: Null);
+                $heading     =  (array_key_exists  ($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
+                $description  =  (array_key_exists ($i, $request->input('description')) ?  $request->input('description')[$i]: Null);
+                $subheading  =  (array_key_exists  ($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
                 $data=[
                     'heading'               => $heading,
-                    'description'           => $subheading,
+                    'description'           => $description,
+                    'subheading'            => $subheading,
                     'list_header'           => $request->input('list_header')[$i],
                     'page_section_id'       => $section_id,
                     'list_description'      => $request->input('list_description')[$i],
+                    'list_image'            => $request->input('list_image')[$i],
                     'created_by'            => Auth::user()->id,
                 ];
-                if (array_key_exists($i,$request->file('list_image'))){
-                    $image        = $request->file('list_image')[$i];
-                    $name         = uniqid().'_faq2_'.$image->getClientOriginalName();
-                    $path         = base_path().'/public/images/section_elements/list_1/';
-                    $moved        = Image::make($image->getRealPath())->fit(905, 685)->orientate()->save($path.$name);
-                    if ($moved){
-                        $data['list_image']= $name;
-                    }
-                }
                 $status = SectionElement::create($data);
             }
         }
@@ -833,66 +827,43 @@ class SectionElementController extends Controller
             }
 
         }
-        elseif ($section_name == 'simple_accordion_tab2') {
+        elseif ($section_name == 'simple_tab') {
             $process_num       = $request->input('list_number_3_process_num');
             $db_elements     = json_decode($request->input('process_list_elements'),true);
             $db_elements_id  = array_map(function($item){ return $item['id']; }, $db_elements);
             for ($i=0;$i<$process_num;$i++) {
                 $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
-                $subheading  =  (array_key_exists($i, $request->input('description')) ?  $request->input('description')[$i]: Null);
+                $subheading  =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
+                $description  =  (array_key_exists($i, $request->input('description')) ?  $request->input('description')[$i]: Null);
                 if($request->input('id')[$i] == null){
                     $data=[
                         'heading'               => $heading,
-                        'description'           => $subheading,
+                        'description'           => $description,
+                        'subheading'            => $subheading,
                         'list_header'           => $request->input('list_header')[$i],
                         'page_section_id'       => $section_id,
                         'list_description'      => $request->input('list_description')[$i],
+                        'list_image'            => $request->input('list_image')[$i],
                         'created_by'            => Auth::user()->id,
                     ];
-                    if (array_key_exists($i,$request->file('list_image'))){
-                        $image        = $request->file('list_image')[$i];
-                        $name         = uniqid().'_faq2_'.$image->getClientOriginalName();
-                        $path         = base_path().'/public/images/section_elements/list_1/';
-                        $moved        = Image::make($image->getRealPath())->fit(905, 685)->orientate()->save($path.$name);
-                        if ($moved){
-                            $data['list_image']= $name;
-                        }
-                    }
                     $status = SectionElement::create($data);
                 }
                 else{
                     $process                      = SectionElement::find($request->input('id')[$i]);
                     $process->heading             = $heading;
-                    $process->description         = $subheading;
+                    $process->description         = $description;
+                    $process->subheading          = $subheading;
                     $process->list_header         = $request->input('list_header')[$i];
                     $process->page_section_id     = $section_id;
                     $process->list_description    = $request->input('list_description')[$i];
+                    $process->list_image          = $request->input('list_image')[$i];
                     $process->updated_by          = Auth::user()->id;
-                    $oldimage                     = $process->list_image;
-                    if($request->file('list_image') !== null){
-                        if (array_key_exists($i,$request->file('list_image'))){
-                            $image        = $request->file('list_image')[$i];
-                            $name         = uniqid().'_faq2_'.$image->getClientOriginalName();
-                            $path         = base_path().'/public/images/section_elements/list_1/';
-                            $moved        = Image::make($image->getRealPath())->fit(905, 685)->orientate()->save($path.$name);
-
-                            if ($moved){
-                                $process->list_image = $name;
-                                if (!empty($oldimage) && file_exists(public_path().'/images/section_elements/list_1/'.$oldimage)){
-                                    @unlink(public_path().'/images/section_elements/list_1/'.$oldimage);
-                                }
-                            }
-                        }
-                    }
                     $status = $process->update();
                 }
             }
             foreach ($db_elements_id as $key=>$value){
                 if(!in_array($value,$request->input('id'))){
                     $deleteelement = SectionElement::find($value);
-                    if (!empty($deleteelement->list_image) && file_exists(public_path().'/images/section_elements/list_1/'.$deleteelement->list_image)){
-                        @unlink(public_path().'/images/section_elements/list_1/'.$deleteelement->list_image);
-                    }
                     $status        = $deleteelement->delete();
                 }
             }

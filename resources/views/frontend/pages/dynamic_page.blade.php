@@ -807,69 +807,68 @@
 {{--                  @endif--}}
 {{--                @endif--}}
 
-{{--                @if($value == "simple_accordion_tab2")--}}
+                @if($value == "simple_tab")
 
-{{--                <section class="we-change">--}}
-{{--                    <div class="container">--}}
-{{--                        <div class="row">--}}
-{{--                            <div class="col-xl-6">--}}
-{{--                                <div class="we-change__left-faqs">--}}
-{{--                                    <div class="section-title text-left">--}}
-{{--                                      <span class="section-title__tagline">{{ucwords(@$process_elements[0]->description)}}</span>--}}
-{{--                                      <h2 class="section-title__title">--}}
-{{--                                          <span><?php--}}
-{{--                                              $split = explode(" ", ucwords(@$process_elements[0]->heading));?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$process_elements[0]->heading))."\n"}}</span>--}}
-{{--                                          <span class="text-last">{{$split[count($split)-1]}}</span>--}}
-{{--                                      </h2>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="we-change__faqs">--}}
-{{--                                        <div class="accrodion-grp" data-grp-name="faq-one-accrodion">--}}
-{{--                                            <div class="accrodion active">--}}
-{{--                                                <div class="accrodion-title">--}}
-{{--                                                    <h4>{{@$process_elements[0]->list_header}}</h4>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="accrodion-content">--}}
-{{--                                                    <div class="inner">--}}
-{{--                                                        <p>{!! @$process_elements[0]->list_description !!}</p>--}}
-{{--                                                    </div><!-- /.inner -->--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="accrodion">--}}
-{{--                                                <div class="accrodion-title">--}}
-{{--                                                    <h4>{{@$process_elements[1]->list_header}}</h4>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="accrodion-content">--}}
-{{--                                                    <div class="inner">--}}
-{{--                                                        <p>{!! @$process_elements[1]->list_description !!}</p>--}}
-{{--                                                    </div><!-- /.inner -->--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="accrodion last-chiled">--}}
-{{--                                                <div class="accrodion-title">--}}
-{{--                                                    <h4>{{@$process_elements[2]->list_header}}</h4>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="accrodion-content">--}}
-{{--                                                    <div class="inner">--}}
-{{--                                                        <p>{!! @$process_elements[2]->list_description !!}</p>--}}
-{{--                                                    </div><!-- /.inner -->--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-xl-6">--}}
-{{--                                <div class="we-change__right">--}}
-{{--                                    <div class="we-change__right-img">--}}
-{{--                                        <img src="{{asset('/images/section_elements/list_1/'.@$process_elements[0]->list_image)}}" alt="">--}}
+                        <section class="ttm-row services-section ttm-bgcolor-grey margin_left30 margin_right30  res-1199-margin_right15 res-1199-margin_left15 border-rad_6 overflow-hidden clearfix">
+                            <div class="container">
+                                <!-- row -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <!-- section title -->
+                                        <div class="section-title title-style-center_text">
+                                            <div class="title-header">
+                                                @if(@$process_elements[0]->subheading !== null)
+                                                    <h3>{{ucwords(@$process_elements[0]->subheading)}}</h3>
+                                                @endif
+                                                <h2 class="title">{{ucwords(@$process_elements[0]->heading)}}</h2>
+                                            </div>
+                                            @if(@$process_elements[0]->description !== null)
+                                                <div class="title-desc">
+                                                    <p>
+                                                        {{@$process_elements[0]->description}}
+                                                    </p>
+                                                </div>
+                                            @endif
+                                        </div><!-- section title end -->
+                                    </div>
+                                </div><!-- row end -->
+                                <!-- row -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="featuredbox-number">
+                                            <div class="row">
+                                                @foreach(@$process_elements as $elements)
+                                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                                    <!--featured-icon-box-->
+                                                    <div class="featured-icon-box icon-align-top-content style3">
+                                                        <div class="featured-icon">
+                                                            <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-size-xl ttm-icon_element-color-white ttm-icon_element-style-round">
+                                                                <i class="fa fa-{{$elements->list_image}}"></i>
+                                                                <span class="fea_num ttm-textcolor-darkgrey">
+                                                                    <i class="ttm-num ti-info"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="featured-content">
+                                                            <div class="featured-title">
+                                                                <h3>{{$elements->list_header}}</h3>
+                                                            </div>
+                                                            <div class="featured-desc ">
+                                                                <p>{{$elements->list_description}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- featured-icon-box end-->
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- row end -->
+                            </div>
+                        </section>
 
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </section>--}}
-{{--                @endif--}}
+
+                @endif
 
 
 
@@ -990,7 +989,6 @@
 
 
              @endif
-
 
         </div>
 

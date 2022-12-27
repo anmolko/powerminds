@@ -346,54 +346,62 @@
                                 </div>
                             </div>
 
-{{--                            <div class="card shadow-none">--}}
-{{--                                <div class="card-header">--}}
-{{--                                    <h5 class="card-title text-primary mb-0">Slider Lists</h5>--}}
-{{--                                </div>--}}
-{{--                                <div class="card-body">--}}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-md-12 mb-3">--}}
-{{--                                            <div class="form-group">--}}
-{{--                                                <label>Number of Slider List <span class="text-muted text-danger">* When created, the number of slider list must be 3</span></label>--}}
-{{--                                                <input type="number"  class="form-control" name="list_number_3" id="list_number_3" value="{{$list3}}">--}}
-{{--                                                <input type="hidden" name="list_3_id" value="{{$list3_id}}">--}}
-{{--                                                <div class="invalid-feedback">--}}
-{{--                                                    Please enter the list number.--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-md-12">--}}
-{{--                                            <span class="ctm-text-sm text-warning">* using this element will create a inner page to display individual list data. Use only when big informations are needed to be showcased</span>--}}
+                            <div class="card shadow-none">
+                                <div class="card-header">
+                                    <h5 class="card-title text-primary mb-0">Slider Lists</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label>Number of Slider List <span class="text-muted text-danger">* When created, the number of slider list must be 3</span></label>
+                                                <input type="number"  class="form-control" name="list_number_3" id="list_number_3" value="{{$list3}}">
+                                                <input type="hidden" name="list_3_id" value="{{$list3_id}}">
+                                                <div class="invalid-feedback">
+                                                    Please enter the list number.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span class="ctm-text-sm text-warning">* using this element will create a inner page to display individual list data. Use only when big informations are needed to be showcased</span>
 
-{{--                                            <label class="image-checkbox {{(in_array('slider_list', $sections) ? "image-checkbox-checked":"")}}">--}}
-{{--                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/list_option_1.png')}}" width="100%"/>--}}
-{{--                                                <input type="checkbox" name="section[]" id="list_option_1.png" value="slider_list" {{(in_array('slider_list', $sections) ? "checked":"")}} />--}}
-{{--                                                <i class="ri ri-check-line hidden"></i>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                            <label class="image-checkbox {{(in_array('slider_list', $sections) ? "image-checkbox-checked":"")}}">
+                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/list_option_1.png')}}" width="100%"/>
+                                                <input type="checkbox" name="section[]" id="list_option_1.png" value="slider_list" {{(in_array('slider_list', $sections) ? "checked":"")}} />
+                                                <i class="ri ri-check-line hidden"></i>
+                                            </label>
+                                        </div>
+                                    </div>
 
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="card shadow-none">--}}
-{{--                                <div class="card-header">--}}
-{{--                                    <h5 class="card-title text-primary mb-0">Simple accordion tab 2</h5>--}}
-{{--                                </div>--}}
-{{--                                <div class="card-body">--}}
-{{--                                    <div class="row">--}}
-{{--                                        <input type="hidden" name="process_sel_id" value="{{$process_id}}">--}}
-{{--                                        <input type="hidden" name="list_number_3_process_sel" value="3">--}}
-{{--                                        <div class="col-md-12">--}}
-{{--                                            <label class="image-checkbox {{(in_array('simple_accordion_tab2', $sections) ? "image-checkbox-checked":"")}}">--}}
-{{--                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/simple_accordion_tab2.png')}}" width="100%"/>--}}
-{{--                                                <input type="checkbox" name="section[]" id="simple_accordion_tab2.png" value="simple_accordion_tab2" {{(in_array('simple_accordion_tab2', $sections) ? "checked":"")}} />--}}
-{{--                                                <i class="ri ri-check-line hidden"></i>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                </div>
+                            </div>
+                            <div class="card shadow-none">
+                                <div class="card-header">
+                                    <h5 class="card-title text-primary mb-0">Simple tab </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 mb-2">
+                                            <div class="form-group">
+                                                <label>Number of Tab List <span class="text-muted text-danger">* please use minimum of 3 boxes (preferably in 3,6,9 format)</span></label>
+                                                <input type="number" min="1" class="form-control" name="list_number_3_process_sel" value="{{$process_number}}">
+                                                <div class="invalid-feedback">
+                                                    Please enter the Accordion tab number.
+                                                </div>
+                                                <input type="hidden" name="process_sel_id" value="{{$process_id}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="image-checkbox {{(in_array('simple_tab', $sections) ? "image-checkbox-checked":"")}}">
+                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/simple_tab.png')}}" width="100%"/>
+                                                <input type="checkbox" name="section[]" id="simple_tab.png" value="simple_tab" {{(in_array('simple_tab', $sections) ? "checked":"")}} />
+                                                <i class="ri ri-check-line hidden"></i>
+                                            </label>
+                                        </div>
+                                    </div>
 
-{{--                                </div>--}}
-{{--                            </div>--}}
+                                </div>
+                            </div>
 
                         </div>
                     </div>

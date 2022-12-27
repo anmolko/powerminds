@@ -81,7 +81,7 @@ class PageController extends Controller
                             'created_by' => Auth::user()->id,
                         ]);
 
-                    } elseif ($value == 'simple_accordion_tab2') {
+                    } elseif ($value == 'simple_tab') {
                         $section_status = PageSection::create([
                             'section_name' => $section_name,
                             'section_slug' => $value,
@@ -180,10 +180,10 @@ class PageController extends Controller
                 $ordered_sections[$section->section_slug] = 'icon_and_title.png';
                 $list4      = $section->list_number_4;
                 $list4_id   = $section->id;
-            } elseif ($section->section_slug == 'simple_accordion_tab2'){
+            } elseif ($section->section_slug == 'simple_tab'){
                 $process_number     = $section->list_number_3;
                 $process_id         = $section->id;
-                $ordered_sections[$section->section_slug] = 'simple_accordion_tab2.png';
+                $ordered_sections[$section->section_slug] = 'simple_tab.png';
             } elseif ($section->section_slug == 'contact_information'){
                 $ordered_sections[$section->section_slug] = 'contact_information.png';
             } elseif ($section->section_slug == 'gallery_section'){
@@ -249,7 +249,6 @@ class PageController extends Controller
             $listval4 = ($request->input('list_number_4') == null) ? 3 : $request->input('list_number_4');
             $slider_type = ($request->input('list_number_1_slider') == null) ? 'slider_list' : $request->input('list_number_1_slider');
             $process_sel = ($request->input('list_number_3_process_sel') == null) ? 3 : $request->input('list_number_3_process_sel');
-
             if ($incoming_sections !== null) {
                 foreach ($incoming_sections as $key => $value) {
                     $section_name = str_replace("_", " ", $value);
@@ -274,7 +273,7 @@ class PageController extends Controller
                                 'created_by' => Auth::user()->id,
                             ]);
 
-                        } elseif ($value == 'simple_accordion_tab2') {
+                        } elseif ($value == 'simple_tab') {
                             $section_status = PageSection::create([
                                 'section_name' => $section_name,
                                 'section_slug' => $value,
@@ -320,7 +319,7 @@ class PageController extends Controller
                             $section_element->list_number_1 = $request->input('list_number_1');
                             $section_element->position = $pos[$key];
                             $section_status = $section_element->update();
-                        } elseif ($value == 'simple_accordion_tab2') {
+                        } elseif ($value == 'simple_tab') {
                             $section_element = PageSection::find($request->input('process_sel_id'));
                             $section_element->list_number_3 = $request->input('list_number_3_process_sel');
                             $section_element->position = $pos[$key];
@@ -410,7 +409,7 @@ class PageController extends Controller
                                     }
                                 }
                             }
-                            if ($section->section_slug == 'simple_accordion_tab2') {
+                            if ($section->section_slug == 'simple_tab') {
                                 $process = SectionElement::where('page_section_id', $section->id)
                                     ->get();
                                 foreach ($process as $elements) {
@@ -523,7 +522,7 @@ class PageController extends Controller
                     @unlink(public_path().'/images/section_elements/bgimage_section/'.$bgimage_element->image);
                 }
             }
-            if($section->section_slug == 'simple_accordion_tab2'){
+            if($section->section_slug == 'simple_tab'){
                 $process = SectionElement::where('page_section_id', $section->id)
                     ->get();
                 foreach ($process as $elements){
