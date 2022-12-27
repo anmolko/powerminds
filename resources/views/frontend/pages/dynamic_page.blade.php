@@ -85,20 +85,20 @@
         margin-bottom: 2px;
     }
 
-    .featured-imagebox-portfolio.style2 .ttm-media-link {
+    .video-section .ttm-media-link {
         display: flex;
         position: relative;
         padding-top: 5px;
         padding-bottom: 4px;
     }
-    .featured-imagebox-portfolio.style2 .ttm-media-link a{
+    .video-section .ttm-media-link a{
         border: none;
         font-size: 40px;
     }
-    .featured-imagebox-portfolio.style2 .ttm-media-link:after {
+    .video-section .ttm-media-link:after {
         height: 0px;
     }
-    .featured-imagebox-portfolio.style2 .ttm-media-link a:hover{
+    .video-section.style2 .ttm-media-link a:hover{
         border-color: transparent;
         background-color: transparent;
     }
@@ -219,8 +219,7 @@
                 @endif
 
                 @if($value == "call_to_action_1")
-                    <!--cta-section-->
-                     <section class="ttm-row cta-section bg-img9 ttm-bgcolor-darkgrey ttm-bg ttm-bgimage-yes clearfix">
+                        <section class="ttm-row cta-section bg-img9 ttm-bgcolor-darkgrey ttm-bg ttm-bgimage-yes clearfix">
                             <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
                             <div class="container">
                                 <!--row-->
@@ -244,11 +243,9 @@
                                 </div><!--row end-->
                             </div>
                         </section>
-                     <!--cta-section end-->
 
                 @endif
 
-                <!-- call2_elements -->
                 @if($value == "call_to_action_2")
                     <!--cta-section-->
                         <section class="ttm-row cta-section ttm-textcolor-white bg-img2 clearfix">
@@ -323,7 +320,7 @@
                                     @endif
                                     <div class="col-lg-4 col-md-6 col-sm-12">
                                     <!--featured-icon-box-->
-                                    <div class="featured-imagebox featured-imagebox-portfolio style2">
+                                    <div class="featured-imagebox featured-imagebox-portfolio video-section style2">
                                         <!-- ttm-box-view-overlay -->
                                         <div class="ttm-box-view-overlay">
                                             <!-- featured-thumbnail -->
@@ -727,45 +724,43 @@
 
                 @if($value == "gallery_section")
 
-                    <!--grid-section-->
+
                         <section class="ttm-row grid-section clearfix">
                             <div class="container">
+                                <!-- row -->
                                 <div class="section-title title-style-center_text">
                                     <div class="title-header">
-                                        <h3>Powermind showcase</h3>
+                                        <h3>showcase</h3>
                                         <h2 class="title">Our Gallery</h2>
                                     </div>
                                 </div>
-                            @if(count(@$gallery_elements) > 0)
-                                <!-- row -->
-                                    <div class="row row-equal-height">
-                                        @foreach(@$gallery_elements as $gallery_element)
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                                <!--featured-icon-box-->
-                                                <div class="featured-imagebox featured-imagebox-portfolio style2" >
-                                                    <!-- ttm-box-view-overlay -->
-                                                    <div class="ttm-box-view-overlay">
-                                                        <!-- featured-thumbnail -->
-                                                        <div class="featured-thumbnail" >
-                                                            <a href="#" tabindex="0"><img class="img-fluid" src="{{asset('/images/section_elements/gallery/'.@$gallery_element->resized_name)}}" alt="image"></a>
-                                                        </div><!-- featured-thumbnail end-->
-                                                        <div class="featured-content">
-                                                            <div class="featured-iconbox ttm-media-link">
-                                                                <a class="ttm_prettyphoto ttm_image" rel="prettyPhoto[pp_gal]" title="{{ ucfirst(str_replace('-',' ',$gallery_element->original_name))}}'s image" data-rel="prettyPhoto" href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" tabindex="0">
-                                                                    <i class="fa fa-search"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- ttm-box-view-overlay end-->
-                                                </div><!-- featured-icon-box end-->
-                                            </div>
-                                        @endforeach
+                                <div class="row row-equal-height">
+                                    @foreach(@$gallery_elements as $gallery_element)
 
-                                    </div><!-- row end -->
-                                @endif
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <!--featured-icon-box-->
+                                        <div class="featured-imagebox featured-imagebox-portfolio style2">
+                                            <!-- ttm-box-view-overlay -->
+                                            <div class="ttm-box-view-overlay">
+                                                <!-- featured-thumbnail -->
+                                                <div class="featured-thumbnail">
+                                                    <a href="#" tabindex="0"><img class="img-fluid" src="{{asset('/images/section_elements/gallery/'.@$gallery_element->resized_name)}}" alt="image"></a>
+                                                </div><!-- featured-thumbnail end-->
+                                                <div class="featured-content">
+
+                                                    <div class="featured-iconbox ttm-media-link">
+                                                        <a class="ttm_prettyphoto ttm_image" title="{{ucwords(@$page_detail->name)}}'s gallery" data-rel="prettyPhoto" href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" tabindex="0">
+                                                            <i class="fa fa-search"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div><!-- ttm-box-view-overlay end-->
+                                        </div><!-- featured-icon-box end-->
+                                    </div>
+                                    @endforeach
+                                </div><!-- row end -->
                             </div>
                         </section>
-                     <!--grid-section end-->
 
                 @endif
 

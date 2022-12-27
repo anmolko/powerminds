@@ -946,16 +946,16 @@ class SectionElementController extends Controller
             $name        = $page_section->page->slug."_page_gallery_".date('YmdHis') . uniqid();
             $rep_name    = str_replace(' ','_',$name);
             $save_name   = $rep_name . '.' . $photo->getClientOriginalExtension();
-            $resize_name = "Thumb_".$save_name;
-            $thumb_name  = $resize_name . '.' . $photo->getClientOriginalExtension();
+            $resize_name = "thumb_".$save_name;
 
-            Image::make($photo)
-                ->orientate()
-                ->save($this->photos_path . '/' . $resize_name);
 
             Image::make($photo)
                 ->orientate()
                 ->fit(370, 250)
+                ->save($this->photos_path . '/' . $resize_name);
+
+            Image::make($photo)
+                ->orientate()
                 ->save($this->photos_path . '/' . $save_name);
 
             $photo->move($this->photos_path, $save_name);
