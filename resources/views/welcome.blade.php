@@ -60,6 +60,14 @@
         line-height: 50px;
         margin-bottom: 0;
     }
+    .ttm-left-span > .ttm-col-wrapper-bg-layer{
+        width: auto;
+        margin-left: -1000px;
+        right: -1000px;
+    }
+    .col-bg-img-five.ttm-col-bgimage-yes > .ttm-col-wrapper-bg-layer {
+        background-size: auto;
+    }
 </style>
 
 @endsection
@@ -67,7 +75,6 @@
     <!--homepage banner-->
 
     @if(count($sliders) > 0)
-
         <div class="banner_slider_wrapper">
             <div class="banner_slider">
                 @foreach(@$sliders as $slider)
@@ -128,6 +135,7 @@
             </div>
         </div>
     @endif
+
     <!--end of homepage banner-->
 
 
@@ -135,8 +143,9 @@
     <div class="site-main">
 
         <!--Top Feature-->
+
         @if(!empty($homepage_info->tf_heading1))
-        <section class="ttm-row broken-section ttm-bgcolor-skincolor clearfix">
+            <section class="ttm-row broken-section ttm-bgcolor-skincolor clearfix">
             <div class="container-fluid">
                 <div class="row row-equal-height">
                     <div class="col-xl-12 col-md-12">
@@ -213,10 +222,13 @@
             </div>
         </section>
         @endif
+
         <!--End of top feature-->
 
 
+
         <!--welcome section-->
+
         @if(!empty($homepage_info->welcome_description))
             <section class="ttm-row pt-20 padding_zero-section  clearfix">
                     <div class="container">
@@ -284,6 +296,7 @@
                     </div>
                 </section>
         @endif
+
         <!--end of welcome section-->
 
         <!--statistics broken-section-->
@@ -501,66 +514,6 @@
         <!--What we do best-->
         @endif
 
-        @if(count($teams)>0)
-
-        <!--team-section-->
-        <section class="ttm-row ttm-bgcolor-grey team-section clearfix">
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- section title -->
-                        <div class="section-title title-style-center_text">
-                            <div class="title-header">
-                                <h3>TOGETHER ACHIEVES MORE</h3>
-                                <h2 class="title">Our Support Team</h2>
-                            </div>
-{{--                            <div class="title-desc"><p>There is great team who leads the success of our firm, Axacus! Dedicated & expertise knowledge always leads us to client’s satisfaction.</p></div>--}}
-                        </div><!-- section title end -->
-                    </div>
-                </div><!-- row end -->
-                <!-- row -->
-                <div class="row slick_slider" data-slick='{"slidesToShow": {{(count($teams)<4) ? count($teams):'4'}}, "slidesToScroll": {{(count($teams)<4) ? count($teams):'4'}}, "arrows":false, "dots":false, "autoplay":true, "infinite":true, "responsive": [{"breakpoint":991,"settings":{"slidesToShow": 3}}, {"breakpoint":678,"settings":{"slidesToShow": 2}}, {"breakpoint":460,"settings":{"slidesToShow": 1}}]}'>
-                  @foreach(@$teams as $team)
-                    <div class="col-lg-3 col-md-6">
-                        <!-- featured-imagebox-team -->
-                        <div class="featured-imagebox featured-imagebox-team style1">
-                            <div class="ttm-media-link">
-                                <div class="media-block">
-                                    <ul class="social-icons list-inline">
-                                        <li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li class="social-linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li class="social-instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="featured-thumbnail">
-                                <img class="img-fluid" src="<?php if(!empty($team->image)){ echo '/images/teams/'.$team->image; } else{  echo 'assets/backend/images/users/user-dummy-img.jpg'; } ?>" alt="image">
-                            </div>
-                            <div class="featured-content">
-                                <div class="featured-title">
-                                    <h3><a href="/">{{ucfirst(@$team->name)}}</a></h3>
-                                </div>
-                                <p class="team-position">{{ucfirst(@$team->post)}}</p>
-                            </div>
-                        </div><!-- featured-imagebox-team end-->
-                    </div>
-                  @endforeach
-                </div><!-- row end -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="margin_top35 res-991-margin_top15 text-center">
-                            <a href="/" class="end_button">
-                                <span>+</span>
-                            </a><span class="end_button_txt ttm-textcolor-darkgrey">Explore More Team</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--team-section end-->
-        @endif
 
         @if(count($latestServices)>0)
         <!--Services-section-->
@@ -700,10 +653,60 @@
         <!--services-section end-->
         @endif
 
+
+
+        @if(count($awards)>0)
+
+            <section class="ttm-row  mt_30 clearfix">
+                <div class="container">
+                    <div class="row no-gutters">
+                        <div class="col-lg-12">
+                            <div class="ttm-bg ttm-bg ttm-col-bgimage-yes col-bg-img-five ttm-left-span spacing-11">
+                                <div class="ttm-col-wrapper-bg-layer ttm-bg-layer">
+                                    <div class="ttm-col-wrapper-bg-layer-inner"></div>
+                                </div>
+                                <div class="layer-content">
+                                    <!-- section title -->
+                                    <div class="section-title title-style-center_text">
+                                        <div class="title-header">
+                                            <h3>Achievements</h3>
+                                            <h2 class="title">Awards And Achievements</h2>
+                                        </div>
+                                        <div class="title-desc"><p>What we are getting by achieving our goals is not as important as what you become by achieving our goals, Client’s satisfaction is at the top!</p></div>
+                                    </div><!-- section title end -->
+                                    <div class="row slick_slider" data-slick='{"slidesToShow": 4, "slidesToScroll": 4, "arrows":false, "dots":false, "autoplay":true, "infinite":true, "responsive": [{"breakpoint":1024,"settings":{"slidesToShow": 3}} , {"breakpoint":900,"settings":{"slidesToShow": 2}}, {"breakpoint":575,"settings":{"slidesToShow": 1}}]}'>
+                                       @foreach($awards as $award)
+                                        <div class="col-lg-4">
+                                            <div class="padding_top10 padding_bottom10 padding_right60 res-767-padding_right15 text-center">
+                                                <img class="img-fluid" src="{{asset('/images/awards/'.@$award->image)}}" alt="{{$award->name}}">
+                                                <div class="padding_top15">
+                                                    @if(@$award->subtitle !== null)
+                                                        <h3 class="fs-18">{{@$award->name}}</h3>
+                                                    @endif
+                                                    @if(@$award->subtitle !== null)
+                                                        <label>{{ucfirst(@$award->subtitle)}}</label>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    </div>
+    {{--                                <div class="padding_top20 padding_bottom90 res-991-padding_bottom0">--}}
+    {{--                                    <p>We have won 27 more awards in our career. <a href="#"><u>View All Awards</u></a></p>--}}
+    {{--                                </div>--}}
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- row end -->
+                </div>
+            </section>
+
+        @endif
+
         @if(count($director) > 0)
         <!--Managing-director-->
 
-            <section class="ttm-row broken-section bg-img4 clearfix">
+            <section class="ttm-row broken-section padding_top15 bg-img4 clearfix">
             <div class="container">
                 <!-- section-title -->
                 <div class="section-title title-style-center_text">
@@ -768,7 +771,6 @@
             <!--managing-director-end-->
         @endif
 
-
         @if(count($testimonials)>0)
 
         <!--testimonial-section-->
@@ -825,10 +827,7 @@
         <!--testimonial-section end-->
         @endif
 
-
-
-
-       @if(!empty($homepage_info->action_heading))
+        @if(!empty($homepage_info->action_heading))
         <!--cta-section-->
         <section class="ttm-row cta-section ttm-textcolor-white bg-img2 clearfix">
             <div class="container">
@@ -863,10 +862,6 @@
         </section>
         <!--cta-section end-->
         @endif
-
-
-
-
 
         @if(count($latestPosts) > 2)
         <!--blog-section-->

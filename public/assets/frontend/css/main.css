@@ -254,6 +254,7 @@ a, img{
 }
 label { font-size: 13px; }
 .fs-20 { font-size: 20px; line-height: 26px }
+.fs-18 { font-size: 18px; line-height: 26px;  margin-bottom: 0px; }
 .fs-30 { font-size: 30px; line-height: 40px }
 
 .box-shadow{ box-shadow: 0 0 9px 0 rgba(29, 33, 67, 0.10) }
@@ -375,6 +376,7 @@ a.end_button:before{
 .spacing-8 { padding: 65px 0 70px 65px; margin-left: -55px; }
 .spacing-9 { padding: 91px 200px 58px 15px; margin-top: -70px;}
 .spacing-10 { padding: 30px 50px 40px; margin-top: -470px;}
+.spacing-11 { padding: 90px 0px 80px 0px; margin-top: -70px;}
 
 
 .p-10 { padding: 10px; }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Award;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\Career;
@@ -93,10 +94,11 @@ class FrontController extends Controller
 
         $testimonials   = $this->testimonial->get();
         $teams          = Team::get();
+        $awards          = Award::get();
         $latestPosts    = $this->blog->inRandomOrder()->take(6)->get();
         $recruitments   = $this->recruitment_process->get();
 
-        return view('welcome',compact('recruitments','director','testimonials','teams','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
+        return view('welcome',compact('recruitments','awards','director','testimonials','teams','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
     }
 
     public function privacy()
@@ -211,6 +213,7 @@ class FrontController extends Controller
         }
         $sections       = array();
         $homepage_info  = $this->home_page->first();
+        $teams          = Team::get();
 
         $list_2        = "";
         $list_3        = "";
@@ -317,7 +320,7 @@ class FrontController extends Controller
             }
         }
 
-        return view('frontend.pages.dynamic_page',compact( 'video_section_elements','homepage_info','basic_elements2','directors_message','page_detail','sections','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements'));
+        return view('frontend.pages.dynamic_page',compact( 'video_section_elements','teams','homepage_info','basic_elements2','directors_message','page_detail','sections','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements'));
 
     }
 

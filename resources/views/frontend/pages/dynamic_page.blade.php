@@ -988,8 +988,69 @@
                  </section>
                  <!--fid-section end-->
 
+                 @if(count($teams)>0)
 
-             @endif
+                 <!--team-section-->
+                     <section class="ttm-row ttm-bgcolor-grey team-section clearfix">
+                         <div class="container">
+                             <!-- row -->
+                             <div class="row">
+                                 <div class="col-lg-12">
+                                     <!-- section title -->
+                                     <div class="section-title title-style-center_text">
+                                         <div class="title-header">
+                                             <h3>TOGETHER ACHIEVES MORE</h3>
+                                             <h2 class="title">Our Amazing Team</h2>
+                                         </div>
+                                         {{--                            <div class="title-desc"><p>There is great team who leads the success of our firm, Axacus! Dedicated & expertise knowledge always leads us to client’s satisfaction.</p></div>--}}
+                                     </div><!-- section title end -->
+                                 </div>
+                             </div><!-- row end -->
+                             <!-- row -->
+                             <div class="row slick_slider" data-slick='{"slidesToShow": {{(count($teams)<4) ? count($teams):'4'}}, "slidesToScroll": {{(count($teams)<4) ? count($teams):'4'}}, "arrows":false, "dots":false, "autoplay":true, "infinite":true, "responsive": [{"breakpoint":991,"settings":{"slidesToShow": 3}}, {"breakpoint":678,"settings":{"slidesToShow": 2}}, {"breakpoint":460,"settings":{"slidesToShow": 1}}]}'>
+                                 @foreach(@$teams as $team)
+                                     <div class="col-lg-3 col-md-6">
+                                         <!-- featured-imagebox-team -->
+                                         <div class="featured-imagebox featured-imagebox-team style1">
+                                             <div class="ttm-media-link">
+                                                 <div class="media-block">
+                                                     <ul class="social-icons list-inline">
+                                                         <li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                         <li class="social-linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                                         <li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                         <li class="social-instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                                     </ul>
+                                                 </div>
+                                             </div>
+                                             <div class="featured-thumbnail">
+                                                 <img class="img-fluid" src="<?php if(!empty($team->image)){ echo '/images/teams/'.$team->image; } else{  echo 'assets/backend/images/users/user-dummy-img.jpg'; } ?>" alt="image">
+                                             </div>
+                                             <div class="featured-content">
+                                                 <div class="featured-title">
+                                                     <h3><a href="/">{{ucfirst(@$team->name)}}</a></h3>
+                                                 </div>
+                                                 <p class="team-position">{{ucfirst(@$team->post)}}</p>
+                                             </div>
+                                         </div><!-- featured-imagebox-team end-->
+                                     </div>
+                                 @endforeach
+                             </div><!-- row end -->
+{{--                             <div class="row">--}}
+{{--                                 <div class="col-lg-12">--}}
+{{--                                     <div class="margin_top35 res-991-margin_top15 text-center">--}}
+{{--                                         <a href="/" class="end_button">--}}
+{{--                                             <span>+</span>--}}
+{{--                                         </a><span class="end_button_txt ttm-textcolor-darkgrey">Explore More Team</span>--}}
+{{--                                     </div>--}}
+{{--                                 </div>--}}
+{{--                             </div>--}}
+                         </div>
+                     </section>
+                     <!--team-section end-->
+                 @endif
+
+
+                 @endif
 
 
         </div>
