@@ -85,8 +85,6 @@
                                 <input  type="file" accept="image/png, image/jpeg" hidden
                                         id="director-sign-image" onchange="loadbasicFile('director-sign-image','current-director-sign-img',event)" name="sign"
                                         class="profile-foreground-img-file-input" >
-
-                                <figcaption class="figure-caption">Image (145px x 50px) current section.</figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
@@ -282,8 +280,6 @@
                                             <input  type="file" accept="image/png, image/jpeg" hidden
                                                     id="director-sign-edit-image" onchange="loadbasicFile('director-sign-edit-image','current-director-sign-edit-img',event)" name="sign"
                                                     class="profile-foreground-img-file-input" >
-
-                                            <figcaption class="figure-caption">Image (145px x 50px) current section.</figcaption>
                                             <div class="invalid-feedback" >
                                                 Please select a image.
                                             </div>
