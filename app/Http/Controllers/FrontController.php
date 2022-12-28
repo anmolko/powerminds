@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\Career;
 use App\Models\Faq;
+use App\Models\ManagingDirector;
 use App\Models\Setting;
 use App\Models\Service;
 use App\Mail\ContactDetail;
@@ -88,13 +89,14 @@ class FrontController extends Controller
         $countries      = CountryState::getCountries();
         $sliders        = $this->slider->where('status','active')->orderBy('created_at', 'asc')->get();
         $homepage_info  = $this->home_page->first();
+        $director       = ManagingDirector::orderBy('order', 'asc')->get();
 
         $testimonials   = $this->testimonial->get();
         $teams          = Team::get();
         $latestPosts    = $this->blog->inRandomOrder()->take(6)->get();
         $recruitments   = $this->recruitment_process->get();
 
-        return view('welcome',compact('recruitments','testimonials','teams','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
+        return view('welcome',compact('recruitments','director','testimonials','teams','clients','latestPosts','latestServices','countries','homepage_info','sliders'));
     }
 
     public function privacy()

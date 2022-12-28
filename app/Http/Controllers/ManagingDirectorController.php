@@ -64,9 +64,21 @@ class ManagingDirectorController extends Controller
                 mkdir($this->path, 0777);
             }
             $path         = base_path().'/public/images/director/';
-            $moved        = Image::make($image->getRealPath())->orientate()->save($path.$name);
+            $moved        = Image::make($image->getRealPath())->orientate()->fit('495','560')->save($path.$name);
             if ($moved){
                 $data['image']= $name;
+            }
+        }
+        if(!empty($request->file('sign'))){
+            $image        = $request->file('sign');
+            $name         = uniqid().'_director_sign_'.$image->getClientOriginalName();
+            if (!is_dir($this->path)) {
+                mkdir($this->path, 0777);
+            }
+            $path         = base_path().'/public/images/director/';
+            $moved        = Image::make($image->getRealPath())->orientate()->save($path.$name);
+            if ($moved){
+                $data['sign']= $name;
             }
         }
         $director = ManagingDirector::create($data);
@@ -132,16 +144,29 @@ class ManagingDirectorController extends Controller
         $director->link                =  $request->input('link');
         $director->button              =  $request->input('button');
         $oldimage                      =  $director->image;
+        $oldimagesign                  =  $director->sign;
 
         if (!empty($request->file('image'))){
             $image                = $request->file('image');
             $name                 = uniqid().'_director_'.$image->getClientOriginalName();
             $path                 = base_path().'/public/images/director/';
-            $moved                = Image::make($image->getRealPath())->orientate()->save($path.$name);
+            $moved                = Image::make($image->getRealPath())->orientate()->fit('495','560')->save($path.$name);
             if ($moved){
                 $director->image = $name;
                 if (!empty($oldimage) && file_exists(public_path().'/images/director/'.$oldimage)){
                     @unlink(public_path().'/images/director/'.$oldimage);
+                }
+            }
+        }
+        if (!empty($request->file('sign'))){
+            $image                = $request->file('sign');
+            $name                 = uniqid().'_director_sign'.$image->getClientOriginalName();
+            $path                 = base_path().'/public/images/director/';
+            $moved                = Image::make($image->getRealPath())->orientate()->save($path.$name);
+            if ($moved){
+                $director->sign = $name;
+                if (!empty($oldimagesign) && file_exists(public_path().'/images/director/'.$oldimagesign)){
+                    @unlink(public_path().'/images/director/'.$oldimagesign);
                 }
             }
         }
@@ -169,6 +194,9 @@ class ManagingDirectorController extends Controller
         $rid                = $delete->id;
         if (!empty($delete->image) && file_exists(public_path().'/images/director/'.$delete->image)){
             @unlink(public_path().'/images/director/'.$delete->image);
+        }
+        if (!empty($delete->sign) && file_exists(public_path().'/images/director/'.$delete->sign)){
+            @unlink(public_path().'/images/director/'.$delete->sign);
         }
         $remove = $delete->delete();
         if($remove){

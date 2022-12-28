@@ -55,7 +55,8 @@
 
                             <div class="form-group mb-3">
                                 <label>Description <span class="text-muted text-danger">*</span></label>
-                                <textarea class="form-control" rows="6" maxlength="550" name="description" required></textarea>
+                                <textarea class="form-control" rows="6" maxlength="1050" name="description" id="director-editor" required></textarea>
+                                <figcaption class="figure-caption"> Write max of 1050 characters of description. </figcaption>
                                 <div class="invalid-feedback">
                                     Please write the short description
                                 </div>
@@ -77,6 +78,22 @@
                             </h4>
                         </div>
                         <div class="card-body">
+                            <label>Directors signature <span class="text-muted text-danger">*</span></label>
+
+                            <div style="margin: auto; width: 50%;">
+                                <img  id="current-director-sign-img"  src="{{asset('images/default-image.jpg')}}" class="position-relative img-fluid img-thumbnail blog-feature-image" >
+                                <input  type="file" accept="image/png, image/jpeg" hidden
+                                        id="director-sign-image" onchange="loadbasicFile('director-sign-image','current-director-sign-img',event)" name="sign"
+                                        class="profile-foreground-img-file-input" >
+
+                                <figcaption class="figure-caption">Image (145px x 50px) current section.</figcaption>
+                                <div class="invalid-feedback" >
+                                    Please select a image.
+                                </div>
+                                <label for="director-sign-image" class="profile-photo-edit btn btn-light feature-image-button">
+                                    <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
+                                </label>
+                            </div>
                             <div style="margin: auto;width: 60%;">
                                 <img  id="current-img"  src="{{asset('images/default-image.jpg')}}" class="position-relative img-fluid img-thumbnail blog-feature-image" >
                                 <input  type="file" accept="image/png, image/jpeg" hidden
@@ -86,7 +103,7 @@
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
-                                <span class="ctm-text-sm">*use image minimum of 320 x 320px for director. Let the image be PNG</span>
+                                <span class="ctm-text-sm">*use image minimum of 495 x 560px</span>
 
                                 <label for="profile-foreground-img-file-input" class="profile-photo-edit btn btn-light feature-image-button">
                                     <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
@@ -225,7 +242,8 @@
 
                                         <div class="form-group mb-3">
                                             <label>Description <span class="text-muted text-danger">*</span></label>
-                                            <textarea class="form-control" rows="6" maxlength="550" name="description" id="description" required></textarea>
+                                            <textarea class="form-control" rows="6" maxlength="1050" name="description" id="description" required></textarea>
+                                            <figcaption class="figure-caption"> Write max of 1050 characters of description. </figcaption>
                                             <div class="invalid-feedback">
                                                 Please write the short description
                                             </div>
@@ -257,7 +275,22 @@
                                         </h4>
                                     </div>
                                     <div class="card-body">
+                                        <label>Directors signature <span class="text-muted text-danger">*</span></label>
 
+                                        <div style="margin: auto; width: 50%;">
+                                            <img  id="current-director-sign-edit-img"  src="{{asset('images/default-image.jpg')}}" class="position-relative img-fluid img-thumbnail blog-feature-image" >
+                                            <input  type="file" accept="image/png, image/jpeg" hidden
+                                                    id="director-sign-edit-image" onchange="loadbasicFile('director-sign-edit-image','current-director-sign-edit-img',event)" name="sign"
+                                                    class="profile-foreground-img-file-input" >
+
+                                            <figcaption class="figure-caption">Image (145px x 50px) current section.</figcaption>
+                                            <div class="invalid-feedback" >
+                                                Please select a image.
+                                            </div>
+                                            <label for="director-sign-edit-image" class="profile-photo-edit btn btn-light feature-image-button">
+                                                <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
+                                            </label>
+                                        </div>
                                         <div style="margin: auto;width: 60%;">
                                             <img id="current-edit-img"  src="{{asset('images/default-image.jpg')}}" class="position-relative img-fluid img-thumbnail blog-feature-image" >
                                             <input  type="file" accept="image/png, image/jpeg" hidden
@@ -294,6 +327,8 @@
     <script src="{{asset('assets/backend/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('assets/backend/js/pages/form-validation.init.js')}}"></script>
     <!-- Sweet Alerts js -->
+    <script src="{{asset('assets/backend/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
+
     <script src="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')}}"></script>
     <script src="{{asset('assets/backend/js/jquery-ui.min.js')}}"></script>
 
@@ -305,6 +340,47 @@
             replacement.src = URL.createObjectURL(event.target.files[0]);
         };
 
+        function createEditor ( elementId ) {
+            return ClassicEditor
+                .create( document.querySelector( '#' + elementId ), {
+                    toolbar : {
+                        items: [
+                            'heading', '|',
+                            'bold', 'italic', 'link', '|',
+                            'outdent', 'indent', '|',
+                            'bulletedList', 'numberedList', '|',
+                            'insertTable', 'blockQuote', '|',
+                            'undo', 'redo'
+                        ],
+                    },
+                    link: {
+                        // Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
+                        addTargetToExternalLinks: true,
+
+                        // Let the users control the "download" attribute of each link.
+                        decorators: [
+                            {
+                                mode: 'manual',
+                                label: 'Downloadable',
+                                attributes: {
+                                    download: 'download'
+                                }
+                            }
+                        ]
+                    },
+                } )
+                .then( editor => {
+                    window.editor = editor;
+                    editor.model.document.on( 'change:data', () => {
+                        $( '#' + elementId).text(editor.getData());
+                    } );
+
+                } )
+                .catch( err => {
+                    console.error( err.stack );
+                } );
+        }
+
 
         $(document).ready(function () {
             $('#client-index').DataTable({
@@ -313,6 +389,8 @@
                 ordering: true,
                 lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
             });
+            createEditor('director-editor');
+            createEditor('description');
 
             $(document).on('click', '.action-edit', function (e) {
                 e.preventDefault();
@@ -331,7 +409,8 @@
                         $("#editdirector").modal("toggle");
                         $('#heading').attr('value',dataResult.heading);
                         $('#designation').attr('value',dataResult.designation);
-                        $('#description').text(dataResult.description);
+                        // $('#description').text(dataResult.description);
+                        editor.setData(dataResult.description)
                         if(dataResult.link !== null){
                             $('#link').attr('value',dataResult.link);
                         }
@@ -339,6 +418,10 @@
                             $('#button').attr('value',dataResult.button);
                         }
                         $('#current-edit-img').attr("src", '/images/director/' + dataResult.image);
+                        if(dataResult.sign !==null){
+                            $('#current-director-sign-edit-img').attr("src", '/images/director/' + dataResult.sign);
+
+                        }
                         $('.updateclient').attr('action', action);
 
                     },

@@ -317,8 +317,7 @@
                                                                     data-after-style="sub"
                                                                     class="numinate">{{ (@$homepage_info->project_completed) ? @$homepage_info->project_completed : '180'}}
                                                             </span>
-                                                        <span>K</span>
-                                                    </h4>
+                                                     </h4>
                                                     <h3 class="ttm-fid-title">Industries Served</h3>
                                                 </div>
                                             </div><!-- ttm-fid end -->
@@ -341,7 +340,6 @@
                                                                     data-after-style="sub"
                                                                     class="numinate">{{ (@$homepage_info->success_stories) ? @$homepage_info->success_stories : '360'}}
                                                             </span>
-                                                        <span>+</span>
                                                     </h4>
                                                     <h3 class="ttm-fid-title">Jobs Created </h3>
                                                 </div>
@@ -365,7 +363,6 @@
                                                                     data-after-style="sub"
                                                                     class="numinate">{{ (@$homepage_info->happy_clients) ? @$homepage_info->happy_clients : '495'}}
                                                             </span>
-                                                        <span>K</span>
                                                     </h4>
                                                     <h3 class="ttm-fid-title">Clients Served</h3>
                                                 </div>
@@ -617,7 +614,7 @@
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
                         <div class="margin_top35 text-center">
-                            <div class="end_txt_line">Challenges are just opportunies in disguise. <a class="ttm-textcolor-skincolor" href="{{route('service.frontend')}}"> View all Services!</a></div>
+                            <div class="end_txt_line">Challenges are just opportunities in disguise. <a class="ttm-textcolor-skincolor" href="{{route('service.frontend')}}"> View all Services!</a></div>
                         </div>
                     </div>
                 </div><!-- row end -->
@@ -703,6 +700,75 @@
         <!--services-section end-->
         @endif
 
+        @if(count($director) > 0)
+        <!--Managing-director-->
+
+            <section class="ttm-row broken-section clearfix">
+            <div class="container">
+                <!-- section-title -->
+                <div class="section-title title-style-center_text">
+                    <div class="title-header">
+                        <h3>Up Close</h3>
+                        <h2 class="title">Message From Director</h2>
+                    </div>
+                </div><!-- section-title end -->
+                <div class="row slick_slider" style="margin-top: -70px;" data-slick='{"slidesToShow": 1, "slidesToScroll": 1, "arrows":false, "autoplay":false, "dots":false, "infinite":true, "responsive":[{"breakpoint":992,"settings":{"slidesToShow": 2}},{"breakpoint":840,"settings":{"slidesToShow": 1}}]}'>
+                    @foreach($director as $managing)
+
+                        <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-7 mx-auto">
+                                <div class="ttm-bg ttm-col-bgcolor-yes ttm-left-span spacing-7 res-767-mr_15">
+                                    <div class="layer-content">
+                                        <!-- ttm_single_image-wrapper -->
+                                        <div class="ttm_single_image-wrapper">
+                                            <div class="d-inline-block p-10 ttm-bgcolor-white border-rad_6 position-relative z-index-1 box-shadow mr_300 res-767-margin_right0">
+                                                <img class="img-fluid" src="{{asset('/images/director/'.$managing->image)}}" alt="single_04">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="padding_top100 margin_top15 res-991-margin_top0 res-991-padding_top40 res-991-padding_bottom60 ml_25 res-1199-margin_left0 justified">
+                                    {!!  @$managing->description !!}
+                                    <div class="row ttm-vertical_sep padding_right30 res-991-padding_right0">
+                                        <div class="padding_top20 padding_bottom10 res-991-padding_right0">
+                                            <div class="d-sm-flex align-items-center">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="padding_left15">
+                                                        <h3 class="margin_bottom0 fs-20">{{ucfirst($managing->heading)}}</h3>
+                                                        <label class="margin_bottom0">{{ucfirst($managing->designation)}}</label>
+                                                    </div>
+                                                </div>
+                                                @if(@$managing->sign !== null)
+                                                    <div class="margin_left30 padding_left30 border-left">
+                                                        <img class="img-fluid auto_size" src="{{asset('/images/director/'.$managing->sign)}}" style="height: 50px;" alt="sign-01">
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @if( @$managing->link !== null)
+                                            <div class="padding_top20 res-991-padding_right0">
+                                                <a class="ttm-btn ttm-btn-size-md ml-3 ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-skincolor" href="{{@$managing->link}}" tabindex="0">
+                                                    {{((@$managing->button !== null) ? @$managing->button:"Read More")}}
+                                                </a>
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+            <!--managing-director-end-->
+        @endif
+
+
         @if(count($testimonials)>0)
 
         <!--testimonial-section-->
@@ -759,7 +825,10 @@
         <!--testimonial-section end-->
         @endif
 
-        @if(!empty($homepage_info->action_heading))
+
+
+
+       @if(!empty($homepage_info->action_heading))
         <!--cta-section-->
         <section class="ttm-row cta-section ttm-textcolor-white bg-img2 clearfix">
             <div class="container">
