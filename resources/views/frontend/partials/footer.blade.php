@@ -29,7 +29,7 @@
                                 </h4>
                             </div>
                             <div>
-                                <a href="#" class="ttm-btn ttm-btn-size-md ttm-btn-style-border ttm-btn-shape-rounded ttm-btn-color-white">Get Started</a>
+                                <a href="{{route('contact')}}" class="ttm-btn ttm-btn-size-md ttm-btn-style-border ttm-btn-shape-rounded ttm-btn-color-white">Get Started</a>
                             </div>
                         </div>
                     </div>
