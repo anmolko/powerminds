@@ -124,7 +124,7 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title mb-0">Call Action List</h4>
+                            <h4 class="card-title mb-0">Testimonial List</h4>
                         </div>
                         <div class="card-body">
 

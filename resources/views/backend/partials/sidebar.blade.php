@@ -85,6 +85,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link @if(\Request::route()->getName() == 'awards.index') active @endif" href="{{route('awards.index')}}">
+                        <i class="ri-medal-line"></i> <span data-key="t-widgets">Awards</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link @if(\Request::route()->getName() == 'managing-director.index') active @endif" href="{{route('managing-director.index')}}">
                         <i class="ri-open-arm-line"></i> <span data-key="t-widgets">Managing Director</span>
                     </a>
