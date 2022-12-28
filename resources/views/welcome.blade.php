@@ -672,7 +672,7 @@
                                             <h3>Achievements</h3>
                                             <h2 class="title">Awards And Achievements</h2>
                                         </div>
-                                        <div class="title-desc"><p>What we are getting by achieving our goals is not as important as what you become by achieving our goals, Client’s satisfaction is at the top!</p></div>
+{{--                                        <div class="title-desc"><p>What we are getting by achieving our goals is not as important as what you become by achieving our goals, Client’s satisfaction is at the top!</p></div>--}}
                                     </div><!-- section title end -->
                                     <div class="row slick_slider" data-slick='{"slidesToShow": 4, "slidesToScroll": 4, "arrows":false, "dots":false, "autoplay":true, "infinite":true, "responsive": [{"breakpoint":1024,"settings":{"slidesToShow": 3}} , {"breakpoint":900,"settings":{"slidesToShow": 2}}, {"breakpoint":575,"settings":{"slidesToShow": 1}}]}'>
                                        @foreach($awards as $award)
