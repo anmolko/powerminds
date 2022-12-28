@@ -1,42 +1,42 @@
 <!--footer start-->
 <footer class="footer widget-footer ttm-bgcolor-darkgrey ttm-textcolor-white clearfix sticky-stop" >
-    <div class="first-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 widget-area">
-                    <div class="widget newsletter_widget clearfix">
-                        <h3>Subscribe To Our Newsletter</h3>
-                        <form id="subscribe-form" class="newsletter-form" method="post" action="#" data-mailchimp="true">
-                            <div class="mailchimp-inputbox clearfix" id="subscribe-content">
-                                <p>
-                                    <i class="fa fa-paper-plane-o"></i>
-                                    <input type="email" name="email" placeholder="Enter Your Email Address..." required="">
-                                </p>
-                                <p><button class="submit ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-skincolor" type="submit">Subscribe Now!</button></p>
-                            </div>
-                            <div id="subscribe-msg"></div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 widget-area">
-                    <div class="widget offer_widget clearfix">
-                        <div class="d-md-flex justify-content-between align-items-end">
-                            <div class="padding_right50 position-relative">
-                                <h2>Reach</h2>
-                                <h3 style="line-height:125px;top:-4px;">out !</h3>
-                                <h4>
-                                    @if(!empty(@$setting_data->website_name)) {!! ucfirst(@$setting_data->website_name) !!} @else Power Minds Pvt. Ltd. @endif
-                                </h4>
-                            </div>
-                            <div>
-                                <a href="{{route('contact')}}" class="ttm-btn ttm-btn-size-md ttm-btn-style-border ttm-btn-shape-rounded ttm-btn-color-white">Get Started</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="first-footer">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 widget-area">--}}
+{{--                    <div class="widget newsletter_widget clearfix">--}}
+{{--                        <h3>Subscribe To Our Newsletter</h3>--}}
+{{--                        <form id="subscribe-form" class="newsletter-form" method="post" action="#" data-mailchimp="true">--}}
+{{--                            <div class="mailchimp-inputbox clearfix" id="subscribe-content">--}}
+{{--                                <p>--}}
+{{--                                    <i class="fa fa-paper-plane-o"></i>--}}
+{{--                                    <input type="email" name="email" placeholder="Enter Your Email Address..." required="">--}}
+{{--                                </p>--}}
+{{--                                <p><button class="submit ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-skincolor" type="submit">Subscribe Now!</button></p>--}}
+{{--                            </div>--}}
+{{--                            <div id="subscribe-msg"></div>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 widget-area">--}}
+{{--                    <div class="widget offer_widget clearfix">--}}
+{{--                        <div class="d-md-flex justify-content-between align-items-end">--}}
+{{--                            <div class="padding_right50 position-relative">--}}
+{{--                                <h2>Reach</h2>--}}
+{{--                                <h3 style="line-height:125px;top:-4px;">out !</h3>--}}
+{{--                                <h4>--}}
+{{--                                    @if(!empty(@$setting_data->website_name)) {!! ucfirst(@$setting_data->website_name) !!} @else Power Minds Pvt. Ltd. @endif--}}
+{{--                                </h4>--}}
+{{--                            </div>--}}
+{{--                            <div>--}}
+{{--                                <a href="{{route('contact')}}" class="ttm-btn ttm-btn-size-md ttm-btn-style-border ttm-btn-shape-rounded ttm-btn-color-white">Get Started</a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="second-footer">
         <div class="container">
             <div class="row">
