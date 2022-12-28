@@ -68,6 +68,13 @@
     .col-bg-img-five.ttm-col-bgimage-yes > .ttm-col-wrapper-bg-layer {
         background-size: auto;
     }
+    .tooltip:after, [data-tooltip]:after {
+        width: 240px;
+        font-size: 12px;
+    }
+    .tooltip-top:after, .tooltip:after, [data-tooltip]:after {
+        margin-left: -105px;
+    }
 </style>
 
 @endsection
@@ -572,82 +579,34 @@
                     </div>
                 </div><!-- row end -->
 
-                <!-- row -->
-                <div class="row">
+                @if(count($clients)>0)
+                    <div class="row">
                     <div class="col-md-12">
                         <div class="ttm-bg ttm-col-bgcolor-yes ttm-bgcolor-white spacing-3 box-shadow">
                             <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
                             <div class="layer-content">
                                 <!-- slick_slider -->
                                 <div class="row slick_slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "arrows":false, "autoplay":false, "infinite":true, "responsive": [{"breakpoint":1200,"settings":{"slidesToShow": 5}}, {"breakpoint":1024,"settings":{"slidesToShow": 4}}, {"breakpoint":777,"settings":{"slidesToShow": 3}},{"breakpoint":575,"settings":{"slidesToShow": 2}}]}'>
-                                    <div class="col-lg-12">
-                                        <div class="client-box">
-                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-01">
-                                                <div class="client-thumbnail">
-                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-01.png')}}" alt="image">
+                                  @foreach(@$clients as $client)
+                                        <div class="col-lg-12">
+                                            <div class="client-box">
+                                                <div class="ttm-client-logo-tooltip" data-tooltip="{{@$client->name}}">
+                                                    <div class="client-thumbnail">
+                                                        <a href="{{(@$client->link !== null) ? $client->link:"#" }}">
+                                                            <img class="img-fluid" src="{{asset('/images/clients/'.@$client->image)}}" alt="image">
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="client-box">
-                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-02">
-                                                <div class="client-thumbnail">
-                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-02.png')}}" alt="image">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="client-box">
-                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-03">
-                                                <div class="client-thumbnail">
-                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-03.png')}}" alt="image">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="client-box">
-                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-04">
-                                                <div class="client-thumbnail">
-                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-04.png')}}" alt="image">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="client-box">
-                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-05">
-                                                <div class="client-thumbnail">
-                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-05.png')}}" alt="image">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="client-box">
-                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-02">
-                                                <div class="client-thumbnail">
-                                                    <img class="img-fluid" src="{{asset('assets/frontend/images/client/client-02.png')}}" alt="image">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="client-box">
-                                            <div class="ttm-client-logo-tooltip" data-tooltip="client-04">
-                                                <div class="client-thumbnail">
-                                                    <img class="img-fluid" src="{{asset('assets/frontend/')}}images/client/client-04.png" alt="image">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div><!-- slick_slider end -->
                             </div>
                         </div>
                     </div>
-                </div><!-- row end -->
+                </div>
+                @endif
+
             </div>
         </section>
         <!--services-section end-->

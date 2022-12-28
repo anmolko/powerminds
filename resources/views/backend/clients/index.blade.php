@@ -53,18 +53,6 @@
                                     Please enter the category name.
                                 </div>
                             </div>
-                            <div class="form-group mb-3">
-                                <label>Country <span class="text-muted text-danger">*</span></label>
-                                <select class="form-control select select2" name="country" required>
-                                    <option disabled>Select Country</option>
-                                    @foreach($countries as $key => $value)
-                                        <option value="{{$key}}">{{$value}}</option>
-                                    @endforeach
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select the country.
-                                </div>
-                            </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success w-sm mt-4" >Add Client</button>
                             </div>
@@ -116,7 +104,6 @@
                                             <th>Client Image</th>
                                             <th>Name</th>
                                             <th>Link</th>
-                                            <th>Country</th>
                                             <th class="text-right">Action</th>
                                         </tr>
                                         </thead>
@@ -125,20 +112,11 @@
                                             @foreach($clients as  $client)
                                                 <tr>
                                                     <td class="align-middle pt-6 pb-4 px-6">
-                                                        <img src="{{asset('/images/clients/'.@$client->image)}}" alt="{{@$client->slug}}" class="figure-img rounded avatar-lg">
+                                                        <img src="{{asset('/images/clients/'.@$client->image)}}" alt="{{@$client->slug}}" style="    height: auto;" class="figure-img rounded avatar-lg">
 
                                                     </td>
                                                     <td>{{(!empty($client->name)) ?  $client->name:"Not Set"}}</td>
                                                     <td>{{(!empty($client->link)) ?  $client->link:"Not Set"}}</td>
-                                                    <td><?php
-                                                        if(!empty($client->country)){
-                                                            foreach ($countries as $key=>$value){
-                                                                if($client->country == $key){
-                                                                    echo $value;
-                                                                }
-                                                            }
-                                                        }
-                                                        ?></td>
                                                     <td>
                                                         <div class="row">
 
@@ -208,19 +186,6 @@
                                             <input type="text" class="form-control" name="link" id="link">
                                             <div class="invalid-feedback">
                                                 Please enter the category name.
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label>Country <span class="text-muted text-danger">*</span></label>
-                                            <br>
-                                            <select class="form-control select select2" name="country" id="country" required>
-                                                <option disabled>Select Country</option>
-                                                @foreach($countries as $key => $value)
-                                                    <option value="{{$key}}">{{$value}}</option>
-                                                @endforeach
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                Please select the country.
                                             </div>
                                         </div>
 
@@ -308,12 +273,6 @@
                         $("#editClient").modal("toggle");
                         $('#name').attr('value', dataResult.edit.name);
                         $('#link').attr('value', dataResult.edit.link);
-                        $.each(dataResult.countries, function (index, value) {
-                            if(index==dataResult.edit.country){
-                                $('#select2-country-container').text(value);
-                            }
-                        });
-                        $('#country option[value="'+dataResult.edit.country+'"]').prop('selected', true);
                         $('#current-edit-img').attr("src", '/images/clients/' + dataResult.edit.image);
                         $('.updateclient').attr('action', action);
 

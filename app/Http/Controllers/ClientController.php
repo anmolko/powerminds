@@ -50,7 +50,6 @@ class ClientController extends Controller
     {
         $data=[
             'name'                => $request->input('name'),
-            'country'             => $request->input('country'),
             'link'                => $request->input('link'),
             'created_by'          => Auth::user()->id,
         ];
@@ -108,7 +107,6 @@ class ClientController extends Controller
     {
         $clients                     =  Client::find($id);
         $clients->name               =  $request->input('name');
-        $clients->country            =  $request->input('country');
         $clients->link               =  $request->input('link');
         $oldimage                    = $clients->image;
 
