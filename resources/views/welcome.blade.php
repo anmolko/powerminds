@@ -703,7 +703,7 @@
         @if(count($director) > 0)
         <!--Managing-director-->
 
-            <section class="ttm-row broken-section clearfix">
+            <section class="ttm-row broken-section bg-img4 clearfix">
             <div class="container">
                 <!-- section-title -->
                 <div class="section-title title-style-center_text">
