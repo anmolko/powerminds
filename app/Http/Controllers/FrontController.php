@@ -474,27 +474,23 @@ class FrontController extends Controller
     {
         $theme_data = Setting::first();
             $data = array(
-                'fullname'        =>$request->input('name'),
-                'message'        =>$request->input('message'),
-                'email'        =>$request->input('email'),
-                'subject'        =>$request->input('subject'),
-                'customer_phone'        =>$request->input('phone'),
-                'address'        =>ucwords(@$theme_data->address),
-                'site_email'        =>ucwords(@$theme_data->email),
-                'site_name'        =>ucwords(@$theme_data->website_name),
-                'phone'        =>ucwords(@$theme_data->phone),
-                'logo'        =>ucwords(@$theme_data->logo),
+                'fullname'        => $request->input('name'),
+                'message'         => $request->input('message'),
+                'email'           => $request->input('email'),
+                'subject'         => $request->input('subject'),
+                'customer_phone'  => $request->input('phone'),
+                'address'         => ucwords(@$theme_data->address),
+                'site_email'      => ucwords(@$theme_data->email),
+                'site_name'       => ucwords(@$theme_data->website_name),
+                'phone'           => ucwords(@$theme_data->phone),
+                'logo'            => ucwords(@$theme_data->logo),
             );
-//             Mail::to('surajmzn75@gmail.com')->send(new ContactDetail($data));
 
-            // Mail::to($theme_data->email)->send(new ContactDetail($data));
-
-            // Session::flash('success','Thank you for contacting us!');
-            $status ='success';
-            return response()->json($status);
-
-
-        // return redirect()->back();
+//             Mail::to($theme_data->email)->send(new ContactDetail($data));
+             Session::flash('success','Thank you for contacting us. We will get back to you soon !');
+//              $status ='success';
+//            return response()->json($status);
+         return redirect()->back();
     }
 
     public function careerSingle($slug){

@@ -120,6 +120,16 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
+                                 @if ($message = Session::get('success'))
+                                    <div class="alert alert-success alert-block alert-dismissible">
+                                        <strong class="sent-success">{{ $message }}</strong>
+                                    </div>
+                                @endif
+                                @if ($message = Session::get('error'))
+                                    <div class="alert alert-danger alert-block alert-dismissible">
+                                        <strong class="error-sent">{{ $message }}</strong>
+                                    </div>
+                                @endif
                             <div class="ttm-col-bgcolor-yes ttm-bg ttm-bgcolor-grey z-index-2 p-50 res-991-margin_top30 res-991-p-15">
                                 <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
                                 <div class="layer-content">
