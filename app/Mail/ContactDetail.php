@@ -30,6 +30,6 @@ class ContactDetail extends Mailable
      */
     public function build()
     {
-        return $this->subject('New Customer Enquiry - Win Recruit Nepal')->view('frontend.template.email_template');
+        return $this->subject('New Inquiry - Power Minds Pvt. Ltd.')->view('frontend.template.email_template');
     }
 }
